@@ -21,43 +21,83 @@ int main()
         cout << "Iveskite pavarde: ";
         cin >> naujiStudentai[m].pavarde;
 
-        cout << "Iveskite pazymius (norint baigti pazymiu rasyma, irasykite 0):" << endl;
+        string ats = "";
 
         int temp[100];
         int n = 0;
 
-        while (true)
+        while (ats != "t" && ats != "n")
         {
-            cin >> a;
-            if (a > 0 && a <= 10)
+            cout << "Sugeneruoti atsitiktinius pazymius? (t/n)" << endl;
+            cin >> ats;
+        }
+
+        if (ats == "t")
+        {
+            while (n <= 0)
             {
-                temp[n] = a;
-                n++;
+                cout << "Iveskite pazymiu skaiciu: ";
+                cin >> n;
             }
-            else if (a == 0)
+
+            srand(time(0));
+
+            for (int i = 0; i < n; i++)
             {
-                if (n == 0)
-                    cout << "Iveskite bent viena pazymi" << endl;
+                temp[i] = 1 + rand() % 10;
+            }
+
+            a = 1 + rand() % 10;
+        }
+
+        else
+        {
+            cout << "Iveskite pazymius (norint baigti pazymiu rasyma, irasykite 0):" << endl;
+
+            while (true)
+            {
+                cin >> a;
+
+                if (cin.fail())
+                {
+                    cout << "Neteisingas ivestis" << endl;
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+                    continue;
+                }
+
+                if (a > 0 && a <= 10)
+                {
+                    temp[n] = a;
+                    n++;
+                }
+                else if (a == 0)
+                {
+                    if (n == 0)
+                        cout << "Iveskite bent viena pazymi" << endl;
+                    else
+                        break;
+                }
                 else
-                    break;
+                    cout << "Neteisingas pazymys" << endl;
             }
-            else
-                cout << "Neteisingas pazymys" << endl;
+
+            a = 0;
+            while (a <= 0 || a > 10)
+            {
+                cout << "Iveskite egzamino pazymi: ";
+                cin >> a;
+            }
         }
 
         naujiStudentai[m].nd = new int[n];
         naujiStudentai[m].ndSk = n;
+
         for (int i = 0; i < n; i++)
         {
             naujiStudentai[m].nd[i] = temp[i];
         }
 
-        a = 0;
-        while (a <= 0 || a > 10)
-        {
-            cout << "Iveskite egzamino pazymi: ";
-            cin >> a;
-        }
         naujiStudentai[m].egz = a;
 
         delete[] A;

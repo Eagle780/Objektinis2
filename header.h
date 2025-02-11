@@ -2,16 +2,21 @@
 #include <iomanip>
 #include <vector>
 #include <algorithm>
+#include <cstdlib>
+#include <ctime>
 
 using std::cin;
 using std::cout;
 using std::endl;
 using std::fixed;
 using std::left;
+using std::rand;
 using std::setprecision;
 using std::setw;
 using std::sort;
+using std::srand;
 using std::string;
+using std::time;
 using std::vector;
 
 struct Studentas
