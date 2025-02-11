@@ -24,12 +24,10 @@ int main()
         cout << "Iveskite pazymius (norint baigti pazymiu rasyma, irasykite 0):" << endl;
 
         int temp[100];
-        int n;
+        int n = 0;
 
         while (true)
         {
-            n = 0;
-
             cin >> a;
             if (a > 0 && a <= 10)
             {
