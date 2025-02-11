@@ -4,11 +4,13 @@ int main()
 {
     StudentasC *A = nullptr;
     int m = 0;
-    int a;
 
-    bool arTesti = true;
-    while (arTesti)
+    while (true)
     {
+        int a = 0;
+        int temp[100];
+        int n = 0;
+
         StudentasC *naujiStudentai = new StudentasC[m + 1];
 
         for (int i = 0; i < m; i++)
@@ -16,42 +18,26 @@ int main()
             naujiStudentai[i] = A[i];
         }
 
-        cout << "Iveskite varda: ";
-        cin >> naujiStudentai[m].vardas;
-        cout << "Iveskite pavarde: ";
-        cin >> naujiStudentai[m].pavarde;
+        cout << "Studento duomenu ivedimo pasirinkimai:" << endl;
+        cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentų vardus, pavardes, 4 - baigti ivedima" << endl;
+        cin >> a;
 
-        string ats = "";
-
-        int temp[100];
-        int n = 0;
-
-        while (ats != "t" && ats != "n")
+        if (cin.fail() || a < 1 || a > 4)
         {
-            cout << "Sugeneruoti atsitiktinius pazymius? (t/n)" << endl;
-            cin >> ats;
+            cout << "Neteisinga ivestis\n"
+                 << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
         }
 
-        if (ats == "t")
+        if (a == 1)
         {
-            while (n <= 0)
-            {
-                cout << "Iveskite pazymiu skaiciu: ";
-                cin >> n;
-            }
+            cout << "Iveskite varda: ";
+            cin >> naujiStudentai[m].vardas;
+            cout << "Iveskite pavarde: ";
+            cin >> naujiStudentai[m].pavarde;
 
-            srand(time(0));
-
-            for (int i = 0; i < n; i++)
-            {
-                temp[i] = 1 + rand() % 10;
-            }
-
-            a = 1 + rand() % 10;
-        }
-
-        else
-        {
             cout << "Iveskite pazymius (norint baigti pazymiu rasyma, irasykite 0):" << endl;
 
             while (true)
@@ -60,7 +46,7 @@ int main()
 
                 if (cin.fail())
                 {
-                    cout << "Neteisingas ivestis" << endl;
+                    cout << "Neteisinga ivestis" << endl;
                     cin.clear();
                     cin.ignore(1000, '\n');
                     continue;
@@ -83,45 +69,138 @@ int main()
             }
 
             a = 0;
-            while (a <= 0 || a > 10)
+            while (true)
             {
                 cout << "Iveskite egzamino pazymi: ";
                 cin >> a;
+
+                if (cin.fail() || a <= 0 || a > 10)
+                {
+                    cout << "Neteisinga ivestis" << endl;
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+                    continue;
+                }
+                else
+                    break;
             }
+
+            naujiStudentai[m].nd = new int[n];
+            naujiStudentai[m].ndSk = n;
+
+            for (int i = 0; i < n; i++)
+            {
+                naujiStudentai[m].nd[i] = temp[i];
+            }
+
+            naujiStudentai[m].egz = a;
+
+            delete[] A;
+            A = naujiStudentai;
+            m++;
         }
 
-        naujiStudentai[m].nd = new int[n];
-        naujiStudentai[m].ndSk = n;
-
-        for (int i = 0; i < n; i++)
+        else if (a == 2)
         {
-            naujiStudentai[m].nd[i] = temp[i];
+            cout << "Iveskite varda: ";
+            cin >> naujiStudentai[m].vardas;
+            cout << "Iveskite pavarde: ";
+            cin >> naujiStudentai[m].pavarde;
+
+            while (true)
+            {
+                cout << "Iveskite pazymiu skaiciu: ";
+                cin >> n;
+
+                if (cin.fail() || n <= 0)
+                {
+                    cout << "Neteisinga ivestis" << endl;
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+                    continue;
+                }
+                else
+                    break;
+            }
+
+            srand(time(0));
+
+            for (int i = 0; i < n; i++)
+            {
+                temp[i] = 1 + rand() % 10;
+            }
+
+            a = 1 + rand() % 10;
+
+            naujiStudentai[m].nd = new int[n];
+            naujiStudentai[m].ndSk = n;
+
+            for (int i = 0; i < n; i++)
+            {
+                naujiStudentai[m].nd[i] = temp[i];
+            }
+
+            naujiStudentai[m].egz = a;
+
+            delete[] A;
+            A = naujiStudentai;
+            m++;
         }
 
-        naujiStudentai[m].egz = a;
-
-        delete[] A;
-        A = naujiStudentai;
-        m++;
-
-        cout << "Ivesti dar viena studenta? (t/n)" << endl;
-        string pas = "";
-        while (true)
+        else if (a == 3)
         {
-            cin >> pas;
-            if (pas == "n")
+            int v = 5, p = 5;
+            string Vardai[] = {"Jonas", "Antanas", "Petras", "Dovydas", "Tomas"};
+            string Pavardes[] = {"Jonaitis", "Petrauskas", "Kazlauskas", "Antanaitis", "Ivanauskas"};
+
+            srand(time(0));
+
+            naujiStudentai[m].vardas = Vardai[rand() % v];
+            naujiStudentai[m].pavarde = Pavardes[rand() % p];
+
+            while (true)
             {
-                arTesti = false;
-                break;
+                cout << "Iveskite pazymiu skaiciu: ";
+                cin >> n;
+
+                if (cin.fail() || n <= 0)
+                {
+                    cout << "Neteisinga ivestis" << endl;
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+                    continue;
+                }
+                else
+                    break;
             }
-            else if (pas == "t")
+
+            srand(time(0));
+
+            for (int i = 0; i < n; i++)
             {
-                break;
+                temp[i] = 1 + rand() % 10;
             }
-            else
+
+            a = 1 + rand() % 10;
+
+            naujiStudentai[m].nd = new int[n];
+            naujiStudentai[m].ndSk = n;
+
+            for (int i = 0; i < n; i++)
             {
-                cout << "Neteisinga ivestis" << endl;
+                naujiStudentai[m].nd[i] = temp[i];
             }
+
+            naujiStudentai[m].egz = a;
+
+            delete[] A;
+            A = naujiStudentai;
+            m++;
+        }
+
+        else
+        {
+            break;
         }
     }
 
