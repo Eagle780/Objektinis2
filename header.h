@@ -4,15 +4,16 @@
 #include <vector>
 #include <algorithm>
 
-using namespace std;
-
-/*
-using std::cout;
 using std::cin;
-using std::string;
+using std::cout;
+using std::endl;
+using std::fixed;
 using std::ifstream;
-using std::ofstream;
-*/
+using std::left;
+using std::setprecision;
+using std::setw;
+using std::string;
+using std::vector;
 
 struct Studentas
 {
