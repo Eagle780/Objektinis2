@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iomanip>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -24,19 +25,36 @@ struct Studentas
 };
 
 void Skaityti(int &n, Studentas A[]);
-float Skaiciuoti(Studentas A);
+float SkaiciuotiV(Studentas A);
+float SkaiciuotiM(Studentas A);
 
 int main()
 {
     int n;
     Studentas A[CMax];
     Skaityti(n, A);
-    cout << "Vardas     Pavardė      Galutinis (Vid. )" << endl;
-    cout << "--------------------------------------------------" << endl;
-    for (int i = 0; i < n; i++)
+    string pasirinkimas;
+    cout << "Vidurskis ar mediana? (v/m)" << endl;
+    cin >> pasirinkimas;
+    if (pasirinkimas == "v")
     {
-        cout << left << setw(12) << A[i].vardas << setw(14) << A[i].pavarde;
-        cout << Skaiciuoti(A[i]) << endl;
+        cout << "Vardas     Pavardė        Galutinis (Vid.)" << endl;
+        cout << "--------------------------------------------------" << endl;
+        for (int i = 0; i < n; i++)
+        {
+            cout << left << setw(11) << A[i].vardas << setw(14) << A[i].pavarde;
+            cout << setprecision(2) << SkaiciuotiV(A[i]) << endl;
+        }
+    }
+    else if (pasirinkimas == "m")
+    {
+        cout << "Vardas     Pavardė        Galutinis (Med.)" << endl;
+        cout << "--------------------------------------------------" << endl;
+        for (int i = 0; i < n; i++)
+        {
+            cout << left << setw(11) << A[i].vardas << setw(14) << A[i].pavarde;
+            cout << setprecision(2) << SkaiciuotiM(A[i]) << endl;
+        }
     }
     return 0;
 }
@@ -59,7 +77,7 @@ void Skaityti(int &n, Studentas A[])
     fd.close();
 }
 
-float Skaiciuoti(Studentas A)
+float SkaiciuotiV(Studentas A)
 {
     int s = 0;
     for (int i = 0; i < CMax; i++)
@@ -68,4 +86,19 @@ float Skaiciuoti(Studentas A)
     }
     float galutinis = 0.4 * (1.0 * s / CMax) + 0.6 * A.egz;
     return galutinis;
+}
+
+float SkaiciuotiM(Studentas A)
+{
+    sort(A.nd.begin(), A.nd.end());
+
+    if (A.nd.size() % 2 == 0)
+    {
+        float paz = 1.0 * (A.nd[A.nd.size() / 2 - 1] + A.nd[A.nd.size() / 2]);
+        return paz;
+    }
+    else
+    {
+        return A.nd[A.nd.size() / 2];
+    }
 }
