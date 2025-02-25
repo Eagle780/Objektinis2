@@ -1,9 +1,13 @@
 #include "header.h"
 
+vector<Studentas> A;
+
+void skaitytiFaila();
+void rasytiIFaila(string pas);
+void spausdinti(string pas);
+
 int main()
 {
-    vector<Studentas> A;
-
     while (true)
     {
         Studentas temp;
@@ -11,7 +15,7 @@ int main()
         int n = 0;
 
         cout << "Studento duomenu ivedimo pasirinkimai:" << endl;
-        cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentų vardus, pavardes, 4 - baigti ivedima" << endl;
+        cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentų vardus, pavardes, 4 - baigti ivedima/skaityti duomenis is failo" << endl;
         cin >> a;
 
         if (cin.fail() || a < 1 || a > 4)
@@ -54,32 +58,38 @@ int main()
     }
 
     string pasirinkimas = "";
+
+    while (pasirinkimas != "t" && pasirinkimas != "n")
+    {
+        cout << "Skaityti duomenis is failo? (t/n)" << endl;
+        cin >> pasirinkimas;
+    }
+
+    if (pasirinkimas == "t")
+    {
+        skaitytiFaila();
+    }
+
     while (pasirinkimas != "v" && pasirinkimas != "m")
     {
         cout << "Galutini pazymi skaiciuoti naudojant vidurki ar mediana? (v/m)" << endl;
         cin >> pasirinkimas;
     }
 
-    if (pasirinkimas == "v")
+    string pasirinkimas2 = "";
+    while (pasirinkimas2 != "t" && pasirinkimas2 != "n")
     {
-        cout << "Vardas     Pavardė        Galutinis (Vid.)" << endl;
-        cout << "--------------------------------------------------" << endl;
-        for (Studentas i : A)
-        {
-            cout << left << setw(11) << i.vardas << setw(14) << i.pavarde;
-            cout << fixed << setprecision(2) << SkaiciuotiV(i) << endl;
-        }
+        cout << "Rezultataus spausdinti ekrane? (t/n)" << endl;
+        cin >> pasirinkimas2;
     }
 
-    else if (pasirinkimas == "m")
+    if (pasirinkimas2 == "t")
     {
-        cout << "Vardas     Pavardė        Galutinis (Med.)" << endl;
-        cout << "--------------------------------------------------" << endl;
-        for (Studentas i : A)
-        {
-            cout << left << setw(11) << i.vardas << setw(14) << i.pavarde;
-            cout << fixed << setprecision(2) << SkaiciuotiM(i) << endl;
-        }
+        spausdinti(pasirinkimas);
+    }
+    else
+    {
+        rasytiIFaila(pasirinkimas);
     }
 
     return 0;
@@ -221,4 +231,85 @@ Studentas irasytiVarda(Studentas temp)
     cin >> temp.pavarde;
 
     return temp;
+}
+
+void skaitytiFaila()
+{
+    ifstream fd("Studentai10000.txt");
+    fd.ignore(210, '\n');
+    string vardas, pavarde;
+    while (fd >> vardas >> pavarde)
+    {
+        Studentas temp;
+        temp.vardas = vardas;
+        temp.pavarde = pavarde;
+
+        string eilute;
+        getline(fd, eilute);
+        istringstream iss(eilute);
+
+        vector<int> visiPazymiai;
+        int pazimys;
+        while (iss >> pazimys)
+        {
+            visiPazymiai.push_back(pazimys);
+        }
+
+        temp.egz = visiPazymiai.back();
+        visiPazymiai.pop_back();
+        temp.nd = visiPazymiai;
+
+        A.push_back(temp);
+    }
+    fd.close();
+}
+
+void rasytiIFaila(string pas)
+{
+    ofstream fr("rezultatai.txt");
+    if (pas == "v")
+    {
+        fr << "Vardas     Pavardė        Galutinis (Vid.)" << endl;
+        fr << "--------------------------------------------------" << endl;
+        for (Studentas i : A)
+        {
+            fr << left << setw(11) << i.vardas << setw(16) << i.pavarde;
+            fr << fixed << setprecision(2) << SkaiciuotiV(i) << endl;
+        }
+    }
+    else
+    {
+        fr << "Vardas     Pavardė        Galutinis (Med.)" << endl;
+        fr << "--------------------------------------------------" << endl;
+        for (Studentas i : A)
+        {
+            fr << left << setw(11) << i.vardas << setw(16) << i.pavarde;
+            fr << fixed << setprecision(2) << SkaiciuotiM(i) << endl;
+        }
+    }
+}
+
+void spausdinti(string pas)
+{
+    if (pas == "v")
+    {
+        cout << "Vardas     Pavardė        Galutinis (Med.)" << endl;
+        cout << "--------------------------------------------------" << endl;
+        for (Studentas i : A)
+        {
+            cout << left << setw(11) << i.vardas << setw(16) << i.pavarde;
+            cout << fixed << setprecision(2) << SkaiciuotiV(i) << endl;
+        }
+    }
+
+    else if (pas == "m")
+    {
+        cout << "Vardas     Pavardė        Galutinis (Med.)" << endl;
+        cout << "--------------------------------------------------" << endl;
+        for (Studentas i : A)
+        {
+            cout << left << setw(11) << i.vardas << setw(16) << i.pavarde;
+            cout << fixed << setprecision(2) << SkaiciuotiM(i) << endl;
+        }
+    }
 }

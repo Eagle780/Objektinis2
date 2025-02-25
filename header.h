@@ -4,12 +4,18 @@
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
+#include <sstream>
 
 using std::cin;
 using std::cout;
 using std::endl;
 using std::fixed;
+using std::getline;
+using std::ifstream;
+using std::istringstream;
 using std::left;
+using std::ofstream;
 using std::rand;
 using std::setprecision;
 using std::setw;
