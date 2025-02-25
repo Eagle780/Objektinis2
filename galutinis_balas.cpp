@@ -1,10 +1,14 @@
 #include "header.h"
 
+void issaugotiLaika(double laikas);
+void vidutinisLaikas();
+
 vector<Studentas> A;
 string failas = "studentai10000.txt";
 
 int main()
 {
+    double laikas = 0;
     while (true)
     {
         Studentas temp;
@@ -64,7 +68,9 @@ int main()
 
     if (pasirinkimas == "t")
     {
+        Timer t;
         skaitytiFaila();
+        laikas = t.elapsed();
     }
 
     int variantas = 0;
@@ -126,6 +132,12 @@ int main()
         rasytiIFaila();
     }
 
+    if (pasirinkimas == "t")
+    {
+        cout << "Skaitymo is failo laikas: " << laikas << " s" << endl;
+        issaugotiLaika(laikas);
+        vidutinisLaikas();
+    }
     return 0;
 }
 
@@ -320,4 +332,30 @@ void spausdinti()
         cout << left << setw(12) << i.vardas << setw(16) << i.pavarde;
         cout << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << endl;
     }
+}
+
+void issaugotiLaika(double laikas)
+{
+    ofstream fr("laikai.txt", ios::app);
+    fr << failas << " " << laikas << endl;
+    fr.close();
+}
+
+void vidutinisLaikas()
+{
+    vector<double> Laikai;
+    double l;
+    string pav;
+    ifstream fd("laikai.txt");
+    while (fd >> pav >> l)
+    {
+        if (pav == failas)
+        {
+            Laikai.push_back(l);
+        }
+    }
+    fd.close();
+
+    double visasLaikas = accumulate(Laikai.begin(), Laikai.end(), 0.0);
+    cout << "Vidutinis laikas su \"" << failas << "\" yra: " << (visasLaikas / Laikai.size()) << " s" << endl;
 }

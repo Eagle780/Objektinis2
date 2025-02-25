@@ -7,13 +7,17 @@
 #include <fstream>
 #include <sstream>
 #include <limits>
+#include <chrono>
+#include <numeric>
 
+using std::accumulate;
 using std::cin;
 using std::cout;
 using std::endl;
 using std::fixed;
 using std::getline;
 using std::ifstream;
+using std::ios;
 using std::istringstream;
 using std::left;
 using std::numeric_limits;
@@ -27,6 +31,25 @@ using std::streamsize;
 using std::string;
 using std::time;
 using std::vector;
+
+class Timer
+{
+private:
+    using hrClock = std::chrono::high_resolution_clock;
+    using durationDouble = std::chrono::duration<double>;
+    std::chrono::time_point<hrClock> start;
+
+public:
+    Timer() : start{hrClock::now()} {}
+    void reset()
+    {
+        start = hrClock::now();
+    }
+    double elapsed() const
+    {
+        return durationDouble(hrClock::now() - start).count();
+    }
+};
 
 struct Studentas
 {
