@@ -6,6 +6,7 @@
 #include <ctime>
 #include <fstream>
 #include <sstream>
+#include <limits>
 
 using std::cin;
 using std::cout;
@@ -15,12 +16,14 @@ using std::getline;
 using std::ifstream;
 using std::istringstream;
 using std::left;
+using std::numeric_limits;
 using std::ofstream;
 using std::rand;
 using std::setprecision;
 using std::setw;
 using std::sort;
 using std::srand;
+using std::streamsize;
 using std::string;
 using std::time;
 using std::vector;

@@ -1,10 +1,7 @@
 #include "header.h"
 
 vector<Studentas> A;
-
-void skaitytiFaila();
-void rasytiIFaila();
-void spausdinti();
+string failas = "studentai10000.txt";
 
 int main()
 {
@@ -68,6 +65,49 @@ int main()
     if (pasirinkimas == "t")
     {
         skaitytiFaila();
+    }
+
+    int variantas = 0;
+
+    while (true)
+    {
+        cout << "Duomenis rusiuoti pagal:" << endl;
+        cout << "1 - varda, 2 - pavarde, 3 - galutini (vid.), 4 - galutini (med.)" << endl;
+        cin >> variantas;
+
+        if (cin.fail() || variantas < 1 || variantas > 4)
+        {
+            cout << "Neteisinga ivestis\n"
+                 << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+        break;
+    }
+
+    if (variantas == 1)
+    {
+        sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
+             { return a.vardas < b.vardas; });
+    }
+
+    else if (variantas == 2)
+    {
+        sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
+             { return a.pavarde < b.pavarde; });
+    }
+
+    else if (variantas == 3)
+    {
+        sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
+             { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+    }
+
+    else if (variantas == 4)
+    {
+        sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
+             { return SkaiciuotiM(a) > SkaiciuotiM(b); });
     }
 
     string pasirinkimas2 = "";
@@ -229,8 +269,9 @@ Studentas irasytiVarda(Studentas temp)
 
 void skaitytiFaila()
 {
-    ifstream fd("Studentai10000.txt");
-    fd.ignore(210, '\n');
+    ifstream fd(failas);
+    fd.ignore(numeric_limits<streamsize>::max(), '\n');
+
     string vardas, pavarde;
     while (fd >> vardas >> pavarde)
     {
@@ -261,22 +302,22 @@ void skaitytiFaila()
 void rasytiIFaila()
 {
     ofstream fr("rezultatai.txt");
-    fr << "Vardas     Pavardė        Galutinis (Vid.)  Galutinis (Med.)" << endl;
+    fr << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)" << endl;
     fr << "--------------------------------------------------" << endl;
     for (Studentas i : A)
     {
-        fr << left << setw(11) << i.vardas << setw(16) << i.pavarde;
+        fr << left << setw(12) << i.vardas << setw(16) << i.pavarde;
         fr << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << endl;
     }
 }
 
 void spausdinti()
 {
-    cout << "Vardas     Pavardė        Galutinis (Vid.)  Galutinis (Med.)" << endl;
+    cout << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)" << endl;
     cout << "--------------------------------------------------" << endl;
     for (Studentas i : A)
     {
-        cout << left << setw(11) << i.vardas << setw(16) << i.pavarde;
+        cout << left << setw(12) << i.vardas << setw(16) << i.pavarde;
         cout << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << endl;
     }
 }
