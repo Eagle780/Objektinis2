@@ -57,3 +57,7 @@ float SkaiciuotiM(Studentas A);
 
 float SkaiciuotiV(StudentasC A, int m);
 float SkaiciuotiM(StudentasC A, int m);
+
+void skaitytiFaila();
+void rasytiIFaila();
+void spausdinti();

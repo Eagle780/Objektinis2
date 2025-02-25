@@ -3,8 +3,8 @@
 vector<Studentas> A;
 
 void skaitytiFaila();
-void rasytiIFaila(string pas);
-void spausdinti(string pas);
+void rasytiIFaila();
+void spausdinti();
 
 int main()
 {
@@ -70,12 +70,6 @@ int main()
         skaitytiFaila();
     }
 
-    while (pasirinkimas != "v" && pasirinkimas != "m")
-    {
-        cout << "Galutini pazymi skaiciuoti naudojant vidurki ar mediana? (v/m)" << endl;
-        cin >> pasirinkimas;
-    }
-
     string pasirinkimas2 = "";
     while (pasirinkimas2 != "t" && pasirinkimas2 != "n")
     {
@@ -85,11 +79,11 @@ int main()
 
     if (pasirinkimas2 == "t")
     {
-        spausdinti(pasirinkimas);
+        spausdinti();
     }
     else
     {
-        rasytiIFaila(pasirinkimas);
+        rasytiIFaila();
     }
 
     return 0;
@@ -264,52 +258,25 @@ void skaitytiFaila()
     fd.close();
 }
 
-void rasytiIFaila(string pas)
+void rasytiIFaila()
 {
     ofstream fr("rezultatai.txt");
-    if (pas == "v")
+    fr << "Vardas     Pavardė        Galutinis (Vid.)  Galutinis (Med.)" << endl;
+    fr << "--------------------------------------------------" << endl;
+    for (Studentas i : A)
     {
-        fr << "Vardas     Pavardė        Galutinis (Vid.)" << endl;
-        fr << "--------------------------------------------------" << endl;
-        for (Studentas i : A)
-        {
-            fr << left << setw(11) << i.vardas << setw(16) << i.pavarde;
-            fr << fixed << setprecision(2) << SkaiciuotiV(i) << endl;
-        }
-    }
-    else
-    {
-        fr << "Vardas     Pavardė        Galutinis (Med.)" << endl;
-        fr << "--------------------------------------------------" << endl;
-        for (Studentas i : A)
-        {
-            fr << left << setw(11) << i.vardas << setw(16) << i.pavarde;
-            fr << fixed << setprecision(2) << SkaiciuotiM(i) << endl;
-        }
+        fr << left << setw(11) << i.vardas << setw(16) << i.pavarde;
+        fr << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << endl;
     }
 }
 
-void spausdinti(string pas)
+void spausdinti()
 {
-    if (pas == "v")
+    cout << "Vardas     Pavardė        Galutinis (Vid.)  Galutinis (Med.)" << endl;
+    cout << "--------------------------------------------------" << endl;
+    for (Studentas i : A)
     {
-        cout << "Vardas     Pavardė        Galutinis (Med.)" << endl;
-        cout << "--------------------------------------------------" << endl;
-        for (Studentas i : A)
-        {
-            cout << left << setw(11) << i.vardas << setw(16) << i.pavarde;
-            cout << fixed << setprecision(2) << SkaiciuotiV(i) << endl;
-        }
-    }
-
-    else if (pas == "m")
-    {
-        cout << "Vardas     Pavardė        Galutinis (Med.)" << endl;
-        cout << "--------------------------------------------------" << endl;
-        for (Studentas i : A)
-        {
-            cout << left << setw(11) << i.vardas << setw(16) << i.pavarde;
-            cout << fixed << setprecision(2) << SkaiciuotiM(i) << endl;
-        }
+        cout << left << setw(11) << i.vardas << setw(16) << i.pavarde;
+        cout << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << endl;
     }
 }
