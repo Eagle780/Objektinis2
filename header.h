@@ -41,6 +41,11 @@ Studentas generuotiVardus(Studentas temp);
 Studentas irasytiPazymius(Studentas temp);
 Studentas irasytiVarda(Studentas temp);
 
+StudentasC *generuotiPazymius(StudentasC *naujiStudentai, int m, int temp[100]);
+StudentasC *generuotiVardus(StudentasC *naujiStudentai, int m);
+StudentasC *irasytiPazymius(StudentasC *naujiStudentai, int m, int temp[100]);
+StudentasC *irasytiVarda(StudentasC *naujiStudentai, int m);
+
 float SkaiciuotiV(Studentas A);
 float SkaiciuotiM(Studentas A);
 
