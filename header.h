@@ -36,6 +36,11 @@ struct StudentasC
     int egz;
 };
 
+Studentas generuotiPazymius(Studentas temp);
+Studentas generuotiVardus(Studentas temp);
+Studentas irasytiPazymius(Studentas temp);
+Studentas irasytiVarda(Studentas temp);
+
 float SkaiciuotiV(Studentas A);
 float SkaiciuotiM(Studentas A);
 

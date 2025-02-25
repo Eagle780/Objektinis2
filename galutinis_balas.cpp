@@ -25,132 +25,24 @@ int main()
 
         if (a == 1)
         {
-            cout << "Iveskite varda: ";
-            cin >> temp.vardas;
-            cout << "Iveskite pavarde: ";
-            cin >> temp.pavarde;
-
-            cout << "Iveskite pazymius (norint baigti pazymiu rasyma, irasykite 0):" << endl;
-            while (true)
-            {
-                cin >> a;
-
-                if (cin.fail())
-                {
-                    cout << "Neteisinga ivestis" << endl;
-                    cin.clear();
-                    cin.ignore(1000, '\n');
-                    continue;
-                }
-
-                if (a > 0 && a <= 10)
-                {
-                    temp.nd.push_back(a);
-                }
-                else if (a == 0)
-                {
-                    if (temp.nd.size() == 0)
-                        cout << "Iveskite bent viena pazymi" << endl;
-                    else
-                        break;
-                }
-                else
-                    cout << "Neteisingas pazymys" << endl;
-            }
-
-            a = 0;
-            while (true)
-            {
-                cout << "Iveskite egzamino pazymi: ";
-                cin >> a;
-
-                if (cin.fail() || a <= 0 || a > 10)
-                {
-                    cout << "Neteisinga ivestis" << endl;
-                    cin.clear();
-                    cin.ignore(1000, '\n');
-                    continue;
-                }
-                else
-                    break;
-            }
-
-            temp.egz = a;
+            temp = irasytiVarda(temp);
+            temp = irasytiPazymius(temp);
 
             A.push_back(temp);
         }
 
         else if (a == 2)
         {
-            cout << "Iveskite varda: ";
-            cin >> temp.vardas;
-            cout << "Iveskite pavarde: ";
-            cin >> temp.pavarde;
-
-            while (true)
-            {
-                cout << "Iveskite egzamino pazymi: ";
-                cin >> a;
-
-                if (cin.fail() || a <= 0 || a > 10)
-                {
-                    cout << "Neteisinga ivestis" << endl;
-                    cin.clear();
-                    cin.ignore(1000, '\n');
-                    continue;
-                }
-                else
-                    break;
-            }
-
-            srand(time(0));
-
-            for (int i = 0; i < n; i++)
-            {
-                a = 1 + rand() % 10;
-                temp.nd.push_back(a);
-            }
-
-            temp.egz = 1 + rand() % 10;
+            temp = irasytiVarda(temp);
+            temp = generuotiPazymius(temp);
 
             A.push_back(temp);
         }
 
         else if (a == 3)
         {
-            vector<string> Vardai = {"Jonas", "Antanas", "Petras", "Dovydas", "Tomas"};
-            vector<string> Pavardes = {"Jonaitis", "Petrauskas", "Kazlauskas", "Antanaitis", "Ivanauskas"};
-
-            srand(time(0));
-
-            temp.vardas = Vardai[rand() % Vardai.size()];
-            temp.pavarde = Pavardes[rand() % Pavardes.size()];
-
-            while (true)
-            {
-                cout << "Iveskite egzamino pazymi: ";
-                cin >> a;
-
-                if (cin.fail() || a <= 0 || a > 10)
-                {
-                    cout << "Neteisinga ivestis" << endl;
-                    cin.clear();
-                    cin.ignore(1000, '\n');
-                    continue;
-                }
-                else
-                    break;
-            }
-
-            srand(time(0));
-
-            for (int i = 0; i < n; i++)
-            {
-                a = 1 + rand() % 10;
-                temp.nd.push_back(a);
-            }
-
-            temp.egz = 1 + rand() % 10;
+            temp = generuotiVardus(temp);
+            temp = generuotiPazymius(temp);
 
             A.push_back(temp);
         }
@@ -172,10 +64,10 @@ int main()
     {
         cout << "Vardas     Pavardė        Galutinis (Vid.)" << endl;
         cout << "--------------------------------------------------" << endl;
-        for (int i = 0; i < A.size(); i++)
+        for (Studentas i : A)
         {
-            cout << left << setw(11) << A[i].vardas << setw(14) << A[i].pavarde;
-            cout << fixed << setprecision(2) << SkaiciuotiV(A[i]) << endl;
+            cout << left << setw(11) << i.vardas << setw(14) << i.pavarde;
+            cout << fixed << setprecision(2) << SkaiciuotiV(i) << endl;
         }
     }
 
@@ -183,10 +75,10 @@ int main()
     {
         cout << "Vardas     Pavardė        Galutinis (Med.)" << endl;
         cout << "--------------------------------------------------" << endl;
-        for (int i = 0; i < A.size(); i++)
+        for (Studentas i : A)
         {
-            cout << left << setw(11) << A[i].vardas << setw(14) << A[i].pavarde;
-            cout << fixed << setprecision(2) << SkaiciuotiM(A[i]) << endl;
+            cout << left << setw(11) << i.vardas << setw(14) << i.pavarde;
+            cout << fixed << setprecision(2) << SkaiciuotiM(i) << endl;
         }
     }
 
@@ -220,4 +112,113 @@ float SkaiciuotiM(Studentas A)
 
     float galutinis = 0.4 * paz + 0.6 * A.egz;
     return galutinis;
+}
+
+Studentas generuotiPazymius(Studentas temp)
+{
+    int n;
+    int a;
+    while (true)
+    {
+        cout << "Iveskite pazymiu skaiciu: ";
+        cin >> n;
+
+        if (cin.fail() || n <= 0)
+        {
+            cout << "Neteisinga ivestis" << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+        else
+            break;
+    }
+
+    srand(time(0));
+
+    for (int i = 0; i < n; i++)
+    {
+        a = 1 + rand() % 10;
+        temp.nd.push_back(a);
+    }
+
+    temp.egz = 1 + rand() % 10;
+
+    return temp;
+}
+
+Studentas generuotiVardus(Studentas temp)
+{
+    vector<string> Vardai = {"Jonas", "Antanas", "Petras", "Dovydas", "Tomas"};
+    vector<string> Pavardes = {"Jonaitis", "Petrauskas", "Kazlauskas", "Antanaitis", "Ivanauskas"};
+
+    srand(time(0));
+
+    temp.vardas = Vardai[rand() % Vardai.size()];
+    temp.pavarde = Pavardes[rand() % Pavardes.size()];
+
+    return temp;
+}
+
+Studentas irasytiPazymius(Studentas temp)
+{
+    int a;
+    cout << "Iveskite pazymius (norint baigti pazymiu rasyma, irasykite 0):" << endl;
+    while (true)
+    {
+        cin >> a;
+
+        if (cin.fail())
+        {
+            cout << "Neteisinga ivestis" << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+
+        if (a > 0 && a <= 10)
+        {
+            temp.nd.push_back(a);
+        }
+        else if (a == 0)
+        {
+            if (temp.nd.size() == 0)
+                cout << "Iveskite bent viena pazymi" << endl;
+            else
+                break;
+        }
+        else
+            cout << "Neteisingas pazymys" << endl;
+    }
+
+    a = 0;
+    while (true)
+    {
+        cout << "Iveskite egzamino pazymi: ";
+        cin >> a;
+
+        if (cin.fail() || a <= 0 || a > 10)
+        {
+            cout << "Neteisinga ivestis" << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+        else
+            break;
+    }
+
+    temp.egz = a;
+
+    return temp;
+}
+
+Studentas irasytiVarda(Studentas temp)
+{
+    cout << "Iveskite varda: ";
+    cin >> temp.vardas;
+    cout << "Iveskite pavarde: ";
+    cin >> temp.pavarde;
+
+    return temp;
 }
