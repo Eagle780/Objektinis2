@@ -4,7 +4,7 @@ void issaugotiLaika(double laikas);
 void vidutinisLaikas();
 
 vector<Studentas> A;
-string failas = "studentai10000.txt";
+string failas = "studentai1000000.txt";
 
 int main()
 {
