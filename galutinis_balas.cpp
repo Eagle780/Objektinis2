@@ -1,8 +1,5 @@
 #include "header.h"
 
-void issaugotiLaika(double laikas);
-void vidutinisLaikas();
-
 vector<Studentas> A;
 string failas = "studentai1000000.txt";
 
