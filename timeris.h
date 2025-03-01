@@ -1,6 +1,4 @@
-#include <chrono>
-
-using std::time;
+#include "header.h"
 
 class Timer
 {

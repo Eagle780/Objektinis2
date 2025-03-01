@@ -8,8 +8,7 @@
 #include <sstream>
 #include <limits>
 #include <numeric>
-#include "studentas.h"
-#include "timeris.h"
+#include <chrono>
 
 using std::accumulate;
 using std::cin;
@@ -30,18 +29,5 @@ using std::sort;
 using std::srand;
 using std::streamsize;
 using std::string;
+using std::time;
 using std::vector;
-
-Studentas generuotiPazymius(Studentas temp);
-Studentas generuotiVardus(Studentas temp);
-Studentas irasytiPazymius(Studentas temp);
-Studentas irasytiVarda(Studentas temp);
-
-float SkaiciuotiV(Studentas A);
-float SkaiciuotiM(Studentas A);
-
-void skaitytiFaila();
-void rasytiIFaila();
-void spausdinti();
-void issaugotiLaika(double laikas);
-void vidutinisLaikas();

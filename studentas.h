@@ -1,8 +1,4 @@
-#include <vector>
-#include <string>
-
-using std::string;
-using std::vector;
+#include "header.h"
 
 struct Studentas
 {
