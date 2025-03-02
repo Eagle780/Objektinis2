@@ -48,7 +48,7 @@ Studentas generuotiPazymius(Studentas temp)
         }
         catch (ios_base::failure &e)
         {
-            cout << "Neteisinga ivestis" << endl;
+            cout << "Neteisinga ivestis\n";
             cin.clear();
             cin.ignore(1000, '\n');
             continue;
@@ -85,7 +85,7 @@ Studentas generuotiVardus(Studentas temp)
 Studentas irasytiPazymius(Studentas temp)
 {
     int a;
-    cout << "Iveskite pazymius (norint baigti pazymiu rasyma, irasykite 0):" << endl;
+    cout << "Iveskite pazymius (norint baigti pazymiu rasyma, irasykite 0):\n";
     while (true)
     {
         try
@@ -94,7 +94,7 @@ Studentas irasytiPazymius(Studentas temp)
         }
         catch (ios_base::failure &e)
         {
-            cout << "Neteisinga ivestis" << endl;
+            cout << "Neteisinga ivestis\n";
             cin.clear();
             cin.ignore(1000, '\n');
             continue;
@@ -107,12 +107,12 @@ Studentas irasytiPazymius(Studentas temp)
         else if (a == 0)
         {
             if (temp.nd.size() == 0)
-                cout << "Iveskite bent viena pazymi" << endl;
+                cout << "Iveskite bent viena pazymi\n";
             else
                 break;
         }
         else
-            cout << "Neteisingas pazymys" << endl;
+            cout << "Neteisingas pazymys\n";
     }
 
     a = 0;
@@ -125,7 +125,7 @@ Studentas irasytiPazymius(Studentas temp)
         }
         catch (ios_base::failure &e)
         {
-            cout << "Neteisinga ivestis" << endl;
+            cout << "Neteisinga ivestis\n";
             cin.clear();
             cin.ignore(1000, '\n');
             continue;
@@ -159,7 +159,7 @@ void skaitytiFaila()
     }
     catch (ios_base::failure &e)
     {
-        cout << "Nepavyko atidaryti failo" << endl;
+        cout << "Nepavyko atidaryti failo\n";
         return;
     }
 
@@ -195,30 +195,30 @@ void skaitytiFaila()
 void rasytiIFaila()
 {
     ofstream fr("rezultatai.txt");
-    fr << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)" << endl;
-    fr << "--------------------------------------------------" << endl;
+    fr << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)\n";
+    fr << "--------------------------------------------------\n";
     for (Studentas i : A)
     {
         fr << left << setw(12) << i.vardas << setw(16) << i.pavarde;
-        fr << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << endl;
+        fr << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << "\n";
     }
 }
 
 void spausdinti()
 {
-    cout << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)" << endl;
-    cout << "--------------------------------------------------" << endl;
+    cout << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)\n";
+    cout << "--------------------------------------------------\n";
     for (Studentas i : A)
     {
         cout << left << setw(12) << i.vardas << setw(16) << i.pavarde;
-        cout << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << endl;
+        cout << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << "\n";
     }
 }
 
 void issaugotiLaika(double laikas)
 {
     ofstream fr("laikai.txt", ios::app);
-    fr << failas << " " << laikas << endl;
+    fr << failas << " " << laikas << "\n";
     fr.close();
 }
 
@@ -238,5 +238,5 @@ void vidutinisLaikas()
     fd.close();
 
     double visasLaikas = accumulate(Laikai.begin(), Laikai.end(), 0.0);
-    cout << "Vidutinis laikas su \"" << failas << "\" yra: " << (visasLaikas / Laikai.size()) << " s" << endl;
+    cout << "Vidutinis laikas su \"" << failas << "\" yra: " << (visasLaikas / Laikai.size()) << " s\n";
 }
