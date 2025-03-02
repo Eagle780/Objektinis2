@@ -1,7 +1,4 @@
-#include "studentas.h"
-
-vector<Studentas> A;
-string failas = "studentai100000.txt";
+#include "timeris.h"
 
 float SkaiciuotiV(Studentas A)
 {
@@ -143,7 +140,19 @@ Studentas irasytiVarda(Studentas temp)
 
 void skaitytiFaila()
 {
-    ifstream fd(failas);
+    ifstream fd;
+
+    try
+    {
+        fd.exceptions(ios::failbit | ios::badbit);
+        fd.open(failas);
+    }
+    catch (ios_base::failure &e)
+    {
+        cout << "Nepavyko atidaryti failo" << endl;
+        return;
+    }
+
     fd.ignore(numeric_limits<streamsize>::max(), '\n');
 
     string vardas, pavarde;

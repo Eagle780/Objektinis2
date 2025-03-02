@@ -1,6 +1,4 @@
-#include "header.h"
 #include "funkcijos.cpp"
-#include "timeris.h"
 
 int main()
 {
@@ -9,7 +7,6 @@ int main()
     {
         Studentas temp;
         int a = 0;
-        int n = 0;
 
         cout << "Studento duomenu ivedimo pasirinkimai:" << endl;
         cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentų vardus, pavardes, 4 - baigti ivedima/skaityti duomenis is failo" << endl;
@@ -17,8 +14,7 @@ int main()
 
         if (cin.fail() || a < 1 || a > 4)
         {
-            cout << "Neteisinga ivestis\n"
-                 << endl;
+            cout << "Neteisinga ivestis\n";
             cin.clear();
             cin.ignore(1000, '\n');
             continue;

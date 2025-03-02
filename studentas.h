@@ -7,3 +7,5 @@ struct Studentas
     vector<int> nd;
     int egz;
 };
+
+vector<Studentas> A;

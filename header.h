@@ -14,10 +14,12 @@ using std::accumulate;
 using std::cin;
 using std::cout;
 using std::endl;
+using std::exception;
 using std::fixed;
 using std::getline;
 using std::ifstream;
 using std::ios;
+using std::ios_base;
 using std::istringstream;
 using std::left;
 using std::numeric_limits;
@@ -31,3 +33,5 @@ using std::streamsize;
 using std::string;
 using std::time;
 using std::vector;
+
+string failas = "studentai200000.txt";
