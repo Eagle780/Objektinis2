@@ -150,46 +150,48 @@ Studentas irasytiVarda(Studentas temp)
 
 void skaitytiFaila()
 {
-    ifstream fd;
-
     try
     {
-        fd.exceptions(ios::failbit | ios::badbit);
-        fd.open(failas);
+        ifstream fd(failas);
+
+        if (!fd)
+        {
+            throw std::ios_base::failure("Nepavyko atidaryti failo");
+        }
+
+        fd.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        string vardas, pavarde;
+        while (fd >> vardas >> pavarde)
+        {
+            Studentas temp;
+            temp.vardas = vardas;
+            temp.pavarde = pavarde;
+
+            string eilute;
+            getline(fd, eilute);
+            istringstream iss(eilute);
+
+            vector<int> visiPazymiai;
+            int pazimys;
+            while (iss >> pazimys)
+            {
+                visiPazymiai.push_back(pazimys);
+            }
+
+            temp.egz = visiPazymiai.back();
+            visiPazymiai.pop_back();
+            temp.nd = visiPazymiai;
+
+            A.push_back(temp);
+        }
+        fd.close();
     }
     catch (ios_base::failure &e)
     {
         cout << "Nepavyko atidaryti failo\n";
         return;
     }
-
-    fd.ignore(numeric_limits<streamsize>::max(), '\n');
-
-    string vardas, pavarde;
-    while (fd >> vardas >> pavarde)
-    {
-        Studentas temp;
-        temp.vardas = vardas;
-        temp.pavarde = pavarde;
-
-        string eilute;
-        getline(fd, eilute);
-        istringstream iss(eilute);
-
-        vector<int> visiPazymiai;
-        int pazimys;
-        while (iss >> pazimys)
-        {
-            visiPazymiai.push_back(pazimys);
-        }
-
-        temp.egz = visiPazymiai.back();
-        visiPazymiai.pop_back();
-        temp.nd = visiPazymiai;
-
-        A.push_back(temp);
-    }
-    fd.close();
 }
 
 void rasytiIFaila()
