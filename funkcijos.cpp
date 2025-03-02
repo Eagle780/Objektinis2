@@ -41,17 +41,19 @@ Studentas generuotiPazymius(Studentas temp)
     while (true)
     {
         cout << "Iveskite pazymiu skaiciu: ";
-        cin >> n;
 
-        if (cin.fail() || n <= 0)
+        try
+        {
+            cin >> n;
+        }
+        catch (ios_base::failure &e)
         {
             cout << "Neteisinga ivestis" << endl;
             cin.clear();
             cin.ignore(1000, '\n');
             continue;
         }
-        else
-            break;
+        break;
     }
 
     srand(time(0));
@@ -86,9 +88,11 @@ Studentas irasytiPazymius(Studentas temp)
     cout << "Iveskite pazymius (norint baigti pazymiu rasyma, irasykite 0):" << endl;
     while (true)
     {
-        cin >> a;
-
-        if (cin.fail())
+        try
+        {
+            cin >> a;
+        }
+        catch (ios_base::failure &e)
         {
             cout << "Neteisinga ivestis" << endl;
             cin.clear();
@@ -115,17 +119,18 @@ Studentas irasytiPazymius(Studentas temp)
     while (true)
     {
         cout << "Iveskite egzamino pazymi: ";
-        cin >> a;
-
-        if (cin.fail() || a <= 0 || a > 10)
+        try
+        {
+            cin >> a;
+        }
+        catch (ios_base::failure &e)
         {
             cout << "Neteisinga ivestis" << endl;
             cin.clear();
             cin.ignore(1000, '\n');
             continue;
         }
-        else
-            break;
+        break;
     }
 
     temp.egz = a;
