@@ -34,4 +34,4 @@ using std::string;
 using std::time;
 using std::vector;
 
-string failas = "studentai200000.txt";
+string failas = "studentai100000.txt";

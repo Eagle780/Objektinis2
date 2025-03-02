@@ -9,8 +9,8 @@ int main()
         Studentas temp;
         int a = 0;
 
-        cout << "Studento duomenu ivedimo pasirinkimai:" << endl;
-        cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentų vardus, pavardes, 4 - baigti ivedima/skaityti duomenis is failo" << endl;
+        cout << "Studento duomenu ivedimo pasirinkimai:\n";
+        cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentų vardus, pavardes, 4 - baigti ivedima/skaityti duomenis is failo\n";
 
         try
         {
@@ -18,7 +18,7 @@ int main()
         }
         catch (ios_base::failure &e)
         {
-            cout << "Neteisinga ivestis" << endl;
+            cout << "Neteisinga ivestis\n";
             cin.clear();
             cin.ignore(1000, '\n');
             continue;
@@ -26,7 +26,7 @@ int main()
 
         if (a <= 0 || a >= 5)
         {
-            cout << "Neteisingas skaicius" << endl;
+            cout << "Neteisingas skaicius\n";
             continue;
         }
 
@@ -64,7 +64,7 @@ int main()
 
     while (pasirinkimas != "t" && pasirinkimas != "n")
     {
-        cout << "Skaityti duomenis is failo? (t/n)" << endl;
+        cout << "Skaityti duomenis is failo? (t/n)\n";
         cin >> pasirinkimas;
     }
 
@@ -79,14 +79,13 @@ int main()
 
     while (true)
     {
-        cout << "Duomenis rusiuoti pagal:" << endl;
-        cout << "1 - varda, 2 - pavarde, 3 - galutini (vid.), 4 - galutini (med.)" << endl;
+        cout << "Duomenis rusiuoti pagal:\n";
+        cout << "1 - varda, 2 - pavarde, 3 - galutini (vid.), 4 - galutini (med.)\n";
         cin >> variantas;
 
         if (cin.fail() || variantas < 1 || variantas > 4)
         {
-            cout << "Neteisinga ivestis\n"
-                 << endl;
+            cout << "Neteisinga ivestis\n";
             cin.clear();
             cin.ignore(1000, '\n');
             continue;
@@ -121,7 +120,7 @@ int main()
     string pasirinkimas2 = "";
     while (pasirinkimas2 != "t" && pasirinkimas2 != "n")
     {
-        cout << "Rezultataus spausdinti ekrane? (t/n)" << endl;
+        cout << "Rezultataus spausdinti ekrane? (t/n)\n";
         cin >> pasirinkimas2;
     }
 
@@ -136,7 +135,7 @@ int main()
 
     if (pasirinkimas == "t")
     {
-        cout << "Skaitymo is failo laikas: " << laikas << " s" << endl;
+        cout << "Skaitymo is failo laikas: " << laikas << " s\n";
         issaugotiLaika(laikas);
         vidutinisLaikas();
     }
