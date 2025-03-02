@@ -2,6 +2,7 @@
 
 int main()
 {
+    cinEx();
     double laikas = 0;
     while (true)
     {
@@ -10,13 +11,22 @@ int main()
 
         cout << "Studento duomenu ivedimo pasirinkimai:" << endl;
         cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentų vardus, pavardes, 4 - baigti ivedima/skaityti duomenis is failo" << endl;
-        cin >> a;
 
-        if (cin.fail() || a < 1 || a > 4)
+        try
         {
-            cout << "Neteisinga ivestis\n";
+            cin >> a;
+        }
+        catch (ios_base::failure &e)
+        {
+            cout << "Neteisinga ivestis" << endl;
             cin.clear();
             cin.ignore(1000, '\n');
+            continue;
+        }
+
+        if (a <= 0 || a >= 5)
+        {
+            cout << "Neteisingas skaicius" << endl;
             continue;
         }
 

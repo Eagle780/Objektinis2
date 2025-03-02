@@ -1,5 +1,10 @@
 #include "timeris.h"
 
+void cinEx()
+{
+    cin.exceptions(ios::failbit | ios::badbit);
+}
+
 float SkaiciuotiV(Studentas A)
 {
     int s = 0;
