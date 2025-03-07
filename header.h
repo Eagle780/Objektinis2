@@ -1,3 +1,6 @@
+#ifndef HEADER_H
+#define HEADER_H
+
 #include <iostream>
 #include <iomanip>
 #include <vector>
@@ -35,6 +38,22 @@ using std::time;
 using std::to_string;
 using std::vector;
 
-string failas = "studentai" + to_string(dydis) + ".txt";
-int dydis = 1000;
-int ndDydis = 5;
+struct Studentas
+{
+    string vardas;
+    string pavarde;
+    vector<int> nd;
+    int egz;
+    float galutinis;
+};
+
+void cinEx();
+float SkaiciuotiV(Studentas A);
+float SkaiciuotiM(Studentas A);
+void skaitytiFaila(string failas, vector<Studentas> &A);
+void rasytiIFaila(string pav, vector<Studentas> &v);
+bool generuotiFaila(string failas, int ndDydis, int dydis);
+double rusiuotiStudentus(vector<Studentas> &A, vector<Studentas> &v, vector<Studentas> &g);
+void testuotiKurima(string failas, int ndDydis, int dydis);
+
+#endif

@@ -1,19 +1,26 @@
-#include "funkcijos.cpp"
+#include "header.h"
+#include "timeris.h"
 
 int main()
 {
+    int dydis = 1000;
+    string failas = "studentai" + to_string(dydis) + ".txt";
+    int ndDydis = 5;
+
+    vector<Studentas> A;
+
     cinEx();
     vector<Studentas> vargsiukai, galvociai;
 
-    testuotiKurima();
+    testuotiKurima(failas, ndDydis, dydis);
 
     Timer tmain;
     Timer t;
-    skaitytiFaila();
+    skaitytiFaila(failas, A);
     double laikas = t.elapsed();
     cout << dydis << " studentu failo nuskaitymo laikas: " << laikas << "\n";
 
-    laikas = rusiuotiStudentus(vargsiukai, galvociai);
+    laikas = rusiuotiStudentus(A, vargsiukai, galvociai);
     cout << dydis << " studentu surusiavimo laikas: " << laikas << "\n";
 
     Timer t2;

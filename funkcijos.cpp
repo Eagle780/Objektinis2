@@ -1,3 +1,4 @@
+#include "header.h"
 #include "timeris.h"
 
 void cinEx()
@@ -34,7 +35,7 @@ float SkaiciuotiM(Studentas A)
     return galutinis;
 }
 
-void skaitytiFaila()
+void skaitytiFaila(string failas, vector<Studentas> &A)
 {
     try
     {
@@ -92,7 +93,7 @@ void rasytiIFaila(string pav, vector<Studentas> &v)
     }
 }
 
-bool generuotiFaila()
+bool generuotiFaila(string failas, int ndDydis, int dydis)
 {
     if (std::filesystem::exists(failas))
     {
@@ -122,7 +123,7 @@ bool generuotiFaila()
     return true;
 }
 
-double rusiuotiStudentus(vector<Studentas> &v, vector<Studentas> &g)
+double rusiuotiStudentus(vector<Studentas> &A, vector<Studentas> &v, vector<Studentas> &g)
 {
     string pas = "";
 
@@ -160,10 +161,10 @@ double rusiuotiStudentus(vector<Studentas> &v, vector<Studentas> &g)
     return laikas;
 }
 
-void testuotiKurima()
+void testuotiKurima(string failas, int ndDydis, int dydis)
 {
     Timer t;
-    bool arEgzistuoja = generuotiFaila();
+    bool arEgzistuoja = generuotiFaila(failas, ndDydis, dydis);
     double laikas = t.elapsed();
     if (!arEgzistuoja)
     {
@@ -171,8 +172,4 @@ void testuotiKurima()
         return;
     }
     cout << dydis << " studentu failo generavimo laikas: " << laikas << "\n";
-}
-
-void testuotiApdorojima()
-{
 }

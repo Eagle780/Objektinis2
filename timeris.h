@@ -1,4 +1,7 @@
-#include "studentas.h"
+#ifndef TIMER_H
+#define TIMER_H
+
+#include "header.h"
 
 class Timer
 {
@@ -18,3 +21,5 @@ public:
         return durationDouble(hrClock::now() - start).count();
     }
 };
+
+#endif
