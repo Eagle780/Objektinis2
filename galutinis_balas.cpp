@@ -32,5 +32,8 @@ int main()
     double visasLaikas = tmain.elapsed();
     cout << dydis << " studentu programos veikimo (be failo generavimo) laikas: " << visasLaikas << "\n";
 
+    cout << "Paspauskite \"Enter\", kad iseitumete...";
+    cin.get();
+
     return 0;
 }
