@@ -94,15 +94,13 @@ void rasytiIFaila(string pav, vector<Studentas> &v)
 
 bool generuotiFaila()
 {
-    string failasSt = "studentai" + to_string(dydis) + ".txt";
-
-    if (std::filesystem::exists(failasSt))
+    if (std::filesystem::exists(failas))
     {
         cout << "Toks failas jau egzistuoja\n";
         return false;
     }
 
-    ofstream fr(failasSt);
+    ofstream fr(failas);
     fr << left << setw(17) << "Vardas" << setw(18) << "Pavarde";
     for (int i = 0; i < ndDydis; i++)
     {

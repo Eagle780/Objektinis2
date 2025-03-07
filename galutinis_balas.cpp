@@ -2,13 +2,12 @@
 
 int main()
 {
-    Timer tmain;
-
     cinEx();
     vector<Studentas> vargsiukai, galvociai;
 
     testuotiKurima();
 
+    Timer tmain;
     Timer t;
     skaitytiFaila();
     double laikas = t.elapsed();
@@ -24,7 +23,7 @@ int main()
     cout << dydis << " surusiuotu studentu irasymo laikas: " << laikas << "\n";
 
     double visasLaikas = tmain.elapsed();
-    cout << dydis << " studentu programos veikimo laikas: " << visasLaikas << "\n";
+    cout << dydis << " studentu programos veikimo (be failo generavimo) laikas: " << visasLaikas << "\n";
 
     return 0;
 }
