@@ -14,7 +14,6 @@
 using std::accumulate;
 using std::cin;
 using std::cout;
-using std::endl;
 using std::exception;
 using std::fixed;
 using std::getline;
@@ -36,6 +35,6 @@ using std::time;
 using std::to_string;
 using std::vector;
 
-string failas = "studentai1.txt";
+string failas = "studentai1000.txt";
 int dydis = 1000;
 int ndDydis = 5;

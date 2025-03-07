@@ -92,13 +92,6 @@ void rasytiIFaila(string pav, vector<Studentas> &v)
     }
 }
 
-void issaugotiLaika(double laikas)
-{
-    ofstream fr("laikai.txt", ios::app);
-    fr << failas << " " << laikas << "\n";
-    fr.close();
-}
-
 bool generuotiFaila()
 {
     string failasSt = "studentai" + to_string(dydis) + ".txt";
