@@ -9,6 +9,7 @@
 #include <limits>
 #include <numeric>
 #include <chrono>
+#include <filesystem>
 
 using std::accumulate;
 using std::cin;
@@ -32,6 +33,9 @@ using std::srand;
 using std::streamsize;
 using std::string;
 using std::time;
+using std::to_string;
 using std::vector;
 
 string failas = "studentai20000.txt";
+int dydis = 1000;
+int ndDydis = 5;

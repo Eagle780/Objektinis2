@@ -2,6 +2,7 @@
 
 int main()
 {
+    generuotiFaila();
     cinEx();
     double laikas = 0;
     while (true)

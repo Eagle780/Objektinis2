@@ -242,3 +242,35 @@ void vidutinisLaikas()
     double visasLaikas = accumulate(Laikai.begin(), Laikai.end(), 0.0);
     cout << "Vidutinis laikas su \"" << failas << "\" yra: " << (visasLaikas / Laikai.size()) << " s\n";
 }
+
+void generuotiFaila()
+{
+    int b = 1;
+    string failasSt = "studentai" + to_string(b) + ".txt";
+
+    while (std::filesystem::exists(failasSt))
+    {
+        b++;
+        failasSt = "studentai" + to_string(b) + ".txt";
+    }
+
+    ofstream fr(failasSt);
+    fr << left << setw(17) << "Vardas" << setw(18) << "Pavarde";
+    for (int i = 0; i < ndDydis; i++)
+    {
+        fr << "ND" << setw(3) << i + 1;
+    }
+    fr << setw(5) << "Egz.\n";
+
+    srand(time(0));
+    for (int i = 0; i < dydis; i++)
+    {
+        fr << "VardasNR" << setw(9) << i + 1 << "PavardeNR" << setw(10) << i + 1;
+        for (int j = 0; j < ndDydis + 1; j++)
+        {
+            fr << setw(5) << 1 + rand() % 10;
+        }
+        fr << "\n";
+    }
+    fr.close();
+}
