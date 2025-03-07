@@ -99,25 +99,6 @@ void issaugotiLaika(double laikas)
     fr.close();
 }
 
-void vidutinisLaikas()
-{
-    vector<double> Laikai;
-    double l;
-    string pav;
-    ifstream fd("laikai.txt");
-    while (fd >> pav >> l)
-    {
-        if (pav == failas)
-        {
-            Laikai.push_back(l);
-        }
-    }
-    fd.close();
-
-    double visasLaikas = accumulate(Laikai.begin(), Laikai.end(), 0.0);
-    cout << "Vidutinis laikas su \"" << failas << "\" yra: " << (visasLaikas / Laikai.size()) << " s\n";
-}
-
 bool generuotiFaila()
 {
     string failasSt = "studentai" + to_string(dydis) + ".txt";
@@ -150,18 +131,42 @@ bool generuotiFaila()
     return true;
 }
 
-void rusiuotiStudentus(vector<Studentas> &v, vector<Studentas> &g)
+double rusiuotiStudentus(vector<Studentas> &v, vector<Studentas> &g)
 {
-    for (Studentas st : A)
+    string pas = "";
+
+    while (pas != "v" && pas != "m")
     {
-        st.galutinis = SkaiciuotiV(st);
-        if (st.galutinis < 5.0)
-            v.push_back(st);
-        else
-            g.push_back(st);
+        cout << "Studentus rusiuoti pagal vidurki ar mediana? (v/m)\n";
+        cin >> pas;
     }
-    rasytiIFaila("vargsiukai.txt", v);
-    rasytiIFaila("galvociai.txt", g);
+
+    Timer t;
+
+    if (pas == "v")
+    {
+        for (Studentas st : A)
+        {
+            st.galutinis = SkaiciuotiV(st);
+            if (st.galutinis < 5.0)
+                v.push_back(st);
+            else
+                g.push_back(st);
+        }
+    }
+    else
+    {
+        for (Studentas st : A)
+        {
+            st.galutinis = SkaiciuotiM(st);
+            if (st.galutinis < 5.0)
+                v.push_back(st);
+            else
+                g.push_back(st);
+        }
+    }
+    double laikas = t.elapsed();
+    return laikas;
 }
 
 void testuotiKurima()
@@ -174,7 +179,7 @@ void testuotiKurima()
         cout << "Bandoma kurti faila, kuris egzistuoja, skaiciavimas nutraukiamas\n";
         return;
     }
-    cout << "Failo generavimo laikas: " << laikas << "\n";
+    cout << dydis << " studentu failo generavimo laikas: " << laikas << "\n";
 }
 
 void testuotiApdorojima()

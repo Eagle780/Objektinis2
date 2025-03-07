@@ -2,8 +2,9 @@
 
 int main()
 {
-    cinEx();
+    Timer tmain;
 
+    cinEx();
     vector<Studentas> vargsiukai, galvociai;
 
     testuotiKurima();
@@ -11,15 +12,19 @@ int main()
     Timer t;
     skaitytiFaila();
     double laikas = t.elapsed();
+    cout << dydis << " studentu failo nuskaitymo laikas: " << laikas << "\n";
 
-    int variantas = 0;
+    laikas = rusiuotiStudentus(vargsiukai, galvociai);
+    cout << dydis << " studentu surusiavimo laikas: " << laikas << "\n";
 
-    rasytiIFaila("rezultatai.txt", A);
+    Timer t2;
+    rasytiIFaila("vargsiukai.txt", vargsiukai);
+    rasytiIFaila("galvociai.txt", galvociai);
+    laikas = t2.elapsed();
+    cout << dydis << " surusiuotu studentu irasymo laikas: " << laikas << "\n";
 
-    cout << "Skaitymo is failo laikas: " << laikas << " s\n";
-    issaugotiLaika(laikas);
-    vidutinisLaikas();
+    double visasLaikas = tmain.elapsed();
+    cout << dydis << " studentu programos veikimo laikas: " << visasLaikas << "\n";
 
-    rusiuotiStudentus(vargsiukai, galvociai);
     return 0;
 }
