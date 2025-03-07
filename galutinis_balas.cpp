@@ -12,7 +12,7 @@ int main()
     cin >> ats;
     if (ats == "t")
     {
-        generuotiFaila();
+        testuotiKurima();
     }
 
     while (true)

@@ -288,3 +288,14 @@ void rusiuotiStudentus(vector<Studentas> &v, vector<Studentas> &g)
     rasytiIFaila("vargsiukai.txt", v);
     rasytiIFaila("galvociai.txt", g);
 }
+
+void testuotiKurima()
+{
+    Timer t;
+    generuotiFaila();
+    double laikas = t.elapsed();
+    cout << "Failo generavimo laikas: " << laikas << "\n";
+
+    ofstream fr("1_Tyrimas.txt", ios::app);
+    fr << dydis << " studentu failo kurimas: " << laikas << "\n";
+}
