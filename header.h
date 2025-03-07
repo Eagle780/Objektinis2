@@ -36,6 +36,6 @@ using std::time;
 using std::to_string;
 using std::vector;
 
-string failas = "studentai20000.txt";
+string failas = "studentai1.txt";
 int dydis = 1000;
 int ndDydis = 5;

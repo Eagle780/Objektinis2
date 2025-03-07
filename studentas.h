@@ -6,6 +6,7 @@ struct Studentas
     string pavarde;
     vector<int> nd;
     int egz;
+    float galutinis;
 };
 
 vector<Studentas> A;

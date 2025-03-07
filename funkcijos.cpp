@@ -194,12 +194,12 @@ void skaitytiFaila()
     }
 }
 
-void rasytiIFaila()
+void rasytiIFaila(string pav, vector<Studentas> &v)
 {
-    ofstream fr("rezultatai.txt");
+    ofstream fr(pav);
     fr << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)\n";
     fr << "--------------------------------------------------\n";
-    for (Studentas i : A)
+    for (Studentas i : v)
     {
         fr << left << setw(12) << i.vardas << setw(16) << i.pavarde;
         fr << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << "\n";
@@ -273,4 +273,18 @@ void generuotiFaila()
         fr << "\n";
     }
     fr.close();
+}
+
+void rusiuotiStudentus(vector<Studentas> &v, vector<Studentas> &g)
+{
+    for (Studentas st : A)
+    {
+        st.galutinis = SkaiciuotiV(st);
+        if (st.galutinis < 5.0)
+            v.push_back(st);
+        else
+            g.push_back(st);
+    }
+    rasytiIFaila("vargsiukai.txt", v);
+    rasytiIFaila("galvociai.txt", g);
 }

@@ -2,9 +2,19 @@
 
 int main()
 {
-    generuotiFaila();
     cinEx();
     double laikas = 0;
+
+    vector<Studentas> vargsiukai, galvociai;
+
+    string ats;
+    cout << "Generuoti faila?\n";
+    cin >> ats;
+    if (ats == "t")
+    {
+        generuotiFaila();
+    }
+
     while (true)
     {
         Studentas temp;
@@ -131,7 +141,7 @@ int main()
     }
     else
     {
-        rasytiIFaila();
+        rasytiIFaila("rezultatai.txt", A);
     }
 
     if (pasirinkimas == "t")
@@ -140,5 +150,7 @@ int main()
         issaugotiLaika(laikas);
         vidutinisLaikas();
     }
+
+    rusiuotiStudentus(vargsiukai, galvociai);
     return 0;
 }
