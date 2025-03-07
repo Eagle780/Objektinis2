@@ -34,120 +34,6 @@ float SkaiciuotiM(Studentas A)
     return galutinis;
 }
 
-Studentas generuotiPazymius(Studentas temp)
-{
-    int n;
-    int a;
-    while (true)
-    {
-        cout << "Iveskite pazymiu skaiciu: ";
-
-        try
-        {
-            cin >> n;
-        }
-        catch (ios_base::failure &e)
-        {
-            cout << "Neteisinga ivestis\n";
-            cin.clear();
-            cin.ignore(1000, '\n');
-            continue;
-        }
-        break;
-    }
-
-    srand(time(0));
-
-    for (int i = 0; i < n; i++)
-    {
-        a = 1 + rand() % 10;
-        temp.nd.push_back(a);
-    }
-
-    temp.egz = 1 + rand() % 10;
-
-    return temp;
-}
-
-Studentas generuotiVardus(Studentas temp)
-{
-    vector<string> Vardai = {"Jonas", "Antanas", "Petras", "Dovydas", "Tomas"};
-    vector<string> Pavardes = {"Jonaitis", "Petrauskas", "Kazlauskas", "Antanaitis", "Ivanauskas"};
-
-    srand(time(0));
-
-    temp.vardas = Vardai[rand() % Vardai.size()];
-    temp.pavarde = Pavardes[rand() % Pavardes.size()];
-
-    return temp;
-}
-
-Studentas irasytiPazymius(Studentas temp)
-{
-    int a;
-    cout << "Iveskite pazymius (norint baigti pazymiu rasyma, irasykite 0):\n";
-    while (true)
-    {
-        try
-        {
-            cin >> a;
-        }
-        catch (ios_base::failure &e)
-        {
-            cout << "Neteisinga ivestis\n";
-            cin.clear();
-            cin.ignore(1000, '\n');
-            continue;
-        }
-
-        if (a > 0 && a <= 10)
-        {
-            temp.nd.push_back(a);
-        }
-        else if (a == 0)
-        {
-            if (temp.nd.size() == 0)
-                cout << "Iveskite bent viena pazymi\n";
-            else
-                break;
-        }
-        else
-            cout << "Neteisingas pazymys\n";
-    }
-
-    a = 0;
-    while (true)
-    {
-        cout << "Iveskite egzamino pazymi: ";
-        try
-        {
-            cin >> a;
-        }
-        catch (ios_base::failure &e)
-        {
-            cout << "Neteisinga ivestis\n";
-            cin.clear();
-            cin.ignore(1000, '\n');
-            continue;
-        }
-        break;
-    }
-
-    temp.egz = a;
-
-    return temp;
-}
-
-Studentas irasytiVarda(Studentas temp)
-{
-    cout << "Iveskite varda: ";
-    cin >> temp.vardas;
-    cout << "Iveskite pavarde: ";
-    cin >> temp.pavarde;
-
-    return temp;
-}
-
 void skaitytiFaila()
 {
     try
@@ -206,17 +92,6 @@ void rasytiIFaila(string pav, vector<Studentas> &v)
     }
 }
 
-void spausdinti()
-{
-    cout << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)\n";
-    cout << "--------------------------------------------------\n";
-    for (Studentas i : A)
-    {
-        cout << left << setw(12) << i.vardas << setw(16) << i.pavarde;
-        cout << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << "\n";
-    }
-}
-
 void issaugotiLaika(double laikas)
 {
     ofstream fr("laikai.txt", ios::app);
@@ -243,15 +118,14 @@ void vidutinisLaikas()
     cout << "Vidutinis laikas su \"" << failas << "\" yra: " << (visasLaikas / Laikai.size()) << " s\n";
 }
 
-void generuotiFaila()
+bool generuotiFaila()
 {
-    int b = 1;
-    string failasSt = "studentai" + to_string(b) + ".txt";
+    string failasSt = "studentai" + to_string(dydis) + ".txt";
 
-    while (std::filesystem::exists(failasSt))
+    if (std::filesystem::exists(failasSt))
     {
-        b++;
-        failasSt = "studentai" + to_string(b) + ".txt";
+        cout << "Toks failas jau egzistuoja\n";
+        return false;
     }
 
     ofstream fr(failasSt);
@@ -273,6 +147,7 @@ void generuotiFaila()
         fr << "\n";
     }
     fr.close();
+    return true;
 }
 
 void rusiuotiStudentus(vector<Studentas> &v, vector<Studentas> &g)
@@ -292,10 +167,16 @@ void rusiuotiStudentus(vector<Studentas> &v, vector<Studentas> &g)
 void testuotiKurima()
 {
     Timer t;
-    generuotiFaila();
+    bool arEgzistuoja = generuotiFaila();
     double laikas = t.elapsed();
+    if (!arEgzistuoja)
+    {
+        cout << "Bandoma kurti faila, kuris egzistuoja, skaiciavimas nutraukiamas\n";
+        return;
+    }
     cout << "Failo generavimo laikas: " << laikas << "\n";
+}
 
-    ofstream fr("1_Tyrimas.txt", ios::app);
-    fr << dydis << " studentu failo kurimas: " << laikas << "\n";
+void testuotiApdorojima()
+{
 }
