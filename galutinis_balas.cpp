@@ -21,7 +21,7 @@ int main()
 
     while (true)
     {
-        cout << "Kokio dydzio faila testuoti? ";
+        cout << "Kokio dydzio faila naudoti? ";
         try
         {
             cin >> dydis;
