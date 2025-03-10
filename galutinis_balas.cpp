@@ -3,7 +3,7 @@
 
 int main()
 {
-    int dydis = 1000;
+    int dydis = 100;
     string failas = "studentai" + to_string(dydis) + ".txt";
     int ndDydis = 5;
 
@@ -12,7 +12,37 @@ int main()
     cinEx();
     vector<Studentas> vargsiukai, galvociai;
 
-    testuotiKurima(failas, ndDydis, dydis);
+    while (dydis < 10000000)
+    {
+        dydis *= 10;
+        failas = "studentai" + to_string(dydis) + ".txt";
+        testuotiKurima(failas, ndDydis, dydis);
+    }
+
+    while (true)
+    {
+        cout << "Kokio dydzio faila testuoti? ";
+        try
+        {
+            cin >> dydis;
+        }
+
+        catch (ios_base::failure &e)
+        {
+            cout << "Neteisinga ivestis\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+
+        if (!std::filesystem::exists("studentai" + to_string(dydis) + ".txt"))
+        {
+            cout << "Tokio dydzio failo nera\n";
+            continue;
+        }
+        failas = "studentai" + to_string(dydis) + ".txt";
+        break;
+    }
 
     Timer tmain;
     Timer t;
@@ -30,9 +60,10 @@ int main()
     cout << dydis << " surusiuotu studentu irasymo laikas: " << laikas << "\n";
 
     double visasLaikas = tmain.elapsed();
-    cout << dydis << " studentu programos veikimo (be failo generavimo) laikas: " << visasLaikas << "\n";
+    cout << dydis << " studentu programos veikimo (be failo pasirinkimo) laikas: " << visasLaikas << "\n";
 
     cout << "Paspauskite \"Enter\", kad iseitumete...";
+    cin.get();
     cin.get();
 
     return 0;

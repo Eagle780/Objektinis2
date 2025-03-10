@@ -93,11 +93,10 @@ void rasytiIFaila(string pav, vector<Studentas> &v)
     }
 }
 
-bool generuotiFaila(string failas, int ndDydis, int dydis)
+bool generuotiFaila(string &failas, int ndDydis, int &dydis)
 {
     if (std::filesystem::exists(failas))
     {
-        cout << "Toks failas jau egzistuoja\n";
         return false;
     }
 
@@ -161,14 +160,13 @@ double rusiuotiStudentus(vector<Studentas> &A, vector<Studentas> &v, vector<Stud
     return laikas;
 }
 
-void testuotiKurima(string failas, int ndDydis, int dydis)
+void testuotiKurima(string &failas, int ndDydis, int &dydis)
 {
     Timer t;
     bool arEgzistuoja = generuotiFaila(failas, ndDydis, dydis);
     double laikas = t.elapsed();
     if (!arEgzistuoja)
     {
-        cout << "Bandoma kurti faila, kuris egzistuoja, skaiciavimas nutraukiamas\n";
         return;
     }
     cout << dydis << " studentu failo generavimo laikas: " << laikas << "\n";

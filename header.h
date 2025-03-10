@@ -52,8 +52,8 @@ float SkaiciuotiV(Studentas A);
 float SkaiciuotiM(Studentas A);
 void skaitytiFaila(string failas, vector<Studentas> &A);
 void rasytiIFaila(string pav, vector<Studentas> &v);
-bool generuotiFaila(string failas, int ndDydis, int dydis);
+bool generuotiFaila(string &failas, int ndDydis, int &dydis);
 double rusiuotiStudentus(vector<Studentas> &A, vector<Studentas> &v, vector<Studentas> &g);
-void testuotiKurima(string failas, int ndDydis, int dydis);
+void testuotiKurima(string &failas, int ndDydis, int &dydis);
 
 #endif
