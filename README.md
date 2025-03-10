@@ -9,7 +9,7 @@ Projekto Apžvalga
 ### Studentų rūšiavimas:
 - Studentai skirstomi į dvi grupes:
   - „Vargšiukai“ – Galutinis balas < 5.0
-  - „Kietiakiai“ – Galutinis balas ≥ 5.0
+  - „Galvočiai“ – Galutinis balas ≥ 5.0
 ### Matuojamas laikas:
 - Failo sukūrimui
 - Duomenų nuskaitymui
