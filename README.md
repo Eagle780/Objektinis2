@@ -46,7 +46,7 @@ Pirmą kartą paleidus programą bus sugeneruojami visi 5 testavimo failai. Visi
 
 ## Spartos Testavimo Rezultatai
 
-Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimus. Žemiau pateikiama rezultatų lentelė:
+Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimus. Žemiau pateikiamos rezultatų lentelės:
 
 ### vector
 
