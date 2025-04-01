@@ -152,13 +152,22 @@ int main()
     {
         cout << "Duomenis rusiuoti pagal:\n";
         cout << "1 - varda, 2 - pavarde, 3 - galutini (vid.), 4 - galutini (med.)\n";
-        cin >> variantas;
 
-        if (cin.fail() || variantas < 1 || variantas > 4)
+        try
+        {
+            cin >> variantas;
+        }
+        catch (ios_base::failure &e)
         {
             cout << "Neteisinga ivestis\n";
             cin.clear();
             cin.ignore(1000, '\n');
+            continue;
+        }
+
+        if (variantas < 1 || variantas > 4)
+        {
+            cout << "Neteisingas skaicius\n";
             continue;
         }
         break;
