@@ -6,7 +6,7 @@ Projekto Apžvalga
 
 Šioje versijoje taip pat pridėta galimybė pasirinkti, kokio tipo konteinerį (vector, deque ar list) norite naudoti.
 
-Įgyvendintos Funkcijos
+## Įgyvendintos Funkcijos
 
 ### Failų generavimas:
 
