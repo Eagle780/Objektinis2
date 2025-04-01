@@ -213,7 +213,7 @@ void rasytiIFaila(string pav, vector<Studentas> &v)
     ofstream fr(pav);
     fr << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)\n";
     fr << "--------------------------------------------------\n";
-    for (Studentas i : v)
+    for (const Studentas &i : v)
     {
         fr << left << setw(12) << i.vardas << setw(16) << i.pavarde;
         fr << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << "\n";
@@ -271,7 +271,7 @@ void rasytiIFaila(string pav, deque<Studentas> &v)
     ofstream fr(pav);
     fr << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)\n";
     fr << "--------------------------------------------------\n";
-    for (Studentas i : v)
+    for (const Studentas &i : v)
     {
         fr << left << setw(12) << i.vardas << setw(16) << i.pavarde;
         fr << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << "\n";
@@ -329,7 +329,7 @@ void rasytiIFaila(string pav, list<Studentas> &v)
     ofstream fr(pav);
     fr << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)\n";
     fr << "--------------------------------------------------\n";
-    for (Studentas i : v)
+    for (const Studentas &i : v)
     {
         fr << left << setw(12) << i.vardas << setw(16) << i.pavarde;
         fr << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << "\n";

@@ -261,8 +261,21 @@ int main()
     cout << dydis << " studentu surusiavimo laikas: " << laikas << "\n";
 
     Timer t2;
-    rasytiIFaila("vargsiukai.txt", vargsiukai);
-    rasytiIFaila("galvociai.txt", galvociai);
+    if (k == 1)
+    {
+        rasytiIFaila("vargsiukai.txt", vargsiukai);
+        rasytiIFaila("galvociai.txt", galvociai);
+    }
+    else if (k == 2)
+    {
+        rasytiIFaila("vargsiukai.txt", vargsiukaiB);
+        rasytiIFaila("galvociai.txt", galvociaiB);
+    }
+    else if (k == 2)
+    {
+        rasytiIFaila("vargsiukai.txt", vargsiukaiC);
+        rasytiIFaila("galvociai.txt", galvociaiC);
+    }
     laikas = t2.elapsed();
     cout << dydis << " surusiuotu studentu irasymo laikas: " << laikas << "\n";
 
