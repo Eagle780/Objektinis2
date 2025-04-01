@@ -13,10 +13,13 @@
 #include <numeric>
 #include <chrono>
 #include <filesystem>
+#include <list>
+#include <deque>
 
 using std::accumulate;
 using std::cin;
 using std::cout;
+using std::deque;
 using std::exception;
 using std::fixed;
 using std::getline;
@@ -25,6 +28,7 @@ using std::ios;
 using std::ios_base;
 using std::istringstream;
 using std::left;
+using std::list;
 using std::numeric_limits;
 using std::ofstream;
 using std::rand;
@@ -50,6 +54,10 @@ struct Studentas
 void cinEx();
 float SkaiciuotiV(Studentas A);
 float SkaiciuotiM(Studentas A);
+Studentas generuotiPazymius(Studentas temp);
+Studentas generuotiVardus(Studentas temp);
+Studentas irasytiPazymius(Studentas temp);
+Studentas irasytiVarda(Studentas temp);
 void skaitytiFaila(string failas, vector<Studentas> &A);
 void rasytiIFaila(string pav, vector<Studentas> &v);
 bool generuotiFaila(string &failas, int ndDydis, int &dydis);
