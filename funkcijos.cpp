@@ -220,6 +220,122 @@ void rasytiIFaila(string pav, vector<Studentas> &v)
     }
 }
 
+void skaitytiFaila(string failas, deque<Studentas> &A)
+{
+    try
+    {
+        ifstream fd(failas);
+
+        if (!fd)
+        {
+            throw std::ios_base::failure("Nepavyko atidaryti failo");
+        }
+
+        fd.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        string vardas, pavarde;
+        while (fd >> vardas >> pavarde)
+        {
+            Studentas temp;
+            temp.vardas = vardas;
+            temp.pavarde = pavarde;
+
+            string eilute;
+            getline(fd, eilute);
+            istringstream iss(eilute);
+
+            vector<int> visiPazymiai;
+            int pazimys;
+            while (iss >> pazimys)
+            {
+                visiPazymiai.push_back(pazimys);
+            }
+
+            temp.egz = visiPazymiai.back();
+            visiPazymiai.pop_back();
+            temp.nd = visiPazymiai;
+
+            A.push_back(temp);
+        }
+        fd.close();
+    }
+    catch (ios_base::failure &e)
+    {
+        cout << "Nepavyko atidaryti failo\n";
+        return;
+    }
+}
+
+void rasytiIFaila(string pav, deque<Studentas> &v)
+{
+    ofstream fr(pav);
+    fr << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)\n";
+    fr << "--------------------------------------------------\n";
+    for (Studentas i : v)
+    {
+        fr << left << setw(12) << i.vardas << setw(16) << i.pavarde;
+        fr << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << "\n";
+    }
+}
+
+void skaitytiFaila(string failas, list<Studentas> &A)
+{
+    try
+    {
+        ifstream fd(failas);
+
+        if (!fd)
+        {
+            throw std::ios_base::failure("Nepavyko atidaryti failo");
+        }
+
+        fd.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        string vardas, pavarde;
+        while (fd >> vardas >> pavarde)
+        {
+            Studentas temp;
+            temp.vardas = vardas;
+            temp.pavarde = pavarde;
+
+            string eilute;
+            getline(fd, eilute);
+            istringstream iss(eilute);
+
+            vector<int> visiPazymiai;
+            int pazimys;
+            while (iss >> pazimys)
+            {
+                visiPazymiai.push_back(pazimys);
+            }
+
+            temp.egz = visiPazymiai.back();
+            visiPazymiai.pop_back();
+            temp.nd = visiPazymiai;
+
+            A.push_back(temp);
+        }
+        fd.close();
+    }
+    catch (ios_base::failure &e)
+    {
+        cout << "Nepavyko atidaryti failo\n";
+        return;
+    }
+}
+
+void rasytiIFaila(string pav, list<Studentas> &v)
+{
+    ofstream fr(pav);
+    fr << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)\n";
+    fr << "--------------------------------------------------\n";
+    for (Studentas i : v)
+    {
+        fr << left << setw(12) << i.vardas << setw(16) << i.pavarde;
+        fr << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << "\n";
+    }
+}
+
 bool generuotiFaila(string &failas, int ndDydis, int &dydis)
 {
     if (std::filesystem::exists(failas))
@@ -250,6 +366,82 @@ bool generuotiFaila(string &failas, int ndDydis, int &dydis)
 }
 
 double rusiuotiStudentus(vector<Studentas> &A, vector<Studentas> &v, vector<Studentas> &g)
+{
+    string pas = "";
+
+    while (pas != "v" && pas != "m")
+    {
+        cout << "Studentus rusiuoti pagal vidurki ar mediana? (v/m)\n";
+        cin >> pas;
+    }
+
+    Timer t;
+
+    if (pas == "v")
+    {
+        for (Studentas st : A)
+        {
+            st.galutinis = SkaiciuotiV(st);
+            if (st.galutinis < 5.0)
+                v.push_back(st);
+            else
+                g.push_back(st);
+        }
+    }
+    else
+    {
+        for (Studentas st : A)
+        {
+            st.galutinis = SkaiciuotiM(st);
+            if (st.galutinis < 5.0)
+                v.push_back(st);
+            else
+                g.push_back(st);
+        }
+    }
+    double laikas = t.elapsed();
+    return laikas;
+}
+
+double rusiuotiStudentus(deque<Studentas> &A, deque<Studentas> &v, deque<Studentas> &g)
+{
+    string pas = "";
+
+    while (pas != "v" && pas != "m")
+    {
+        cout << "Studentus rusiuoti pagal vidurki ar mediana? (v/m)\n";
+        cin >> pas;
+    }
+
+    Timer t;
+
+    if (pas == "v")
+    {
+        for (Studentas st : A)
+        {
+            st.galutinis = SkaiciuotiV(st);
+            if (st.galutinis < 5.0)
+                v.push_back(st);
+            else
+                g.push_back(st);
+        }
+    }
+    else
+    {
+        for (Studentas st : A)
+        {
+            st.galutinis = SkaiciuotiM(st);
+            if (st.galutinis < 5.0)
+                v.push_back(st);
+            else
+                g.push_back(st);
+        }
+    }
+    double laikas = t.elapsed();
+    return laikas;
+}
+
+double rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, list<Studentas> &g)
 {
     string pas = "";
 

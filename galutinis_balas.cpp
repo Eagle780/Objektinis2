@@ -7,21 +7,45 @@ int main()
     string failas = "studentai" + to_string(dydis) + ".txt";
     int ndDydis = 5;
     double laikas = 0;
+    int k = 0;
     cinEx();
 
     vector<Studentas> A;
-    list<Studentas> B;
-    deque<Studentas> C;
+    deque<Studentas> B;
+    list<Studentas> C;
 
     vector<Studentas> vargsiukai, galvociai;
-    vector<Studentas> vargsiukaiB, galvociaiB;
-    vector<Studentas> vargsiukaiC, galvociaiC;
+    deque<Studentas> vargsiukaiB, galvociaiB;
+    list<Studentas> vargsiukaiC, galvociaiC;
 
     while (dydis < 10000000)
     {
         dydis *= 10;
         failas = "studentai" + to_string(dydis) + ".txt";
         testuotiKurima(failas, ndDydis, dydis);
+    }
+
+    while (true)
+    {
+        cout << "Koki konteineri naudoti duomenu saugojimui?\n";
+        cout << "1 - vector, 2 - deque, 3 - list\n";
+        try
+        {
+            cin >> k;
+        }
+        catch (ios_base::failure &e)
+        {
+            cout << "Neteisinga ivestis\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+        if (k <= 0 || k >= 4)
+        {
+            cout << "Neteisingas skaicius\n";
+            continue;
+        }
+        break;
     }
 
     while (true)
@@ -107,11 +131,33 @@ int main()
 
     Timer tmain;
     Timer t;
-    skaitytiFaila(failas, A);
+    if (k == 1)
+    {
+        skaitytiFaila(failas, A);
+    }
+    else if (k == 2)
+    {
+        skaitytiFaila(failas, B);
+    }
+    else if (k == 3)
+    {
+        skaitytiFaila(failas, C);
+    }
     laikas = t.elapsed();
     cout << dydis << " studentu failo nuskaitymo laikas: " << laikas << "\n";
 
-    laikas = rusiuotiStudentus(A, vargsiukai, galvociai);
+    if (k == 1)
+    {
+        laikas = rusiuotiStudentus(A, vargsiukai, galvociai);
+    }
+    else if (k == 2)
+    {
+        laikas = rusiuotiStudentus(B, vargsiukaiB, galvociaiB);
+    }
+    else if (k == 3)
+    {
+        laikas = rusiuotiStudentus(C, vargsiukaiC, galvociaiC);
+    }
     cout << dydis << " studentu surusiavimo laikas: " << laikas << "\n";
 
     Timer t2;

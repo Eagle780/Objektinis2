@@ -58,10 +58,20 @@ Studentas generuotiPazymius(Studentas temp);
 Studentas generuotiVardus(Studentas temp);
 Studentas irasytiPazymius(Studentas temp);
 Studentas irasytiVarda(Studentas temp);
+
 void skaitytiFaila(string failas, vector<Studentas> &A);
 void rasytiIFaila(string pav, vector<Studentas> &v);
+void skaitytiFaila(string failas, deque<Studentas> &A);
+void rasytiIFaila(string pav, deque<Studentas> &v);
+void skaitytiFaila(string failas, list<Studentas> &A);
+void rasytiIFaila(string pav, list<Studentas> &v);
+
 bool generuotiFaila(string &failas, int ndDydis, int &dydis);
+
 double rusiuotiStudentus(vector<Studentas> &A, vector<Studentas> &v, vector<Studentas> &g);
+double rusiuotiStudentus(deque<Studentas> &A, deque<Studentas> &v, deque<Studentas> &g);
+double rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, list<Studentas> &g);
+
 void testuotiKurima(string &failas, int ndDydis, int &dydis);
 
 #endif
