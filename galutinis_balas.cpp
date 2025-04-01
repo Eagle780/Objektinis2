@@ -146,6 +146,106 @@ int main()
     laikas = t.elapsed();
     cout << dydis << " studentu failo nuskaitymo laikas: " << laikas << "\n";
 
+    int variantas = 0;
+
+    while (true)
+    {
+        cout << "Duomenis rusiuoti pagal:\n";
+        cout << "1 - varda, 2 - pavarde, 3 - galutini (vid.), 4 - galutini (med.)\n";
+        cin >> variantas;
+
+        if (cin.fail() || variantas < 1 || variantas > 4)
+        {
+            cout << "Neteisinga ivestis\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+        break;
+    }
+
+    Timer t3;
+    if (k == 1)
+    {
+        if (variantas == 1)
+        {
+            sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
+                 { return a.vardas < b.vardas; });
+        }
+
+        else if (variantas == 2)
+        {
+            sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
+                 { return a.pavarde < b.pavarde; });
+        }
+
+        else if (variantas == 3)
+        {
+            sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+        }
+
+        else if (variantas == 4)
+        {
+            sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+        }
+    }
+    else if (k == 2)
+    {
+        if (variantas == 1)
+        {
+            sort(B.begin(), B.end(), [](const Studentas &a, const Studentas &b)
+                 { return a.vardas < b.vardas; });
+        }
+
+        else if (variantas == 2)
+        {
+            sort(B.begin(), B.end(), [](const Studentas &a, const Studentas &b)
+                 { return a.pavarde < b.pavarde; });
+        }
+
+        else if (variantas == 3)
+        {
+            sort(B.begin(), B.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+        }
+
+        else if (variantas == 4)
+        {
+            sort(B.begin(), B.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+        }
+    }
+    else if (k == 3)
+    {
+        if (variantas == 1)
+        {
+            C.sort([](const Studentas &a, const Studentas &b)
+                   { return a.vardas < b.vardas; });
+        }
+
+        else if (variantas == 2)
+        {
+            C.sort([](const Studentas &a, const Studentas &b)
+                   { return a.pavarde < b.pavarde; });
+        }
+
+        else if (variantas == 3)
+        {
+            C.sort([](const Studentas &a, const Studentas &b)
+                   { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+        }
+
+        else if (variantas == 4)
+        {
+            C.sort([](const Studentas &a, const Studentas &b)
+                   { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+        }
+    }
+    laikas = t3.elapsed();
+    cout << dydis << " studentu konteinerio rusiavimo laikas: " << laikas << "\n";
+
     if (k == 1)
     {
         laikas = rusiuotiStudentus(A, vargsiukai, galvociai);
@@ -167,7 +267,7 @@ int main()
     cout << dydis << " surusiuotu studentu irasymo laikas: " << laikas << "\n";
 
     double visasLaikas = tmain.elapsed();
-    cout << dydis << " studentu programos veikimo (be failo pasirinkimo) laikas: " << visasLaikas << "\n";
+    cout << dydis << " studentu programos veikimo (nuo failo pasirinkimo) laikas: " << visasLaikas << "\n";
 
     cout << "Paspauskite \"Enter\", kad iseitumete...";
     cin.get();
