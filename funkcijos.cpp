@@ -396,10 +396,13 @@ double rusiuotiStudentus(vector<Studentas> &A, vector<Studentas> &v, vector<Stud
             else
                 g.push_back(st);
         }
-        sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
-             { return SkaiciuotiV(a) > SkaiciuotiV(b); });
-        sort(g.begin(), g.end(), [](const Studentas &a, const Studentas &b)
-             { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+        if (var != 3)
+        {
+            sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+            sort(g.begin(), g.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+        }
     }
     else
     {
@@ -411,10 +414,13 @@ double rusiuotiStudentus(vector<Studentas> &A, vector<Studentas> &v, vector<Stud
             else
                 g.push_back(st);
         }
-        sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
-             { return SkaiciuotiM(a) > SkaiciuotiM(b); });
-        sort(g.begin(), g.end(), [](const Studentas &a, const Studentas &b)
-             { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+        if (var != 4)
+        {
+            sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+            sort(g.begin(), g.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+        }
     }
     double laikas = t.elapsed();
     return laikas;
@@ -451,10 +457,13 @@ double rusiuotiStudentus(deque<Studentas> &A, deque<Studentas> &v, deque<Student
             else
                 g.push_back(st);
         }
-        sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
-             { return SkaiciuotiV(a) > SkaiciuotiV(b); });
-        sort(g.begin(), g.end(), [](const Studentas &a, const Studentas &b)
-             { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+        if (var != 3)
+        {
+            sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+            sort(g.begin(), g.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+        }
     }
     else
     {
@@ -466,10 +475,13 @@ double rusiuotiStudentus(deque<Studentas> &A, deque<Studentas> &v, deque<Student
             else
                 g.push_back(st);
         }
-        sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
-             { return SkaiciuotiM(a) > SkaiciuotiM(b); });
-        sort(g.begin(), g.end(), [](const Studentas &a, const Studentas &b)
-             { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+        if (var != 4)
+        {
+            sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+            sort(g.begin(), g.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+        }
     }
     double laikas = t.elapsed();
     return laikas;
@@ -506,10 +518,13 @@ double rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, list<Studentas>
             else
                 g.push_back(st);
         }
-        v.sort([](const Studentas &a, const Studentas &b)
-               { return SkaiciuotiV(a) > SkaiciuotiV(b); });
-        g.sort([](const Studentas &a, const Studentas &b)
-               { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+        if (var != 3)
+        {
+            v.sort([](const Studentas &a, const Studentas &b)
+                   { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+            g.sort([](const Studentas &a, const Studentas &b)
+                   { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+        }
     }
     else
     {
@@ -521,10 +536,13 @@ double rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, list<Studentas>
             else
                 g.push_back(st);
         }
-        v.sort([](const Studentas &a, const Studentas &b)
-               { return SkaiciuotiM(a) > SkaiciuotiM(b); });
-        g.sort([](const Studentas &a, const Studentas &b)
-               { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+        if (var != 4)
+        {
+            v.sort([](const Studentas &a, const Studentas &b)
+                   { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+            g.sort([](const Studentas &a, const Studentas &b)
+                   { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+        }
     }
     double laikas = t.elapsed();
     return laikas;
