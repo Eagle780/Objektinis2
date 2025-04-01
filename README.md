@@ -48,18 +48,44 @@ Pirmą kartą paleidus programą bus sugeneruojami visi 5 testavimo failai. Visi
 
 Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimus. Žemiau pateikiama rezultatų lentelė:
 
-| Failo dydis      | Failo sukūrimas | Duomenų skaitymas | Rūšiavimas | Išvedimas į failus | Bendras laikas |
-| ---------------- | --------------- | ----------------- | ---------- | ------------------ | -------------- |
-| 1,000 įrašų      | 0.00329         | 0.00181           | 0.000361   | 0.00463            | 0.541          |
-| 10,000 įrašų     | 0.0268          | 0.0161            | 0.00395    | 0.0232             | 1.167          |
-| 100,000 įrašų    | 0.125           | 0.216             | 0.0314     | 0.257              | 1.670          |
-| 1,000,000 įrašų  | 1.357           | 1.952             | 0.375      | 2.688              | 5.540          |
-| 10,000,000 įrašų | 10.271          | 18.039            | 5.729      | 20.416             | 45.468         |
+### vector
+
+| Failo dydis      | Duomenų skaitymas | Duomenų rūšiavimas | Studentų rūšiavimas |
+| ---------------- | ----------------- | ------------------ | ------------------- |
+| 1,000 įrašų      | 0.00190           | 0.0020             | 0.00164             |
+| 10,000 įrašų     | 0.01694           | 0.0303             | 0.0276              |
+| 100,000 įrašų    | 0.354             | 0.376              | 0.354               |
+| 1,000,000 įrašų  | 1.937             | 4.932              | 4.205               |
+| 10,000,000 įrašų | 18.483            | 77.137             | 58.095              |
+
+### deque
+
+| Failo dydis      | Duomenų skaitymas | Duomenų rūšiavimas | Studentų rūšiavimas |
+| ---------------- | ----------------- | ------------------ | ------------------- |
+| 1,000 įrašų      | 0.00169           | 0.00215            | 0.00154             |
+| 10,000 įrašų     | 0.0148            | 0.0252             | 0.0268              |
+| 100,000 įrašų    | 0.179             | 0.387              | 0.374               |
+| 1,000,000 įrašų  | 1.952             | 5.101              | 4.349               |
+| 10,000,000 įrašų | 18.483            | 75.658             | 60.246              |
+
+### list
+
+| Failo dydis      | Duomenų skaitymas | Duomenų rūšiavimas | Studentų rūšiavimas |
+| ---------------- | ----------------- | ------------------ | ------------------- |
+| 1,000 įrašų      | 0.00196           | 0.00169            | 0.00111             |
+| 10,000 įrašų     | 0.0178            | 0.0382             | 0.0231              |
+| 100,000 įrašų    | 0.185             | 0.342              | 0.275               |
+| 1,000,000 įrašų  | 2.093             | 5.427              | 3.029               |
+| 10,000,000 įrašų | 18.732            | 77.154             | 36.575              |
+
+## Testavimo sistemos parametrai
+
+- CPU - AMD Ryzen 5 5600H, 3.30GHz
+- RAM - 2x8GB 3200MT/s
+- SSD - 512GB M.2, NVMe PCIe gen 3
 
 ## Nuotraukos
 
 Programos veikimo pavyzdys:
 
 ![main.exe](https://github.com/user-attachments/assets/642ae5f5-f374-4dbd-ac13-bc1a3fdd41b5)
-
-
