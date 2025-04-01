@@ -10,10 +10,12 @@ int main()
     cinEx();
 
     vector<Studentas> A;
+    list<Studentas> B;
+    deque<Studentas> C;
 
     vector<Studentas> vargsiukai, galvociai;
-    // vector<Studentas> vargsiukaiB, galvociaiB;
-    // vector<Studentas> vargsiukaiC, galvociaiC;
+    vector<Studentas> vargsiukaiB, galvociaiB;
+    vector<Studentas> vargsiukaiC, galvociaiC;
 
     while (dydis < 10000000)
     {
