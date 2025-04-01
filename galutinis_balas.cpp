@@ -248,15 +248,15 @@ int main()
 
     if (k == 1)
     {
-        laikas = rusiuotiStudentus(A, vargsiukai, galvociai);
+        laikas = rusiuotiStudentus(A, vargsiukai, galvociai, variantas);
     }
     else if (k == 2)
     {
-        laikas = rusiuotiStudentus(B, vargsiukaiB, galvociaiB);
+        laikas = rusiuotiStudentus(B, vargsiukaiB, galvociaiB, variantas);
     }
     else if (k == 3)
     {
-        laikas = rusiuotiStudentus(C, vargsiukaiC, galvociaiC);
+        laikas = rusiuotiStudentus(C, vargsiukaiC, galvociaiC, variantas);
     }
     cout << dydis << " studentu surusiavimo laikas: " << laikas << "\n";
 

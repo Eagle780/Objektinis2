@@ -68,9 +68,9 @@ void rasytiIFaila(string pav, list<Studentas> &v);
 
 bool generuotiFaila(string &failas, int ndDydis, int &dydis);
 
-double rusiuotiStudentus(vector<Studentas> &A, vector<Studentas> &v, vector<Studentas> &g);
-double rusiuotiStudentus(deque<Studentas> &A, deque<Studentas> &v, deque<Studentas> &g);
-double rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, list<Studentas> &g);
+double rusiuotiStudentus(vector<Studentas> &A, vector<Studentas> &v, vector<Studentas> &g, int var);
+double rusiuotiStudentus(deque<Studentas> &A, deque<Studentas> &v, deque<Studentas> &g, int var);
+double rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, list<Studentas> &g, int var);
 
 void testuotiKurima(string &failas, int ndDydis, int &dydis);
 
