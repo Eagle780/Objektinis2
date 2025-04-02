@@ -59,12 +59,65 @@ Studentas generuotiVardus(Studentas temp);
 Studentas irasytiPazymius(Studentas temp);
 Studentas irasytiVarda(Studentas temp);
 
-void skaitytiFaila(string failas, vector<Studentas> &A);
-void rasytiIFaila(string pav, vector<Studentas> &v);
-void skaitytiFaila(string failas, deque<Studentas> &A);
-void rasytiIFaila(string pav, deque<Studentas> &v);
-void skaitytiFaila(string failas, list<Studentas> &A);
-void rasytiIFaila(string pav, list<Studentas> &v);
+template <typename T>
+void rasytiIFaila(string pav, T &v)
+{
+    ofstream fr(pav);
+    fr << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)\n";
+    fr << "--------------------------------------------------\n";
+    for (const Studentas &i : v)
+    {
+        fr << left << setw(12) << i.vardas << setw(16) << i.pavarde;
+        fr << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << "\n";
+    }
+}
+
+template <typename T>
+void skaitytiFaila(string failas, T &A)
+{
+    try
+    {
+        ifstream fd(failas);
+
+        if (!fd)
+        {
+            throw std::ios_base::failure("Nepavyko atidaryti failo");
+        }
+
+        fd.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        string vardas, pavarde;
+        while (fd >> vardas >> pavarde)
+        {
+            Studentas temp;
+            temp.vardas = vardas;
+            temp.pavarde = pavarde;
+
+            string eilute;
+            getline(fd, eilute);
+            istringstream iss(eilute);
+
+            vector<int> visiPazymiai;
+            int pazimys;
+            while (iss >> pazimys)
+            {
+                visiPazymiai.push_back(pazimys);
+            }
+
+            temp.egz = visiPazymiai.back();
+            visiPazymiai.pop_back();
+            temp.nd = visiPazymiai;
+
+            A.push_back(temp);
+        }
+        fd.close();
+    }
+    catch (ios_base::failure &e)
+    {
+        cout << "Nepavyko atidaryti failo\n";
+        return;
+    }
+}
 
 bool generuotiFaila(string &failas, int ndDydis, int &dydis);
 
