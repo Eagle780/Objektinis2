@@ -255,19 +255,77 @@ int main()
     laikas = t3.elapsed();
     cout << dydis << " studentu konteinerio rusiavimo laikas: " << laikas << "\n";
 
-    if (k == 1)
+    int var2 = 0;
+
+    while (true)
     {
-        laikas = rusiuotiStudentus(A, vargsiukai, galvociai, variantas);
+        cout << "Koki duomenu rusiavimo buda naudoti?\n";
+        cout << "1 - vargsiuku ir galvociu, 2 - tik vargsiuku\n";
+
+        try
+        {
+            cin >> var2;
+        }
+        catch (ios_base::failure &e)
+        {
+            cout << "Neteisinga ivestis\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+
+        if (var2 < 1 || var2 > 3)
+        {
+            cout << "Neteisingas skaicius\n";
+            continue;
+        }
+        break;
     }
-    else if (k == 2)
+
+    if (var2 == 1)
     {
-        laikas = rusiuotiStudentus(B, vargsiukaiB, galvociaiB, variantas);
+        if (k == 1)
+        {
+            Timer t4;
+            rusiuotiStudentus(A, vargsiukai, galvociai, variantas);
+            laikas = t4.elapsed();
+        }
+        else if (k == 2)
+        {
+            Timer t4;
+            rusiuotiStudentus(B, vargsiukaiB, galvociaiB, variantas);
+            laikas = t4.elapsed();
+        }
+        else if (k == 3)
+        {
+            Timer t4;
+            rusiuotiStudentus(C, vargsiukaiC, galvociaiC, variantas);
+            laikas = t4.elapsed();
+        }
+        cout << dydis << " studentu surusiavimo i 2 konteinerius laikas: " << laikas << "\n";
     }
-    else if (k == 3)
+    else if (var2 == 2)
     {
-        laikas = rusiuotiStudentus(C, vargsiukaiC, galvociaiC, variantas);
+        if (k == 1)
+        {
+            Timer t4;
+            rusiuotiStudentus(A, vargsiukai, variantas);
+            laikas = t4.elapsed();
+        }
+        else if (k == 2)
+        {
+            Timer t4;
+            rusiuotiStudentus(B, vargsiukaiB, variantas);
+            laikas = t4.elapsed();
+        }
+        else if (k == 3)
+        {
+            Timer t4;
+            rusiuotiStudentus(C, vargsiukaiC, variantas);
+            laikas = t4.elapsed();
+        }
+        cout << dydis << " studentu surusiavimo i 1 konteineri laikas: " << laikas << "\n";
     }
-    cout << dydis << " studentu surusiavimo laikas: " << laikas << "\n";
 
     Timer t2;
     if (k == 1)

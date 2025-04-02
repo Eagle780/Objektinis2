@@ -121,9 +121,127 @@ void skaitytiFaila(string failas, T &A)
 
 bool generuotiFaila(string &failas, int ndDydis, int &dydis);
 
-double rusiuotiStudentus(vector<Studentas> &A, vector<Studentas> &v, vector<Studentas> &g, int var);
-double rusiuotiStudentus(deque<Studentas> &A, deque<Studentas> &v, deque<Studentas> &g, int var);
-double rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, list<Studentas> &g, int var);
+template <typename T>
+void rusiuotiStudentus(T &A, T &v, T &g, int var)
+{
+    string pas = "";
+
+    if (var == 3)
+    {
+        pas = "v";
+    }
+    else if (var == 4)
+    {
+        pas = "m";
+    }
+
+    while (pas != "v" && pas != "m")
+    {
+        cout << "Studentus rusiuoti pagal vidurki ar mediana? (v/m)\n";
+        cin >> pas;
+    }
+
+    if (pas == "v")
+    {
+        for (Studentas st : A)
+        {
+            st.galutinis = SkaiciuotiV(st);
+            if (st.galutinis < 5.0)
+                v.push_back(st);
+            else
+                g.push_back(st);
+        }
+        if (var != 3)
+        {
+            sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+            sort(g.begin(), g.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+        }
+    }
+    else
+    {
+        for (Studentas st : A)
+        {
+            st.galutinis = SkaiciuotiM(st);
+            if (st.galutinis < 5.0)
+                v.push_back(st);
+            else
+                g.push_back(st);
+        }
+        if (var != 4)
+        {
+            sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+            sort(g.begin(), g.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+        }
+    }
+}
+
+void rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, list<Studentas> &g, int var);
+
+template <typename T>
+void rusiuotiStudentus(T &A, T &v, int var)
+{
+    string pas = "";
+
+    if (var == 3)
+    {
+        pas = "v";
+    }
+    else if (var == 4)
+    {
+        pas = "m";
+    }
+
+    while (pas != "v" && pas != "m")
+    {
+        cout << "Studentus rusiuoti pagal vidurki ar mediana? (v/m)\n";
+        cin >> pas;
+    }
+
+    if (pas == "v")
+    {
+        A.erase(remove_if(A.begin(), A.end(), [&](const Studentas &st)
+                          {
+                       if (SkaiciuotiV(st) < 5.0)
+                       {
+                           v.push_back(st);
+                           return true;
+                       }
+                       return false; }),
+                A.end());
+        if (var != 3)
+        {
+            sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+            sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+        }
+    }
+    else
+    {
+        A.erase(remove_if(A.begin(), A.end(), [&](const Studentas &st)
+                          {
+                       if (SkaiciuotiM(st) < 5.0)
+                       {
+                           v.push_back(st);
+                           return true;
+                       }
+                       return false; }),
+                A.end());
+        if (var != 4)
+        {
+            sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+            sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
+                 { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+        }
+    }
+}
+
+void rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, int var);
 
 void testuotiKurima(string &failas, int ndDydis, int &dydis);
 
