@@ -8,6 +8,8 @@ int main()
     int ndDydis = 5;
     double laikas = 0;
     int k = 0;
+    string pas;
+
     cinEx();
 
     vector<Studentas> A;
@@ -287,19 +289,19 @@ int main()
         if (k == 1)
         {
             Timer t4;
-            rusiuotiStudentus(A, vargsiukai, galvociai, variantas);
+            pas = rusiuotiStudentus(A, vargsiukai, galvociai, variantas);
             laikas = t4.elapsed();
         }
         else if (k == 2)
         {
             Timer t4;
-            rusiuotiStudentus(B, vargsiukaiB, galvociaiB, variantas);
+            pas = rusiuotiStudentus(B, vargsiukaiB, galvociaiB, variantas);
             laikas = t4.elapsed();
         }
         else if (k == 3)
         {
             Timer t4;
-            rusiuotiStudentus(C, vargsiukaiC, galvociaiC, variantas);
+            pas = rusiuotiStudentus(C, vargsiukaiC, galvociaiC, variantas);
             laikas = t4.elapsed();
         }
         cout << dydis << " studentu surusiavimo i 2 konteinerius laikas: " << laikas << "\n";
@@ -309,19 +311,19 @@ int main()
         if (k == 1)
         {
             Timer t4;
-            rusiuotiStudentus(A, vargsiukai, variantas);
+            pas = rusiuotiStudentus(A, vargsiukai, variantas);
             laikas = t4.elapsed();
         }
         else if (k == 2)
         {
             Timer t4;
-            rusiuotiStudentus(B, vargsiukaiB, variantas);
+            pas = rusiuotiStudentus(B, vargsiukaiB, variantas);
             laikas = t4.elapsed();
         }
         else if (k == 3)
         {
             Timer t4;
-            rusiuotiStudentus(C, vargsiukaiC, variantas);
+            pas = rusiuotiStudentus(C, vargsiukaiC, variantas);
             laikas = t4.elapsed();
         }
         cout << dydis << " studentu surusiavimo i 1 konteineri laikas: " << laikas << "\n";
@@ -330,18 +332,18 @@ int main()
     Timer t2;
     if (k == 1)
     {
-        rasytiIFaila("vargsiukai.txt", vargsiukai);
-        rasytiIFaila("galvociai.txt", galvociai);
+        rasytiIFaila("vargsiukai.txt", vargsiukai, pas);
+        rasytiIFaila("galvociai.txt", galvociai, pas);
     }
     else if (k == 2)
     {
-        rasytiIFaila("vargsiukai.txt", vargsiukaiB);
-        rasytiIFaila("galvociai.txt", galvociaiB);
+        rasytiIFaila("vargsiukai.txt", vargsiukaiB, pas);
+        rasytiIFaila("galvociai.txt", galvociaiB, pas);
     }
     else if (k == 2)
     {
-        rasytiIFaila("vargsiukai.txt", vargsiukaiC);
-        rasytiIFaila("galvociai.txt", galvociaiC);
+        rasytiIFaila("vargsiukai.txt", vargsiukaiC, pas);
+        rasytiIFaila("galvociai.txt", galvociaiC, pas);
     }
     laikas = t2.elapsed();
     cout << dydis << " surusiuotu studentu irasymo laikas: " << laikas << "\n";

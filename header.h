@@ -60,8 +60,18 @@ Studentas irasytiPazymius(Studentas temp);
 Studentas irasytiVarda(Studentas temp);
 
 template <typename T>
-void rasytiIFaila(string pav, T &v)
+void rasytiIFaila(string pav, T &v, string pas)
 {
+    if (pas == "v")
+    {
+        sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
+             { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+    }
+    else if (pas == "m")
+    {
+        sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
+             { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+    }
     ofstream fr(pav);
     fr << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)\n";
     fr << "--------------------------------------------------\n";
@@ -71,6 +81,8 @@ void rasytiIFaila(string pav, T &v)
         fr << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << "\n";
     }
 }
+
+void rasytiIFaila(string pav, list<Studentas> &v, string pas);
 
 template <typename T>
 void skaitytiFaila(string failas, T &A)
@@ -122,7 +134,7 @@ void skaitytiFaila(string failas, T &A)
 bool generuotiFaila(string &failas, int ndDydis, int &dydis);
 
 template <typename T>
-void rusiuotiStudentus(T &A, T &v, T &g, int var)
+string rusiuotiStudentus(T &A, T &v, T &g, int var)
 {
     string pas = "";
 
@@ -151,13 +163,6 @@ void rusiuotiStudentus(T &A, T &v, T &g, int var)
             else
                 g.push_back(st);
         }
-        if (var != 3)
-        {
-            sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
-                 { return SkaiciuotiV(a) > SkaiciuotiV(b); });
-            sort(g.begin(), g.end(), [](const Studentas &a, const Studentas &b)
-                 { return SkaiciuotiV(a) > SkaiciuotiV(b); });
-        }
     }
     else
     {
@@ -169,20 +174,12 @@ void rusiuotiStudentus(T &A, T &v, T &g, int var)
             else
                 g.push_back(st);
         }
-        if (var != 4)
-        {
-            sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
-                 { return SkaiciuotiM(a) > SkaiciuotiM(b); });
-            sort(g.begin(), g.end(), [](const Studentas &a, const Studentas &b)
-                 { return SkaiciuotiM(a) > SkaiciuotiM(b); });
-        }
     }
+    return pas;
 }
 
-void rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, list<Studentas> &g, int var);
-
 template <typename T>
-void rusiuotiStudentus(T &A, T &v, int var)
+string rusiuotiStudentus(T &A, T &v, int var)
 {
     string pas = "";
 
@@ -212,13 +209,6 @@ void rusiuotiStudentus(T &A, T &v, int var)
                        }
                        return false; }),
                 A.end());
-        if (var != 3)
-        {
-            sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
-                 { return SkaiciuotiV(a) > SkaiciuotiV(b); });
-            sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
-                 { return SkaiciuotiV(a) > SkaiciuotiV(b); });
-        }
     }
     else
     {
@@ -231,17 +221,11 @@ void rusiuotiStudentus(T &A, T &v, int var)
                        }
                        return false; }),
                 A.end());
-        if (var != 4)
-        {
-            sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
-                 { return SkaiciuotiM(a) > SkaiciuotiM(b); });
-            sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
-                 { return SkaiciuotiM(a) > SkaiciuotiM(b); });
-        }
     }
+    return pas;
 }
 
-void rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, int var);
+string rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, int var);
 
 void testuotiKurima(string &failas, int ndDydis, int &dydis);
 

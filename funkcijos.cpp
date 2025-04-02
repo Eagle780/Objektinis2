@@ -162,6 +162,28 @@ Studentas irasytiVarda(Studentas temp)
     return temp;
 }
 
+void rasytiIFaila(string pav, list<Studentas> &v, string pas)
+{
+    if (pas == "v")
+    {
+        v.sort([](const Studentas &a, const Studentas &b)
+               { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+    }
+    else if (pas == "m")
+    {
+        v.sort([](const Studentas &a, const Studentas &b)
+               { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+    }
+    ofstream fr(pav);
+    fr << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)\n";
+    fr << "--------------------------------------------------\n";
+    for (const Studentas &i : v)
+    {
+        fr << left << setw(12) << i.vardas << setw(16) << i.pavarde;
+        fr << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << "\n";
+    }
+}
+
 bool generuotiFaila(string &failas, int ndDydis, int &dydis)
 {
     if (std::filesystem::exists(failas))
@@ -191,64 +213,7 @@ bool generuotiFaila(string &failas, int ndDydis, int &dydis)
     return true;
 }
 
-void rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, list<Studentas> &g, int var)
-{
-    string pas = "";
-
-    if (var == 3)
-    {
-        pas = "v";
-    }
-    else if (var == 4)
-    {
-        pas = "m";
-    }
-
-    while (pas != "v" && pas != "m")
-    {
-        cout << "Studentus rusiuoti pagal vidurki ar mediana? (v/m)\n";
-        cin >> pas;
-    }
-
-    if (pas == "v")
-    {
-        for (Studentas st : A)
-        {
-            st.galutinis = SkaiciuotiV(st);
-            if (st.galutinis < 5.0)
-                v.push_back(st);
-            else
-                g.push_back(st);
-        }
-        if (var != 3)
-        {
-            v.sort([](const Studentas &a, const Studentas &b)
-                   { return SkaiciuotiV(a) > SkaiciuotiV(b); });
-            g.sort([](const Studentas &a, const Studentas &b)
-                   { return SkaiciuotiV(a) > SkaiciuotiV(b); });
-        }
-    }
-    else
-    {
-        for (Studentas st : A)
-        {
-            st.galutinis = SkaiciuotiM(st);
-            if (st.galutinis < 5.0)
-                v.push_back(st);
-            else
-                g.push_back(st);
-        }
-        if (var != 4)
-        {
-            v.sort([](const Studentas &a, const Studentas &b)
-                   { return SkaiciuotiM(a) > SkaiciuotiM(b); });
-            g.sort([](const Studentas &a, const Studentas &b)
-                   { return SkaiciuotiM(a) > SkaiciuotiM(b); });
-        }
-    }
-}
-
-void rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, int var)
+string rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, int var)
 {
     string pas = "";
 
@@ -277,13 +242,6 @@ void rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, int var)
                     return true;
                 }
                 return false; });
-        if (var != 3)
-        {
-            v.sort([](const Studentas &a, const Studentas &b)
-                   { return SkaiciuotiV(a) > SkaiciuotiV(b); });
-            A.sort([](const Studentas &a, const Studentas &b)
-                   { return SkaiciuotiV(a) > SkaiciuotiV(b); });
-        }
     }
     else
     {
@@ -295,14 +253,8 @@ void rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, int var)
                     return true;
                 }
                 return false; });
-        if (var != 4)
-        {
-            v.sort([](const Studentas &a, const Studentas &b)
-                   { return SkaiciuotiM(a) > SkaiciuotiM(b); });
-            A.sort([](const Studentas &a, const Studentas &b)
-                   { return SkaiciuotiM(a) > SkaiciuotiM(b); });
-        }
     }
+    return pas;
 }
 
 void testuotiKurima(string &failas, int ndDydis, int &dydis)
