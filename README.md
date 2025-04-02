@@ -88,4 +88,5 @@ Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimu
 
 Programos veikimo pavyzdys:
 
-![main.exe](https://github.com/user-attachments/assets/642ae5f5-f374-4dbd-ac13-bc1a3fdd41b5)
+![main.exe](https://github.com/user-attachments/assets/865df68b-8681-4bb2-82f9-0515e4dd4bf5)
+
