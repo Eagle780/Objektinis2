@@ -330,20 +330,41 @@ int main()
     }
 
     Timer t2;
-    if (k == 1)
+    if (var2 == 1)
     {
-        rasytiIFaila("vargsiukai.txt", vargsiukai, pas);
-        rasytiIFaila("galvociai.txt", galvociai, pas);
+        if (k == 1)
+        {
+            rasytiIFaila("vargsiukai.txt", vargsiukai, pas);
+            rasytiIFaila("galvociai.txt", galvociai, pas);
+        }
+        else if (k == 2)
+        {
+            rasytiIFaila("vargsiukai.txt", vargsiukaiB, pas);
+            rasytiIFaila("galvociai.txt", galvociaiB, pas);
+        }
+        else if (k == 2)
+        {
+            rasytiIFaila("vargsiukai.txt", vargsiukaiC, pas);
+            rasytiIFaila("galvociai.txt", galvociaiC, pas);
+        }
     }
-    else if (k == 2)
+    else if (var2 == 2)
     {
-        rasytiIFaila("vargsiukai.txt", vargsiukaiB, pas);
-        rasytiIFaila("galvociai.txt", galvociaiB, pas);
-    }
-    else if (k == 2)
-    {
-        rasytiIFaila("vargsiukai.txt", vargsiukaiC, pas);
-        rasytiIFaila("galvociai.txt", galvociaiC, pas);
+        if (k == 1)
+        {
+            rasytiIFaila("vargsiukai.txt", vargsiukai, pas);
+            rasytiIFaila("galvociai.txt", A, pas);
+        }
+        else if (k == 2)
+        {
+            rasytiIFaila("vargsiukai.txt", vargsiukaiB, pas);
+            rasytiIFaila("galvociai.txt", B, pas);
+        }
+        else if (k == 2)
+        {
+            rasytiIFaila("vargsiukai.txt", vargsiukaiC, pas);
+            rasytiIFaila("galvociai.txt", C, pas);
+        }
     }
     laikas = t2.elapsed();
     cout << dydis << " surusiuotu studentu irasymo laikas: " << laikas << "\n";

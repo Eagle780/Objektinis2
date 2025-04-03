@@ -81,12 +81,11 @@ Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimu
 ## Testavimo sistemos parametrai
 
 - CPU - AMD Ryzen 5 5600H, 3.30GHz
-- RAM - 2x8GB 3200MT/s
-- SSD - 512GB M.2, NVMe PCIe gen 3
+- RAM - 2x8GB DDR4 3200MHz
+- SSD - PCIe gen 3 NVMe M.2 512GB
 
 ## Nuotraukos
 
 Programos veikimo pavyzdys:
 
 ![main.exe](https://github.com/user-attachments/assets/865df68b-8681-4bb2-82f9-0515e4dd4bf5)
-
