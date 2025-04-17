@@ -110,7 +110,7 @@ Testuojama buvo ne vien lyginant skirtingų konteinerių naudojimą, bet ir prit
 | 1,000 įrašų      | 0.00030      | 0.0055       | 0.00024      |
 | 10,000 įrašų     | 0.0027       | 0.511        | 0.0018       |
 | 100,000 įrašų    | 0.030        | 40.92        | 0.013        |
-| 1,000,000 įrašų  | 0.457        | 1154         | 0.235        |
+| 1,000,000 įrašų  | 0.457        | >1000        | 0.235        |
 | 10,000,000 įrašų | 4.868        | -            | 5.268        |
 
 ### deque
@@ -120,7 +120,7 @@ Testuojama buvo ne vien lyginant skirtingų konteinerių naudojimą, bet ir prit
 | 1,000 įrašų      | 0.00039      | 0.00109      | 0.00023      |
 | 10,000 įrašų     | 0.0027       | 0.1232       | 0.0019       |
 | 100,000 įrašų    | 0.031        | 12.62        | 0.016        |
-| 1,000,000 įrašų  | 0.427        | 0.332        | 0.253        |
+| 1,000,000 įrašų  | 0.427        | >1000        | 0.253        |
 | 10,000,000 įrašų | 4.866        | -            | 5.411        |
 
 ### list
@@ -146,4 +146,3 @@ Išbandžius visas strategijas su visais konteineriais, galime pastebėti įdom�
 Programos veikimo pavyzdys:
 
 ![GalutinisBalas.exe](https://github.com/user-attachments/assets/62ac6c3e-c0a5-43c3-be5e-26d1b4829bae)
-
