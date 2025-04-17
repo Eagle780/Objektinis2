@@ -145,4 +145,5 @@ Išbandžius visas strategijas su visais konteineriais, galime pastebėti įdom�
 
 Programos veikimo pavyzdys:
 
-![main.exe](https://github.com/user-attachments/assets/865df68b-8681-4bb2-82f9-0515e4dd4bf5)
+![GalutinisBalas.exe](https://github.com/user-attachments/assets/62ac6c3e-c0a5-43c3-be5e-26d1b4829bae)
+
