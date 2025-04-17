@@ -6,7 +6,14 @@ Projekto Apžvalga
 
 Šioje versijoje taip pat pridėta galimybė pasirinkti, kokio tipo konteinerį (vector, deque ar list) norite naudoti.
 
-## Įgyvendintos Funkcijos
+## Praeitų versijų aprašymai
+
+- v0.1: programa leidžia įrašyti arba sugeneruoti savus studentus, o rezultatus rodo ekrane,
+- v0.2: pridėtas skaitymas iš failo/ surašymas į failą,
+- v0.3: funkcijos ir struktūros perkeltos į atskirus failus, pridėtas išimčių valdymas, leidžiantis sumažinti programos užstigimų šansą,
+- v0.4: programa pati generuoja reikiamus failus, kuriuos naudoja tolimesniems skaičiavimams, pridėti laiko matavimai.
+
+## Platrsnis programos aprašymas
 
 ### Failų generavimas:
 
@@ -37,12 +44,20 @@ Pereikite į v1.0 šaką:
 
     git checkout v1.0
 
-Sukompiliuokite ir paleiskite:
+Aplanke atsidarykite terminalą ir įrašykite:
 
-    g++ -O3 -o main galutinis_balas.cpp funkcijos.cpp
-    ./main.exe
+    mkdir build
+    cd build
+    cmake ..
+    cmake --build . --config Release
 
+Paleidžiamasis failas (GalutinisBalas.exe) atsiras build/Release aplanke.
 Pirmą kartą paleidus programą bus sugeneruojami visi 5 testavimo failai. Visi sekantys paleidimai naudos tuos pačius 5 failus. Naujas failas bus sukurtas tik tada, jei senasis bus ištrintas.
+
+## Naudojimosi instrukcija
+
+Pradžioje Jūsų bus prašoma pasirinkti norimą konteinerį, po to pateiktas meniu leis išsirinkti naujų studentų įrašymų būdą. Baigus įrašymą (arba norint iškart skaityti studentus iš failo) pasirenkamas 4-tas meniu variantas. Tada galėsite pasirinkti, pagal ką norite rūšiuoti pagrindinį konteinerį. Po rūšiavimo liks pasirinkti būdą, kuriuo norite suskirstyti "vargšiukus" ir "galvočius" į skirtingus konteinerius.
+Baigus darbą spaudžiama "Enter".
 
 ## Spartos Testavimo Rezultatai
 
@@ -52,21 +67,21 @@ Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimu
 
 | Failo dydis      | Duomenų skaitymas | Duomenų rūšiavimas | Studentų rūšiavimas |
 | ---------------- | ----------------- | ------------------ | ------------------- |
-| 1,000 įrašų      | 0.00190           | 0.0020             | 0.00164             |
-| 10,000 įrašų     | 0.01694           | 0.0303             | 0.0276              |
+| 1,000 įrašų      | 0.00169           | 0.00203            | 0.00154             |
+| 10,000 įrašų     | 0.01694           | 0.0303             | 0.0268              |
 | 100,000 įrašų    | 0.354             | 0.376              | 0.354               |
 | 1,000,000 įrašų  | 1.937             | 4.932              | 4.205               |
-| 10,000,000 įrašų | 18.483            | 77.137             | 4.717               |
+| 10,000,000 įrašų | 18.483            | 76.858             | 4.717               |
 
 ### deque
 
 | Failo dydis      | Duomenų skaitymas | Duomenų rūšiavimas | Studentų rūšiavimas |
 | ---------------- | ----------------- | ------------------ | ------------------- |
-| 1,000 įrašų      | 0.00169           | 0.00215            | 0.00154             |
-| 10,000 įrašų     | 0.0148            | 0.0252             | 0.0268              |
+| 1,000 įrašų      | 0.00178           | 0.00215            | 0.00164             |
+| 10,000 įrašų     | 0.0148            | 0.0252             | 0.0276              |
 | 100,000 įrašų    | 0.179             | 0.387              | 0.374               |
 | 1,000,000 įrašų  | 1.952             | 5.101              | 4.349               |
-| 10,000,000 įrašų | 18.483            | 76.858             | 4.821               |
+| 10,000,000 įrašų | 18.483            | 77.137             | 4.821               |
 
 ### list
 
@@ -77,6 +92,8 @@ Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimu
 | 100,000 įrašų    | 0.185             | 0.342              | 0.275               |
 | 1,000,000 įrašų  | 2.093             | 5.427              | 3.029               |
 | 10,000,000 įrašų | 18.732            | 77.154             | 6.214               |
+
+Kaip matome, laikai, naudojant vien tik skirtingus konteinerius, skiriasi, nors ir nežymiai. Vektorius vidutiniškai veikia greičiausiai, o list'as - lėčiausiai.
 
 ## Strategijos testavimo rezultatai
 
@@ -90,21 +107,21 @@ Testuojama buvo ne vien lyginant skirtingų konteinerių naudojimą, bet ir prit
 
 | Failo dydis      | 1 strategija | 2 strategija | 3 strategija |
 | ---------------- | ------------ | ------------ | ------------ |
-| 1,000 įrašų      | 0.00030      | 0.00029      | 0.00024      |
-| 10,000 įrašų     | 0.0027       | 0.0022       | 0.0018       |
-| 100,000 įrašų    | 0.030        | 0.028        | 0.013        |
-| 1,000,000 įrašų  | 0.457        | 0.304        | 0.235        |
-| 10,000,000 įrašų | 4.868        | 4.633        | 4.268        |
+| 1,000 įrašų      | 0.00030      | 0.0055       | 0.00024      |
+| 10,000 įrašų     | 0.0027       | 0.511        | 0.0018       |
+| 100,000 įrašų    | 0.030        | 40.92        | 0.013        |
+| 1,000,000 įrašų  | 0.457        | 1154         | 0.235        |
+| 10,000,000 įrašų | 4.868        | -            | 5.268        |
 
 ### deque
 
 | Failo dydis      | 1 strategija | 2 strategija | 3 strategija |
 | ---------------- | ------------ | ------------ | ------------ |
-| 1,000 įrašų      | 0.00039      | 0.00026      | 0.00023      |
-| 10,000 įrašų     | 0.0027       | 0.0021       | 0.0019       |
-| 100,000 įrašų    | 0.031        | 0.031        | 0.016        |
+| 1,000 įrašų      | 0.00039      | 0.00109      | 0.00023      |
+| 10,000 įrašų     | 0.0027       | 0.1232       | 0.0019       |
+| 100,000 įrašų    | 0.031        | 12.62        | 0.016        |
 | 1,000,000 įrašų  | 0.427        | 0.332        | 0.253        |
-| 10,000,000 įrašų | 4.866        | 4.757        | 4.411        |
+| 10,000,000 įrašų | 4.866        | -            | 5.411        |
 
 ### list
 
@@ -115,6 +132,8 @@ Testuojama buvo ne vien lyginant skirtingų konteinerių naudojimą, bet ir prit
 | 100,000 įrašų    | 0.043        | 0.025        | 0.029        |
 | 1,000,000 įrašų  | 0.430        | 0.302        | 0.392        |
 | 10,000,000 įrašų | 6.158        | 4.731        | 6.329        |
+
+Išbandžius visas strategijas su visais konteineriais, galime pastebėti įdomų dalyką, kad 3 startegija yra greičiausia su visais konteineriais išskyrus list'ą. Norint naudoti list'ą būtų geriausia taikyti 2 strategiją. 2 strategijos neefktyvumą, atsižvelgiant į vektorių ir deque laikus, galima paaiškinti tuo, kad atliekant kiekvieną perkėlimo operaciją, visi prieš tai buvę elementai turi būti perkelti per vieną narį. List'as nepatiria tokių minusų, nes jam nereikia keisti kitų elementų vietų, tik pakeisti rodykles į kitus narius. Tai taip pat iš dalies paaiškina, kodėl 2 strategija yra greitesnė nei 3, kai kalba eina apie list'ą.
 
 ## Testavimo sistemos parametrai
 

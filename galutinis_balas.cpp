@@ -181,25 +181,25 @@ int main()
         if (variantas == 1)
         {
             sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
-                 { return a.vardas < b.vardas; });
+                 { return a.vardas > b.vardas; });
         }
 
         else if (variantas == 2)
         {
             sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
-                 { return a.pavarde < b.pavarde; });
+                 { return a.pavarde > b.pavarde; });
         }
 
         else if (variantas == 3)
         {
             sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
-                 { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+                 { return SkaiciuotiV(a) < SkaiciuotiV(b); });
         }
 
         else if (variantas == 4)
         {
             sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
-                 { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+                 { return SkaiciuotiM(a) < SkaiciuotiM(b); });
         }
     }
     else if (k == 2)
@@ -207,25 +207,25 @@ int main()
         if (variantas == 1)
         {
             sort(B.begin(), B.end(), [](const Studentas &a, const Studentas &b)
-                 { return a.vardas < b.vardas; });
+                 { return a.vardas > b.vardas; });
         }
 
         else if (variantas == 2)
         {
             sort(B.begin(), B.end(), [](const Studentas &a, const Studentas &b)
-                 { return a.pavarde < b.pavarde; });
+                 { return a.pavarde > b.pavarde; });
         }
 
         else if (variantas == 3)
         {
             sort(B.begin(), B.end(), [](const Studentas &a, const Studentas &b)
-                 { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+                 { return SkaiciuotiV(a) < SkaiciuotiV(b); });
         }
 
         else if (variantas == 4)
         {
             sort(B.begin(), B.end(), [](const Studentas &a, const Studentas &b)
-                 { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+                 { return SkaiciuotiM(a) < SkaiciuotiM(b); });
         }
     }
     else if (k == 3)
@@ -233,25 +233,25 @@ int main()
         if (variantas == 1)
         {
             C.sort([](const Studentas &a, const Studentas &b)
-                   { return a.vardas < b.vardas; });
+                   { return a.vardas > b.vardas; });
         }
 
         else if (variantas == 2)
         {
             C.sort([](const Studentas &a, const Studentas &b)
-                   { return a.pavarde < b.pavarde; });
+                   { return a.pavarde > b.pavarde; });
         }
 
         else if (variantas == 3)
         {
             C.sort([](const Studentas &a, const Studentas &b)
-                   { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+                   { return SkaiciuotiV(a) < SkaiciuotiV(b); });
         }
 
         else if (variantas == 4)
         {
             C.sort([](const Studentas &a, const Studentas &b)
-                   { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+                   { return SkaiciuotiM(a) < SkaiciuotiM(b); });
         }
     }
     laikas = t3.elapsed();
