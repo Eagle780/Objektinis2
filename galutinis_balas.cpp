@@ -262,7 +262,7 @@ int main()
     while (true)
     {
         cout << "Koki duomenu rusiavimo buda naudoti?\n";
-        cout << "1 - vargsiuku ir galvociu, 2 - tik vargsiuku\n";
+        cout << "1 - vargsiuku ir galvociu, 2 - tik vargsiuku, 3 - greitesni su algoritmais\n";
 
         try
         {
@@ -276,7 +276,7 @@ int main()
             continue;
         }
 
-        if (var2 < 1 || var2 > 3)
+        if (var2 < 1 || var2 > 4)
         {
             cout << "Neteisingas skaicius\n";
             continue;
@@ -328,6 +328,28 @@ int main()
         }
         cout << dydis << " studentu surusiavimo i 1 konteineri laikas: " << laikas << "\n";
     }
+    else if (var2 == 3)
+    {
+        if (k == 1)
+        {
+            Timer t4;
+            pas = rusiuotiStudentus3(A, vargsiukai, variantas);
+            laikas = t4.elapsed();
+        }
+        else if (k == 2)
+        {
+            Timer t4;
+            pas = rusiuotiStudentus3(B, vargsiukaiB, variantas);
+            laikas = t4.elapsed();
+        }
+        else if (k == 3)
+        {
+            Timer t4;
+            pas = rusiuotiStudentus3(C, vargsiukaiC, variantas);
+            laikas = t4.elapsed();
+        }
+        cout << dydis << " studentu surusiavimo greitesniu budu su algoritmais laikas: " << laikas << "\n";
+    }
 
     Timer t2;
     if (var2 == 1)
@@ -342,13 +364,13 @@ int main()
             rasytiIFaila("vargsiukai.txt", vargsiukaiB, pas);
             rasytiIFaila("galvociai.txt", galvociaiB, pas);
         }
-        else if (k == 2)
+        else if (k == 3)
         {
             rasytiIFaila("vargsiukai.txt", vargsiukaiC, pas);
             rasytiIFaila("galvociai.txt", galvociaiC, pas);
         }
     }
-    else if (var2 == 2)
+    else if (var2 == 2 || var2 == 3)
     {
         if (k == 1)
         {
@@ -360,7 +382,7 @@ int main()
             rasytiIFaila("vargsiukai.txt", vargsiukaiB, pas);
             rasytiIFaila("galvociai.txt", B, pas);
         }
-        else if (k == 2)
+        else if (k == 3)
         {
             rasytiIFaila("vargsiukai.txt", vargsiukaiC, pas);
             rasytiIFaila("galvociai.txt", C, pas);

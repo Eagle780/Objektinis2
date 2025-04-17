@@ -175,6 +175,11 @@ void rasytiIFaila(string pav, list<Studentas> &v, string pas)
                { return SkaiciuotiM(a) > SkaiciuotiM(b); });
     }
     ofstream fr(pav);
+    if (!fr.is_open())
+    {
+        std::cerr << "Nepavyko atidaryti failo: " << pav << "\n";
+        return;
+    }
     fr << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)\n";
     fr << "--------------------------------------------------\n";
     for (const Studentas &i : v)
@@ -234,25 +239,75 @@ string rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, int var)
 
     if (pas == "v")
     {
+        for (auto t = A.begin(); t != A.end();)
+        {
+            if (SkaiciuotiV(*t) < 5.0)
+            {
+                v.push_back(*t);
+                t = A.erase(t);
+            }
+            else
+            {
+                ++t;
+            }
+        }
+    }
+    else
+    {
+        for (auto t = A.begin(); t != A.end();)
+        {
+            if (SkaiciuotiM(*t) < 5.0)
+            {
+                v.push_back(*t);
+                t = A.erase(t);
+            }
+            else
+            {
+                ++t;
+            }
+        }
+    }
+    return pas;
+}
+
+string rusiuotiStudentus3(list<Studentas> &A, list<Studentas> &v, int var)
+{
+    string pas = "";
+
+    if (var == 3)
+    {
+        pas = "v";
+    }
+    else if (var == 4)
+    {
+        pas = "m";
+    }
+
+    while (pas != "v" && pas != "m")
+    {
+        cout << "Studentus rusiuoti pagal vidurki ar mediana? (v/m)\n";
+        cin >> pas;
+    }
+
+    if (pas == "v")
+    {
         A.remove_if([&](const Studentas &st)
                     {
-                if (SkaiciuotiV(st) < 5.0)
-                {
-                    v.push_back(st);
-                    return true;
-                }
-                return false; });
+            if (SkaiciuotiV(st) < 5.0) {
+                v.push_back(st);
+                return true;
+            }
+            return false; });
     }
     else
     {
         A.remove_if([&](const Studentas &st)
                     {
-                if (SkaiciuotiV(st) < 5.0)
-                {
-                    v.push_back(st);
-                    return true;
-                }
-                return false; });
+            if (SkaiciuotiM(st) < 5.0) {
+                v.push_back(st);
+                return true;
+            }
+            return false; });
     }
     return pas;
 }

@@ -31,6 +31,7 @@ using std::left;
 using std::list;
 using std::numeric_limits;
 using std::ofstream;
+using std::partition;
 using std::rand;
 using std::setprecision;
 using std::setw;
@@ -200,6 +201,53 @@ string rusiuotiStudentus(T &A, T &v, int var)
 
     if (pas == "v")
     {
+        for (int i = A.size() - 1; i >= 0; --i)
+        {
+            if (SkaiciuotiV(A[i]) < 5.0)
+            {
+                v.push_back(A[i]);
+                A.erase(A.begin() + i);
+            }
+        }
+    }
+    else
+    {
+        for (int i = A.size() - 1; i >= 0; --i)
+        {
+            if (SkaiciuotiM(A[i]) < 5.0)
+            {
+                v.push_back(A[i]);
+                A.erase(A.begin() + i);
+            }
+        }
+    }
+    return pas;
+}
+
+string rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, int var);
+
+template <typename T>
+string rusiuotiStudentus3(T &A, T &v, int var)
+{
+    string pas = "";
+
+    if (var == 3)
+    {
+        pas = "v";
+    }
+    else if (var == 4)
+    {
+        pas = "m";
+    }
+
+    while (pas != "v" && pas != "m")
+    {
+        cout << "Studentus rusiuoti pagal vidurki ar mediana? (v/m)\n";
+        cin >> pas;
+    }
+
+    if (pas == "v")
+    {
         A.erase(remove_if(A.begin(), A.end(), [&](const Studentas &st)
                           {
                        if (SkaiciuotiV(st) < 5.0)
@@ -225,7 +273,7 @@ string rusiuotiStudentus(T &A, T &v, int var)
     return pas;
 }
 
-string rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, int var);
+string rusiuotiStudentus3(list<Studentas> &A, list<Studentas> &v, int var);
 
 void testuotiKurima(string &failas, int ndDydis, int &dydis);
 

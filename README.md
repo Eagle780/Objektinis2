@@ -56,7 +56,7 @@ Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimu
 | 10,000 įrašų     | 0.01694           | 0.0303             | 0.0276              |
 | 100,000 įrašų    | 0.354             | 0.376              | 0.354               |
 | 1,000,000 įrašų  | 1.937             | 4.932              | 4.205               |
-| 10,000,000 įrašų | 18.483            | 77.137             | 58.095              |
+| 10,000,000 įrašų | 18.483            | 77.137             | 4.717               |
 
 ### deque
 
@@ -66,7 +66,7 @@ Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimu
 | 10,000 įrašų     | 0.0148            | 0.0252             | 0.0268              |
 | 100,000 įrašų    | 0.179             | 0.387              | 0.374               |
 | 1,000,000 įrašų  | 1.952             | 5.101              | 4.349               |
-| 10,000,000 įrašų | 18.483            | 75.658             | 60.246              |
+| 10,000,000 įrašų | 18.483            | 76.858             | 4.821               |
 
 ### list
 
@@ -76,7 +76,45 @@ Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimu
 | 10,000 įrašų     | 0.0178            | 0.0382             | 0.0231              |
 | 100,000 įrašų    | 0.185             | 0.342              | 0.275               |
 | 1,000,000 įrašų  | 2.093             | 5.427              | 3.029               |
-| 10,000,000 įrašų | 18.732            | 77.154             | 36.575              |
+| 10,000,000 įrašų | 18.732            | 77.154             | 6.214               |
+
+## Strategijos testavimo rezultatai
+
+Testuojama buvo ne vien lyginant skirtingų konteinerių naudojimą, bet ir pritaikant skirtingas studentų rūšiavimo strategijas
+
+1 strategija: Studentai rūšiuojami į du skirtingus to pačio tipo konteinerius,
+2 strategija: Naudojamas tik vienas papildomas konteineris, o perkelti įrašai ištrinami iš pradinio konteinerio
+3 strategija: Greitesnis iš 2-ų buvusių taip pat taikant ir bibliotekas
+
+### vector
+
+| Failo dydis      | 1 strategija | 2 strategija | 3 strategija |
+| ---------------- | ------------ | ------------ | ------------ |
+| 1,000 įrašų      | 0.00030      | 0.00029      | 0.00024      |
+| 10,000 įrašų     | 0.0027       | 0.0022       | 0.0018       |
+| 100,000 įrašų    | 0.030        | 0.028        | 0.013        |
+| 1,000,000 įrašų  | 0.457        | 0.304        | 0.235        |
+| 10,000,000 įrašų | 4.868        | 4.633        | 4.268        |
+
+### deque
+
+| Failo dydis      | 1 strategija | 2 strategija | 3 strategija |
+| ---------------- | ------------ | ------------ | ------------ |
+| 1,000 įrašų      | 0.00039      | 0.00026      | 0.00023      |
+| 10,000 įrašų     | 0.0027       | 0.0021       | 0.0019       |
+| 100,000 įrašų    | 0.031        | 0.031        | 0.016        |
+| 1,000,000 įrašų  | 0.427        | 0.332        | 0.253        |
+| 10,000,000 įrašų | 4.866        | 4.757        | 4.411        |
+
+### list
+
+| Failo dydis      | 1 strategija | 2 strategija | 3 strategija |
+| ---------------- | ------------ | ------------ | ------------ |
+| 1,000 įrašų      | 0.00052      | 0.00023      | 0.00032      |
+| 10,000 įrašų     | 0.0041       | 0.0020       | 0.0024       |
+| 100,000 įrašų    | 0.043        | 0.025        | 0.029        |
+| 1,000,000 įrašų  | 0.430        | 0.302        | 0.392        |
+| 10,000,000 įrašų | 6.158        | 4.731        | 6.329        |
 
 ## Testavimo sistemos parametrai
 
