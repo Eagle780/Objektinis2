@@ -6,37 +6,9 @@ void cinEx()
     cin.exceptions(ios::failbit | ios::badbit);
 }
 
-float SkaiciuotiV(Studentas A)
-{
-    int s = 0;
-    for (int i = 0; i < A.nd.size(); i++)
-    {
-        s += A.nd[i];
-    }
-    float galutinis = 0.4 * (1.0 * s / A.nd.size()) + 0.6 * A.egz;
-    return galutinis;
-}
-
-float SkaiciuotiM(Studentas A)
-{
-    float paz;
-    sort(A.nd.begin(), A.nd.end());
-
-    if (A.nd.size() % 2 == 0)
-    {
-        paz = 1.0 * (A.nd[A.nd.size() / 2 - 1] + A.nd[A.nd.size() / 2]) / 2;
-    }
-    else
-    {
-        paz = A.nd[A.nd.size() / 2];
-    }
-
-    float galutinis = 0.4 * paz + 0.6 * A.egz;
-    return galutinis;
-}
-
 Studentas generuotiPazymius(Studentas temp)
 {
+    vector<int> nd;
     int n = 0;
     int a = 0;
     while (true)
@@ -67,10 +39,11 @@ Studentas generuotiPazymius(Studentas temp)
     for (int i = 0; i < n; i++)
     {
         a = 1 + rand() % 10;
-        temp.nd.push_back(a);
+        nd.push_back(a);
     }
 
-    temp.egz = 1 + rand() % 10;
+    int egz = 1 + rand() % 10;
+    temp.setPaz(nd, egz);
 
     return temp;
 }
@@ -82,14 +55,16 @@ Studentas generuotiVardus(Studentas temp)
 
     srand(time(0));
 
-    temp.vardas = Vardai[rand() % Vardai.size()];
-    temp.pavarde = Pavardes[rand() % Pavardes.size()];
+    string vardas = Vardai[rand() % Vardai.size()];
+    string pavarde = Pavardes[rand() % Pavardes.size()];
+    temp.setVarPav(vardas, pavarde);
 
     return temp;
 }
 
 Studentas irasytiPazymius(Studentas temp)
 {
+    vector<int> nd;
     int a;
     cout << "Iveskite pazymius (norint baigti pazymiu rasyma, irasykite 0):\n";
     while (true)
@@ -108,11 +83,11 @@ Studentas irasytiPazymius(Studentas temp)
 
         if (a > 0 && a <= 10)
         {
-            temp.nd.push_back(a);
+            nd.push_back(a);
         }
         else if (a == 0)
         {
-            if (temp.nd.size() == 0)
+            if (nd.size() == 0)
                 cout << "Iveskite bent viena pazymi\n";
             else
                 break;
@@ -147,17 +122,19 @@ Studentas irasytiPazymius(Studentas temp)
         }
     }
 
-    temp.egz = a;
+    temp.setPaz(nd, a);
 
     return temp;
 }
 
 Studentas irasytiVarda(Studentas temp)
 {
+    string vardas, pavarde;
     cout << "Iveskite varda: ";
-    cin >> temp.vardas;
+    cin >> vardas;
     cout << "Iveskite pavarde: ";
-    cin >> temp.pavarde;
+    cin >> pavarde;
+    temp.setVarPav(vardas, pavarde);
 
     return temp;
 }
@@ -167,12 +144,12 @@ void rasytiIFaila(string pav, list<Studentas> &v, string pas)
     if (pas == "v")
     {
         v.sort([](const Studentas &a, const Studentas &b)
-               { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+               { return a.SkaiciuotiV() > b.SkaiciuotiV(); });
     }
     else if (pas == "m")
     {
         v.sort([](const Studentas &a, const Studentas &b)
-               { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+               { return a.SkaiciuotiM() > b.SkaiciuotiM(); });
     }
     ofstream fr(pav);
     if (!fr.is_open())
@@ -184,8 +161,8 @@ void rasytiIFaila(string pav, list<Studentas> &v, string pas)
     fr << "--------------------------------------------------\n";
     for (const Studentas &i : v)
     {
-        fr << left << setw(12) << i.vardas << setw(16) << i.pavarde;
-        fr << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << "\n";
+        fr << left << setw(12) << i.getVardas() << setw(16) << i.getPavarde();
+        fr << fixed << setw(17) << setprecision(2) << i.SkaiciuotiV() << i.SkaiciuotiM() << "\n";
     }
 }
 
@@ -241,7 +218,7 @@ string rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, int var)
     {
         for (auto t = A.begin(); t != A.end();)
         {
-            if (SkaiciuotiV(*t) < 5.0)
+            if (t->SkaiciuotiV() < 5.0)
             {
                 v.push_back(*t);
                 t = A.erase(t);
@@ -256,7 +233,7 @@ string rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, int var)
     {
         for (auto t = A.begin(); t != A.end();)
         {
-            if (SkaiciuotiM(*t) < 5.0)
+            if (t->SkaiciuotiM() < 5.0)
             {
                 v.push_back(*t);
                 t = A.erase(t);
@@ -293,7 +270,7 @@ string rusiuotiStudentus3(list<Studentas> &A, list<Studentas> &v, int var)
     {
         A.remove_if([&](const Studentas &st)
                     {
-            if (SkaiciuotiV(st) < 5.0) {
+            if (st.SkaiciuotiV() < 5.0) {
                 v.push_back(st);
                 return true;
             }
@@ -303,7 +280,7 @@ string rusiuotiStudentus3(list<Studentas> &A, list<Studentas> &v, int var)
     {
         A.remove_if([&](const Studentas &st)
                     {
-            if (SkaiciuotiM(st) < 5.0) {
+            if (st.SkaiciuotiM() < 5.0) {
                 v.push_back(st);
                 return true;
             }

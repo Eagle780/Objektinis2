@@ -43,18 +43,62 @@ using std::time;
 using std::to_string;
 using std::vector;
 
-struct Studentas
+class Studentas
 {
+private:
     string vardas;
     string pavarde;
     vector<int> nd;
     int egz;
-    float galutinis;
+
+public:
+    Studentas() : egz(0) {}
+    Studentas(string v, string p, vector<int> n, int e)
+    {
+        vardas = v;
+        pavarde = p;
+        nd = n;
+        egz = e;
+    };
+    void setVarPav(string v, string p)
+    {
+        vardas = v;
+        pavarde = p;
+    }
+    inline string getVardas() const { return vardas; }
+    inline string getPavarde() const { return pavarde; }
+    inline int getEgz() const { return egz; }
+    inline vector<int> getNd() const { return nd; }
+    float SkaiciuotiV() const
+    {
+        int s = 0;
+        for (int i = 0; i < nd.size(); i++)
+        {
+            s += nd[i];
+        }
+        float galutinis = 0.4 * (1.0 * s / nd.size()) + 0.6 * egz;
+        return galutinis;
+    }
+    float SkaiciuotiM() const
+    {
+        float paz;
+        sort(nd.begin(), nd.end());
+
+        if (nd.size() % 2 == 0)
+        {
+            paz = 1.0 * (nd[nd.size() / 2 - 1] + nd[nd.size() / 2]) / 2;
+        }
+        else
+        {
+            paz = nd[nd.size() / 2];
+        }
+
+        float galutinis = 0.4 * paz + 0.6 * egz;
+        return galutinis;
+    }
 };
 
 void cinEx();
-float SkaiciuotiV(Studentas A);
-float SkaiciuotiM(Studentas A);
 Studentas generuotiPazymius(Studentas temp);
 Studentas generuotiVardus(Studentas temp);
 Studentas irasytiPazymius(Studentas temp);
@@ -88,6 +132,8 @@ void rasytiIFaila(string pav, list<Studentas> &v, string pas);
 template <typename T>
 void skaitytiFaila(string failas, T &A)
 {
+
+    vector<int> nd;
     try
     {
         ifstream fd(failas);
@@ -102,6 +148,8 @@ void skaitytiFaila(string failas, T &A)
         string vardas, pavarde;
         while (fd >> vardas >> pavarde)
         {
+            int egz = 0;
+            nd.clear();
             Studentas temp;
             temp.vardas = vardas;
             temp.pavarde = pavarde;
@@ -117,10 +165,11 @@ void skaitytiFaila(string failas, T &A)
                 visiPazymiai.push_back(pazimys);
             }
 
-            temp.egz = visiPazymiai.back();
+            egz = visiPazymiai.back();
             visiPazymiai.pop_back();
-            temp.nd = visiPazymiai;
+            nd = visiPazymiai;
 
+            Studentas temp(vardas, pavarde, nd, egz);
             A.push_back(temp);
         }
         fd.close();
