@@ -167,6 +167,8 @@ Programos greitis gali priklausyti ne vien nuo pačio kodo pateikimų, bet ir nu
 | O2      | 1.086             | 2.796      | 0.229               | 4.079              | 8.195          |
 | O3      | 1.137             | 3.108      | 0.239               | 4.194              | 8.652          |
 
+Kaip galima pastebėti iš rezultatų, greičiausias flag'as yra ne O3, bet O2. Taip gali atsitikti todėl, nes O3 taiko sudėtingesnius kompiliavimo metodus, kurie parodo savo naudą naudojant dar daugiau duomenų, nei buvo naudojama dabar.
+
 ## Testavimo sistemos parametrai
 
 - CPU - AMD Ryzen 5 5600H, 3.30GHz
