@@ -1,4 +1,4 @@
-# 1.0 versija
+# 1.1 versija
 
 Projekto Apžvalga
 
