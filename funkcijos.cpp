@@ -216,7 +216,7 @@ string rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, int var)
 
     if (pas == "v")
     {
-        for (auto t = A.begin(); t != A.end();)
+        for (auto t = A.end(); t != A.begin();)
         {
             if (t->SkaiciuotiV() < 5.0)
             {
@@ -225,13 +225,13 @@ string rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, int var)
             }
             else
             {
-                ++t;
+                --t;
             }
         }
     }
     else
     {
-        for (auto t = A.begin(); t != A.end();)
+        for (auto t = A.end(); t != A.begin();)
         {
             if (t->SkaiciuotiM() < 5.0)
             {
@@ -240,7 +240,7 @@ string rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, int var)
             }
             else
             {
-                ++t;
+                --t;
             }
         }
     }

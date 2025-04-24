@@ -50,6 +50,7 @@ private:
     string pavarde;
     vector<int> nd;
     int egz;
+    int galutinis;
 
 public:
     Studentas() : egz(0) {}
@@ -60,15 +61,29 @@ public:
         nd = n;
         egz = e;
     };
+    Studentas(const Studentas &) = default;
+    Studentas &operator=(const Studentas &) = default;
+    Studentas(Studentas &&) = default;
+    Studentas &operator=(Studentas &&) = default;
     void setVarPav(string v, string p)
     {
         vardas = v;
         pavarde = p;
     }
+    void setPaz(vector<int> n, int e)
+    {
+        nd = n;
+        egz = e;
+    }
+    void setGal(int g)
+    {
+        galutinis = g;
+    }
     inline string getVardas() const { return vardas; }
     inline string getPavarde() const { return pavarde; }
     inline int getEgz() const { return egz; }
     inline vector<int> getNd() const { return nd; }
+    inline int getGal() const { return galutinis; }
     float SkaiciuotiV() const
     {
         int s = 0;
@@ -81,16 +96,17 @@ public:
     }
     float SkaiciuotiM() const
     {
+        vector<int> nd2 = nd;
         float paz;
-        sort(nd.begin(), nd.end());
+        sort(nd2.begin(), nd2.end());
 
-        if (nd.size() % 2 == 0)
+        if (nd2.size() % 2 == 0)
         {
-            paz = 1.0 * (nd[nd.size() / 2 - 1] + nd[nd.size() / 2]) / 2;
+            paz = 1.0 * (nd2[nd2.size() / 2 - 1] + nd2[nd2.size() / 2]) / 2;
         }
         else
         {
-            paz = nd[nd.size() / 2];
+            paz = nd2[nd2.size() / 2];
         }
 
         float galutinis = 0.4 * paz + 0.6 * egz;
@@ -110,20 +126,20 @@ void rasytiIFaila(string pav, T &v, string pas)
     if (pas == "v")
     {
         sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
-             { return SkaiciuotiV(a) > SkaiciuotiV(b); });
+             { return a.SkaiciuotiV() > b.SkaiciuotiV(); });
     }
     else if (pas == "m")
     {
         sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
-             { return SkaiciuotiM(a) > SkaiciuotiM(b); });
+             { return a.SkaiciuotiM() > b.SkaiciuotiM(); });
     }
     ofstream fr(pav);
     fr << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)\n";
     fr << "--------------------------------------------------\n";
     for (const Studentas &i : v)
     {
-        fr << left << setw(12) << i.vardas << setw(16) << i.pavarde;
-        fr << fixed << setw(17) << setprecision(2) << SkaiciuotiV(i) << SkaiciuotiM(i) << "\n";
+        fr << left << setw(12) << i.getVardas() << setw(16) << i.getPavarde();
+        fr << fixed << setw(17) << setprecision(2) << i.SkaiciuotiV() << i.SkaiciuotiM() << "\n";
     }
 }
 
@@ -150,9 +166,6 @@ void skaitytiFaila(string failas, T &A)
         {
             int egz = 0;
             nd.clear();
-            Studentas temp;
-            temp.vardas = vardas;
-            temp.pavarde = pavarde;
 
             string eilute;
             getline(fd, eilute);
@@ -207,8 +220,8 @@ string rusiuotiStudentus(T &A, T &v, T &g, int var)
     {
         for (Studentas st : A)
         {
-            st.galutinis = SkaiciuotiV(st);
-            if (st.galutinis < 5.0)
+            st.setGal(st.SkaiciuotiV());
+            if (st.getGal() < 5.0)
                 v.push_back(st);
             else
                 g.push_back(st);
@@ -218,8 +231,8 @@ string rusiuotiStudentus(T &A, T &v, T &g, int var)
     {
         for (Studentas st : A)
         {
-            st.galutinis = SkaiciuotiM(st);
-            if (st.galutinis < 5.0)
+            st.setGal(st.SkaiciuotiM());
+            if (st.getGal() < 5.0)
                 v.push_back(st);
             else
                 g.push_back(st);
@@ -252,10 +265,10 @@ string rusiuotiStudentus(T &A, T &v, int var)
     {
         for (int i = A.size() - 1; i >= 0; --i)
         {
-            if (SkaiciuotiV(A[i]) < 5.0)
+            if (A[i].SkaiciuotiV() < 5.0)
             {
                 v.push_back(A[i]);
-                A.erase(A.begin() + i);
+                A.pop_back();
             }
         }
     }
@@ -263,10 +276,10 @@ string rusiuotiStudentus(T &A, T &v, int var)
     {
         for (int i = A.size() - 1; i >= 0; --i)
         {
-            if (SkaiciuotiM(A[i]) < 5.0)
+            if (A[i].SkaiciuotiM() < 5.0)
             {
                 v.push_back(A[i]);
-                A.erase(A.begin() + i);
+                A.pop_back();
             }
         }
     }
@@ -299,7 +312,7 @@ string rusiuotiStudentus3(T &A, T &v, int var)
     {
         A.erase(remove_if(A.begin(), A.end(), [&](const Studentas &st)
                           {
-                       if (SkaiciuotiV(st) < 5.0)
+                       if (st.SkaiciuotiV() < 5.0)
                        {
                            v.push_back(st);
                            return true;
@@ -311,7 +324,7 @@ string rusiuotiStudentus3(T &A, T &v, int var)
     {
         A.erase(remove_if(A.begin(), A.end(), [&](const Studentas &st)
                           {
-                       if (SkaiciuotiM(st) < 5.0)
+                       if (st.SkaiciuotiM() < 5.0)
                        {
                            v.push_back(st);
                            return true;
