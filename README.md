@@ -153,6 +153,19 @@ Išbandžius visas strategijas su visais konteineriais, galime pastebėti įdom�
 | 100,000 įrašų   | 0.260             | 0.128      | 0.021               | 0.257              | 0.733          |
 | 1,000,000 įrašų | 2.626             | 1.609      | 0.277               | 3.286              | 7.835          |
 
+Iš rezultatų matome, kad, nors ir nežymiai, klasė veikia greičiau nei struktūra.
+
+## Kompiliatoriaus flag'ų testavimo rezultatai
+
+Programos greitis gali priklausyti ne vien nuo pačio kodo pateikimų, bet ir nuo paprasto flag'o (kompiliatoriaus optimizavimo lygio) pakeitimo kompiliuojant kodą. Testavimui naudotas 1,000,000 studentų failas bei vektorius ir 3 strategija:
+
+| Flag    | Duomenų skaitymas | Rūšiavimas | Studentų rūšiavimas | Išvedimas į failus | Bendras laikas |
+| ------- | ----------------- | ---------- | ------------------- | ------------------ | -------------- |
+| Be flag | 1.953             | 15.422     | 0.606               | 15.954             | 33.939         |
+| O1      | 1.124             | 2.935      | 0.237               | 4.270              | 8.570          |
+| O2      | 1.086             | 2.796      | 0.229               | 4.079              | 8.195          |
+| O3      | 1.137             | 3.108      | 0.239               | 4.194              | 8.652          |
+
 ## Testavimo sistemos parametrai
 
 - CPU - AMD Ryzen 5 5600H, 3.30GHz
