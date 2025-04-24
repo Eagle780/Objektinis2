@@ -14,7 +14,7 @@ Projekto Apžvalga
 - v0.4: programa pati generuoja reikiamus failus, kuriuos naudoja tolimesniems skaičiavimams, pridėti laiko matavimai,
 - v1.0: programa papildyta dar dviem konteineriais ir 3-jomis strategijomis.
 
-## Platrsnis programos aprašymas
+## Platesnis programos aprašymas
 
 ### Failų generavimas:
 
