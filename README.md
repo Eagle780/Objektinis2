@@ -133,7 +133,25 @@ Testuojama buvo ne vien lyginant skirtingų konteinerių naudojimą, bet ir prit
 | 1,000,000 įrašų  | 0.430        | 0.302        | 0.392        |
 | 10,000,000 įrašų | 6.158        | 4.731        | 6.329        |
 
-Išbandžius visas strategijas su visais konteineriais, galime pastebėti įdomų dalyką, kad 3 startegija yra greičiausia su visais konteineriais išskyrus list'ą. Norint naudoti list'ą būtų geriausia taikyti 2 strategiją. 2 strategijos neefktyvumą, atsižvelgiant į vektorių ir deque laikus, galima paaiškinti tuo, kad atliekant kiekvieną perkėlimo operaciją, visi prieš tai buvę elementai turi būti perkelti per vieną narį. List'as nepatiria tokių minusų, nes jam nereikia keisti kitų elementų vietų, tik pakeisti rodykles į kitus narius. Tai taip pat iš dalies paaiškina, kodėl 2 strategija yra greitesnė nei 3, kai kalba eina apie list'ą.
+Išbandžius visas strategijas su visais konteineriais, galime pastebėti įdomų dalyką, kad 3 startegija yra greičiausia su visais konteineriais išskyrus list'ą. Norint naudoti list'ą būtų geriausia taikyti 2 strategiją. 2 strategijos neefktyvumą, atsižvelgiant į vektorių ir deque laikus, galima paaiškinti tuo, kad atliekant kiekvieną perkėlimo operaciją, visi elementai turi būti perkopijuoti į naują vietą, neskaitant išmesto elemento. List'as nepatiria tokių minusų, nes jam reikia tik pakeisti rodykles į kitus narius. Tai taip pat iš dalies paaiškina, kodėl 2 strategija yra greitesnė nei 3, kai kalba eina apie list'ą.
+
+## Struktūros ir klasės testavimo rezultatai
+
+Šioje versijoje taip pat reikėjo palyginti realizacijos spartą naudojant struktūrą (v1.0) ir klasę (dabartinė, v1.1). Abi programos naudojo vektorių ir 3 strategiją:
+
+### klasė
+
+| Failo dydis     | Duomenų skaitymas | Rūšiavimas | Studentų rūšiavimas | Išvedimas į failus | Bendras laikas |
+| --------------- | ----------------- | ---------- | ------------------- | ------------------ | -------------- |
+| 100,000 įrašų   | 0.203             | 0.103      | 0.020               | 0.266              | 0.689          |
+| 1,000,000 įrašų | 2.142             | 1.196      | 0.251               | 2.165              | 5.901          |
+
+### struktūra
+
+| Failo dydis     | Duomenų skaitymas | Rūšiavimas | Studentų rūšiavimas | Išvedimas į failus | Bendras laikas |
+| --------------- | ----------------- | ---------- | ------------------- | ------------------ | -------------- |
+| 100,000 įrašų   | 0.260             | 0.128      | 0.021               | 0.257              | 0.733          |
+| 1,000,000 įrašų | 2.626             | 1.609      | 0.277               | 3.286              | 7.835          |
 
 ## Testavimo sistemos parametrai
 
