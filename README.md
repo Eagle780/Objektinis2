@@ -4,14 +4,15 @@ Projekto Apžvalga
 
 Ši programa sugeneruoja studentų duomenų failus, suskaičiuoja studentų galutinį balą pagal pasirinktą kriterijų suskirsto studentus į dvi kategorijas pagal jų galutinį balą ir matuoja užtruktą laiką kiekviename etape.
 
-Šioje versijoje taip pat pridėta galimybė pasirinkti, kokio tipo konteinerį (vector, deque ar list) norite naudoti.
+Šioje versijoje taip pat pridėta galimybė pasirinkti, kokio tipo konteinerį (vector, deque ar list) ir kokią strategiją norite naudoti.
 
 ## Praeitų versijų aprašymai
 
 - v0.1: programa leidžia įrašyti arba sugeneruoti savus studentus, o rezultatus rodo ekrane,
 - v0.2: pridėtas skaitymas iš failo/ surašymas į failą,
 - v0.3: funkcijos ir struktūros perkeltos į atskirus failus, pridėtas išimčių valdymas, leidžiantis sumažinti programos užstigimų šansą,
-- v0.4: programa pati generuoja reikiamus failus, kuriuos naudoja tolimesniems skaičiavimams, pridėti laiko matavimai.
+- v0.4: programa pati generuoja reikiamus failus, kuriuos naudoja tolimesniems skaičiavimams, pridėti laiko matavimai,
+- v1.0: programa papildyta dar dviem konteineriais ir 3-jomis strategijomis.
 
 ## Platrsnis programos aprašymas
 
