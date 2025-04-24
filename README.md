@@ -60,6 +60,12 @@ Pirmą kartą paleidus programą bus sugeneruojami visi 5 testavimo failai. Visi
 Pradžioje Jūsų bus prašoma pasirinkti norimą konteinerį, po to pateiktas meniu leis išsirinkti naujų studentų įrašymų būdą. Baigus įrašymą (arba norint iškart skaityti studentus iš failo) pasirenkamas 4-tas meniu variantas. Tada galėsite pasirinkti, pagal ką norite rūšiuoti pagrindinį konteinerį. Po rūšiavimo liks pasirinkti būdą, kuriuo norite suskirstyti "vargšiukus" ir "galvočius" į skirtingus konteinerius.
 Baigus darbą spaudžiama "Enter".
 
+## Testavimo sistemos parametrai
+
+- CPU - AMD Ryzen 5 5600H, 3.30GHz
+- RAM - 2x8GB DDR4 3200MHz
+- SSD - PCIe gen 3 NVMe M.2 512GB
+
 ## Spartos Testavimo Rezultatai
 
 Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimus. Žemiau pateikiamos rezultatų lentelės:
@@ -168,12 +174,6 @@ Programos greitis gali priklausyti ne vien nuo pačio kodo pateikimų, bet ir nu
 | O3      | 1.137             | 3.108      | 0.239               | 4.194              | 8.652          |
 
 Kaip galima pastebėti iš rezultatų, greičiausias flag'as yra ne O3, bet O2. Taip gali atsitikti todėl, nes O3 taiko sudėtingesnius kompiliavimo metodus, kurie parodo savo naudą naudojant dar daugiau duomenų, nei buvo naudojama dabar.
-
-## Testavimo sistemos parametrai
-
-- CPU - AMD Ryzen 5 5600H, 3.30GHz
-- RAM - 2x8GB DDR4 3200MHz
-- SSD - PCIe gen 3 NVMe M.2 512GB
 
 ## Nuotraukos
 
