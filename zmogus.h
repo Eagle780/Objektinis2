@@ -1,5 +1,5 @@
-#ifndef STUDENT_H
-#define STUDENT_H
+#ifndef ZMOGUS_H
+#define ZMOGUS_H
 
 #include <string>
 #include <iostream>
