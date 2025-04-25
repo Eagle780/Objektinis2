@@ -7,7 +7,9 @@
 #include <iostream>
 
 using std::cout;
+using std::istream;
 using std::move;
+using std::ostream;
 using std::sort;
 using std::string;
 using std::vector;
@@ -68,6 +70,9 @@ public:
     Studentas &operator=(Studentas &&st) noexcept
     {
         cout << "Studento perkelimo operacija\n";
+        if (this == &st)
+            return *this;
+
         vardas = move(st.vardas);
         pavarde = move(st.pavarde);
         nd = move(st.nd);
@@ -75,6 +80,27 @@ public:
         galutinis = st.galutinis;
 
         return *this;
+    }
+    friend ostream &operator<<(ostream &os, const Studentas &st)
+    {
+        os << st.vardas << " " << st.pavarde << " " << st.SkaiciuotiV() << " " << st.SkaiciuotiM() << "\n";
+    }
+    friend istream &operator>>(istream &is, Studentas &st)
+    {
+        is >> st.vardas >> st.pavarde;
+
+        int paz;
+        while (is >> paz)
+        {
+            st.nd.push_back(paz);
+            if (is.peek() == '\n')
+            {
+                break;
+            }
+        }
+        is >> st.egz;
+
+        return is;
     }
     void setVarPav(string v, string p)
     {
