@@ -52,6 +52,13 @@ int main()
 
     if (test == 't')
     {
+        TEST_MODE = true;
+        // Zmogus t
+
+        // Zmogus *temp = new Studentas();
+        // cout << temp << "\n";
+        // delete temp;
+
         Studentas temp1;
         cin >> temp1;
         cout << temp1;
@@ -74,6 +81,8 @@ int main()
         temp3 = move(temp4);
         cout << "temp2: " << temp2;
         cout << "temp3: " << temp3;
+
+        TEST_MODE = false;
     }
     cout << "\n";
 

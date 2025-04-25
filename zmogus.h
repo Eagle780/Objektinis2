@@ -2,12 +2,7 @@
 #define ZMOGUS_H
 
 #include <string>
-#include <iostream>
 
-using std::cout;
-using std::istream;
-using std::move;
-using std::ostream;
 using std::string;
 
 class Zmogus

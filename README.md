@@ -1,4 +1,4 @@
-# 1.2 versija
+# 1.5 versija
 
 Projekto Apžvalga
 
@@ -13,7 +13,8 @@ Projekto Apžvalga
 - v0.3: funkcijos ir struktūros perkeltos į atskirus failus, pridėtas išimčių valdymas, leidžiantis sumažinti programos užstigimų šansą,
 - v0.4: programa pati generuoja reikiamus failus, kuriuos naudoja tolimesniems skaičiavimams, pridėti laiko matavimai,
 - v1.0: programa papildyta dar dviem konteineriais ir 3-jomis strategijomis,
-- v1.1: "Studentas" pakeistas iš stuktūros į klasę.
+- v1.1: "Studentas" pakeistas iš stuktūros į klasę,
+- v1.2: Sukurti Studento klasės kopijavimo ir perkėlimo konstruktoriai ir metodai ir perdengtos įvesties ir išvesties operacijos.
 
 ## Platesnis programos aprašymas
 

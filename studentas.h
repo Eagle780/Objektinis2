@@ -17,6 +17,8 @@ using std::sort;
 using std::string;
 using std::vector;
 
+inline bool TEST_MODE = false;
+
 class Studentas : public Zmogus
 {
 private:
@@ -37,7 +39,8 @@ public:
     };
     Studentas(const Studentas &st)
     {
-        cout << "Studento kopijavimo konstruktorius\n";
+        if (TEST_MODE)
+            cout << "Studento kopijavimo konstruktorius\n";
         vardas = st.vardas;
         pavarde = st.pavarde;
         nd = st.nd;
@@ -46,7 +49,8 @@ public:
     }
     Studentas &operator=(const Studentas &st)
     {
-        cout << "Studento kopijavimo operacija\n";
+        if (TEST_MODE)
+            cout << "Studento kopijavimo operacija\n";
         if (this == &st)
             return *this;
 
@@ -63,7 +67,8 @@ public:
     }
     Studentas(Studentas &&st) noexcept
     {
-        cout << "Studento perkelimo konstruktorius\n";
+        if (TEST_MODE)
+            cout << "Studento perkelimo konstruktorius\n";
         vardas = move(st.vardas);
         pavarde = move(st.pavarde);
         nd = move(st.nd);
@@ -72,7 +77,8 @@ public:
     }
     Studentas &operator=(Studentas &&st) noexcept
     {
-        cout << "Studento perkelimo operacija\n";
+        if (TEST_MODE)
+            cout << "Studento perkelimo operacija\n";
         if (this == &st)
             return *this;
 
@@ -126,8 +132,8 @@ public:
     {
         galutinis = g;
     }
-    inline string getVardas() const { return vardas; }
-    inline string getPavarde() const { return pavarde; }
+    inline string getVardas() const override { return vardas; }
+    inline string getPavarde() const override { return pavarde; }
     inline int getEgz() const { return egz; }
     inline vector<int> getNd() const { return nd; }
     inline int getGal() const { return galutinis; }
@@ -161,7 +167,8 @@ public:
     }
     ~Studentas()
     {
-        cout << "Studento destruktorius\n";
+        if (TEST_MODE)
+            cout << "Studento destruktorius\n";
         vardas.clear();
         pavarde.clear();
         nd.clear();
