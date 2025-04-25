@@ -166,14 +166,25 @@ Iš rezultatų matome, kad, nors ir nežymiai, klasė veikia greičiau nei struk
 
 Programos greitis gali priklausyti ne vien nuo pačio kodo pateikimų, bet ir nuo paprasto flag'o (kompiliatoriaus optimizavimo lygio) pakeitimo kompiliuojant kodą. Testavimui naudotas 1,000,000 studentų failas bei vektorius ir 3 strategija:
 
-| Flag    | Duomenų skaitymas | Rūšiavimas | Studentų rūšiavimas | Išvedimas į failus | Bendras laikas |
-| ------- | ----------------- | ---------- | ------------------- | ------------------ | -------------- |
-| Be flag | 1.953             | 15.422     | 0.606               | 15.954             | 33.939         |
-| O1      | 1.124             | 2.935      | 0.237               | 4.270              | 8.570          |
-| O2      | 1.086             | 2.796      | 0.229               | 4.079              | 8.195          |
-| O3      | 1.137             | 3.108      | 0.239               | 4.194              | 8.652          |
+### Klasė
 
-Kaip galima pastebėti iš rezultatų, greičiausias flag'as yra ne O3, bet O2. Taip gali atsitikti todėl, nes O3 taiko sudėtingesnius kompiliavimo metodus, kurie parodo savo naudą naudojant dar daugiau duomenų, nei buvo naudojama dabar.
+| Flag    | Duomenų skaitymas | Rūšiavimas | Studentų rūšiavimas | Išvedimas į failus | Bendras laikas | dydis (KB) |
+| ------- | ----------------- | ---------- | ------------------- | ------------------ | -------------- | ---------- |
+| Be flag | 1.953             | 15.422     | 0.606               | 15.954             | 33.939         | 722        |
+| O1      | 1.124             | 2.935      | 0.237               | 4.270              | 8.570          | 379        |
+| O2      | 1.086             | 2.796      | 0.229               | 4.079              | 8.195          | 349        |
+| O3      | 1.137             | 3.108      | 0.239               | 4.194              | 8.652          | 358        |
+
+### Struktūra
+
+| Flag    | Duomenų skaitymas | Rūšiavimas | Studentų rūšiavimas | Išvedimas į failus | Bendras laikas | dydis (KB) |
+| ------- | ----------------- | ---------- | ------------------- | ------------------ | -------------- | ---------- |
+| Be flag | 1.869             | 16.665     | 0.623               | 16.668             | 34.533         | 721        |
+| O1      | 1.093             | 3.549      | 0.269               | 5.143              | 10.349         | 383        |
+| O2      | 1.146             | 3.458      | 0.275               | 4.878              | 9.891          | 351        |
+| O3      | 1.112             | 3.475      | 0.276               | 4.946              | 10.043         | 354        |
+
+Kaip galima pastebėti iš rezultatų, greičiausias (ir mažiausiai vietos užimantis) flag'as yra ne O3, bet O2. Taip gali atsitikti todėl, nes O3 taiko sudėtingesnius kompiliavimo metodus, kurie parodo savo naudą naudojant dar daugiau duomenų, nei buvo naudojama dabar.
 
 ## Nuotraukos
 
