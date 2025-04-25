@@ -58,6 +58,7 @@ public:
     }
     Studentas(Studentas &&st) noexcept
     {
+        cout << "Studento perkelimo konstruktorius\n";
         vardas = move(st.vardas);
         pavarde = move(st.pavarde);
         nd = move(st.nd);
@@ -66,6 +67,7 @@ public:
     }
     Studentas &operator=(Studentas &&st) noexcept
     {
+        cout << "Studento perkelimo operacija\n";
         vardas = move(st.vardas);
         pavarde = move(st.pavarde);
         nd = move(st.nd);
