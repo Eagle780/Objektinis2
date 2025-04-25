@@ -1,4 +1,4 @@
-# 1.1 versija
+# 1.2 versija
 
 Projekto Apžvalga
 
@@ -12,7 +12,8 @@ Projekto Apžvalga
 - v0.2: pridėtas skaitymas iš failo/ surašymas į failą,
 - v0.3: funkcijos ir struktūros perkeltos į atskirus failus, pridėtas išimčių valdymas, leidžiantis sumažinti programos užstigimų šansą,
 - v0.4: programa pati generuoja reikiamus failus, kuriuos naudoja tolimesniems skaičiavimams, pridėti laiko matavimai,
-- v1.0: programa papildyta dar dviem konteineriais ir 3-jomis strategijomis.
+- v1.0: programa papildyta dar dviem konteineriais ir 3-jomis strategijomis,
+- v1.1: "Studentas" pakeistas iš stuktūros į klasę.
 
 ## Platesnis programos aprašymas
 
@@ -57,8 +58,26 @@ Pirmą kartą paleidus programą bus sugeneruojami visi 5 testavimo failai. Visi
 
 ## Naudojimosi instrukcija
 
-Pradžioje Jūsų bus prašoma pasirinkti norimą konteinerį, po to pateiktas meniu leis išsirinkti naujų studentų įrašymų būdą. Baigus įrašymą (arba norint iškart skaityti studentus iš failo) pasirenkamas 4-tas meniu variantas. Tada galėsite pasirinkti, pagal ką norite rūšiuoti pagrindinį konteinerį. Po rūšiavimo liks pasirinkti būdą, kuriuo norite suskirstyti "vargšiukus" ir "galvočius" į skirtingus konteinerius.
+Pradžioje Jūsų bus klausiama, ar norite atlikti metodų testą, po to bus prašoma pasirinkti norimą konteinerį, po to pateiktas meniu leis išsirinkti naujų studentų įrašymų būdą. Baigus įrašymą (arba norint iškart skaityti studentus iš failo) pasirenkamas 4-tas meniu variantas. Tada galėsite pasirinkti, pagal ką norite rūšiuoti pagrindinį konteinerį. Po rūšiavimo liks pasirinkti būdą, kuriuo norite suskirstyti "vargšiukus" ir "galvočius" į skirtingus konteinerius.
 Baigus darbą spaudžiama "Enter".
+
+### Duomenų išvedimas/įvedimas
+
+Naudojant ne vien .exe programą, o ir patį kodą, "studentas.h" galima rasti perdengtus >> (įvedimo) ir << (išvedimo) metodus. Jie leidžia patogiau ir greičiau naudotis klase. Jei norite pamatyti paprastą pavyzdį, kaip jie veikia, paleidus .exe failą paleiskite testą (įrašykite t raidę).
+
+Iškart po raidės t įvedimo jums reikės suvesti studento duomenis, pvz:
+
+    vardas pavarde 10 9 10 10
+
+Paskutinis pažimys bus nuskaitytas kaip egzamino rezultatas.
+
+Įvedimo operatorių galima naudoti ne vien rankiniam įvedimui, bet ir nukaitymui iš failo, kadangi perdengtas operatorius kaip kintamąjį taip pat turi ir įvedimo būdą.
+
+Studentą taip pat galima ir išvesti, panaudojus praeito pavyzdžio duomenis, bus išvedama
+
+    vardas pavarde 9.86667 10
+
+Išvestis taip pat, kaip ir įvestis, gali būti naudojama ir darbui su failais, kadangi operacija kaip kintamąjį paima išvesties metodą.
 
 ## Testavimo sistemos parametrai
 

@@ -89,17 +89,23 @@ public:
     friend istream &operator>>(istream &is, Studentas &st)
     {
         is >> st.vardas >> st.pavarde;
+        st.nd.clear();
 
+        string eilute;
+        getline(is, eilute);
+        istringstream iss(eilute);
+
+        vector<int> visiPazymiai;
         int paz;
-        while (is >> paz)
+
+        while (iss >> paz)
         {
-            st.nd.push_back(paz);
-            if (is.peek() == '\n')
-            {
-                break;
-            }
+            visiPazymiai.push_back(paz);
         }
-        is >> st.egz;
+
+        st.egz = visiPazymiai.back();
+        visiPazymiai.pop_back();
+        st.nd = visiPazymiai;
 
         return is;
     }
