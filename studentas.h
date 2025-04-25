@@ -4,7 +4,10 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <iostream>
 
+using std::cout;
+using std::move;
 using std::sort;
 using std::string;
 using std::vector;
@@ -27,10 +30,50 @@ public:
         nd = n;
         egz = e;
     };
-    Studentas(const Studentas &) = default;
-    Studentas &operator=(const Studentas &) = default;
-    Studentas(Studentas &&) = default;
-    Studentas &operator=(Studentas &&) = default;
+    Studentas(const Studentas &st)
+    {
+        cout << "Studento kopijavimo konstruktorius\n";
+        vardas = st.vardas;
+        pavarde = st.pavarde;
+        nd = st.nd;
+        egz = st.egz;
+        galutinis = st.galutinis;
+    }
+    Studentas &operator=(const Studentas &st)
+    {
+        cout << "Studento kopijavimo operacija\n";
+        if (this == &st)
+            return *this;
+
+        if (!nd.empty())
+            nd.clear();
+
+        vardas = st.vardas;
+        pavarde = st.pavarde;
+        nd = st.nd;
+        egz = st.egz;
+        galutinis = st.galutinis;
+
+        return *this;
+    }
+    Studentas(Studentas &&st) noexcept
+    {
+        vardas = move(st.vardas);
+        pavarde = move(st.pavarde);
+        nd = move(st.nd);
+        egz = st.egz;
+        galutinis = st.galutinis;
+    }
+    Studentas &operator=(Studentas &&st) noexcept
+    {
+        vardas = move(st.vardas);
+        pavarde = move(st.pavarde);
+        nd = move(st.nd);
+        egz = st.egz;
+        galutinis = st.galutinis;
+
+        return *this;
+    }
     void setVarPav(string v, string p)
     {
         vardas = v;
