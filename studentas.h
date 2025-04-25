@@ -1,6 +1,7 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
+#include "zmogus.h"
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -16,7 +17,7 @@ using std::sort;
 using std::string;
 using std::vector;
 
-class Studentas
+class Studentas : public Zmogus
 {
 private:
     string vardas;
