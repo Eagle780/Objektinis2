@@ -78,6 +78,14 @@ public:
         float galutinis = 0.4 * paz + 0.6 * egz;
         return galutinis;
     }
+    ~Studentas()
+    {
+        vardas.clear();
+        pavarde.clear();
+        nd.clear();
+        egz = 0;
+        galutinis = 0;
+    }
 };
 
 #endif
