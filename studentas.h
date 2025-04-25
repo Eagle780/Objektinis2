@@ -5,9 +5,11 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <sstream>
 
 using std::cout;
 using std::istream;
+using std::istringstream;
 using std::move;
 using std::ostream;
 using std::sort;

@@ -67,9 +67,13 @@ int main()
         cout << "---\n";
 
         Studentas temp4("vardas", "pavarde", {10, 10, 10}, 8);
+        cout << "temp4: " << temp4;
+        cout << "---\n";
 
         temp2 = temp4;
-        temp3 = move(temp2);
+        temp3 = move(temp4);
+        cout << "temp2: " << temp2;
+        cout << "temp3: " << temp3;
     }
     cout << "\n";
 
