@@ -84,6 +84,7 @@ public:
     friend ostream &operator<<(ostream &os, const Studentas &st)
     {
         os << st.vardas << " " << st.pavarde << " " << st.SkaiciuotiV() << " " << st.SkaiciuotiM() << "\n";
+        return os;
     }
     friend istream &operator>>(istream &is, Studentas &st)
     {
@@ -151,6 +152,7 @@ public:
     }
     ~Studentas()
     {
+        cout << "Studento destruktorius\n";
         vardas.clear();
         pavarde.clear();
         nd.clear();

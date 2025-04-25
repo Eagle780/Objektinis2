@@ -27,6 +27,52 @@ int main()
         testuotiKurima(failas, ndDydis, dydis);
     }
 
+    char test;
+    while (true)
+    {
+        cout << "ar atlikti klases testa? (t/n)\n";
+        try
+        {
+            cin >> test;
+        }
+        catch (ios_base::failure &e)
+        {
+            cout << "Neteisinga ivestis\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+        if (test != 't' && test != 'n')
+        {
+            cout << "Neteisinga ivestis\n";
+            continue;
+        }
+        break;
+    }
+
+    if (test == 't')
+    {
+        Studentas temp1;
+        cin >> temp1;
+        cout << temp1;
+        cout << "---\n";
+
+        Studentas temp2 = temp1;
+        cout << "temp1: " << temp1;
+        cout << "temp2: " << temp2;
+        cout << "---\n";
+
+        Studentas temp3 = move(temp2);
+        cout << "temp3: " << temp3;
+        cout << "---\n";
+
+        Studentas temp4("vardas", "pavarde", {10, 10, 10}, 8);
+
+        temp2 = temp4;
+        temp3 = move(temp2);
+    }
+    cout << "\n";
+
     while (true)
     {
         cout << "Koki konteineri naudoti duomenu saugojimui?\n";
