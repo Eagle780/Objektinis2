@@ -210,4 +210,4 @@ Kaip galima pastebėti iš rezultatų, greičiausias (ir mažiausiai vietos uži
 
 Programos veikimo pavyzdys:
 
-![GalutinisBalas.exe](https://github.com/user-attachments/assets/62ac6c3e-c0a5-43c3-be5e-26d1b4829bae)
+![GalutinisBalas.exe](https://github.com/user-attachments/assets/16aeabd3-fdcf-4e37-bdb8-f8606c23455a)
