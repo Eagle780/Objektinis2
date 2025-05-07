@@ -144,12 +144,12 @@ void rasytiIFaila(string pav, list<Studentas> &v, string pas)
     if (pas == "v")
     {
         v.sort([](const Studentas &a, const Studentas &b)
-               { return a.SkaiciuotiV() > b.SkaiciuotiV(); });
+               { return a.getGalV() > b.getGalV(); });
     }
     else if (pas == "m")
     {
         v.sort([](const Studentas &a, const Studentas &b)
-               { return a.SkaiciuotiM() > b.SkaiciuotiM(); });
+               { return a.getGalM() > b.getGalM(); });
     }
     ofstream fr(pav);
     if (!fr.is_open())
@@ -162,7 +162,7 @@ void rasytiIFaila(string pav, list<Studentas> &v, string pas)
     for (const Studentas &i : v)
     {
         fr << left << setw(12) << i.getVardas() << setw(16) << i.getPavarde();
-        fr << fixed << setw(17) << setprecision(2) << i.SkaiciuotiV() << i.SkaiciuotiM() << "\n";
+        fr << fixed << setw(17) << setprecision(2) << i.getGalV() << i.getGalM() << "\n";
     }
 }
 
@@ -218,7 +218,7 @@ string rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, int var)
     {
         for (auto t = A.end(); t != A.begin();)
         {
-            if (t->SkaiciuotiV() < 5.0)
+            if (t->getGalV() < 5.0)
             {
                 v.push_back(*t);
                 t = A.erase(t);
@@ -233,7 +233,7 @@ string rusiuotiStudentus(list<Studentas> &A, list<Studentas> &v, int var)
     {
         for (auto t = A.end(); t != A.begin();)
         {
-            if (t->SkaiciuotiM() < 5.0)
+            if (t->getGalM() < 5.0)
             {
                 v.push_back(*t);
                 t = A.erase(t);
@@ -270,7 +270,7 @@ string rusiuotiStudentus3(list<Studentas> &A, list<Studentas> &v, int var)
     {
         A.remove_if([&](const Studentas &st)
                     {
-            if (st.SkaiciuotiV() < 5.0) {
+            if (st.getGalV() < 5.0) {
                 v.push_back(st);
                 return true;
             }
@@ -280,7 +280,7 @@ string rusiuotiStudentus3(list<Studentas> &A, list<Studentas> &v, int var)
     {
         A.remove_if([&](const Studentas &st)
                     {
-            if (st.SkaiciuotiM() < 5.0) {
+            if (st.getGalM() < 5.0) {
                 v.push_back(st);
                 return true;
             }

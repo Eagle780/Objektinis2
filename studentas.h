@@ -26,7 +26,8 @@ private:
     string pavarde;
     vector<int> nd;
     int egz;
-    int galutinis;
+    float galutinisV;
+    float galutinisM;
 
 public:
     Studentas() : egz(0) {}
@@ -36,6 +37,8 @@ public:
         pavarde = p;
         nd = n;
         egz = e;
+        galutinisV = SkaiciuotiV();
+        galutinisM = SkaiciuotiM();
     };
     Studentas(const Studentas &st)
     {
@@ -43,9 +46,11 @@ public:
             cout << "Studento kopijavimo konstruktorius\n";
         vardas = st.vardas;
         pavarde = st.pavarde;
-        nd = st.nd;
+        nd.resize(st.nd.size());
+        copy(st.nd.begin(), st.nd.end(), nd.begin());
         egz = st.egz;
-        galutinis = st.galutinis;
+        galutinisV = st.galutinisV;
+        galutinisM = st.galutinisM;
     }
     Studentas &operator=(const Studentas &st)
     {
@@ -59,9 +64,11 @@ public:
 
         vardas = st.vardas;
         pavarde = st.pavarde;
-        nd = st.nd;
+        nd.resize(st.nd.size());
+        copy(st.nd.begin(), st.nd.end(), nd.begin());
         egz = st.egz;
-        galutinis = st.galutinis;
+        galutinisV = st.galutinisV;
+        galutinisM = st.galutinisM;
 
         return *this;
     }
@@ -73,7 +80,9 @@ public:
         pavarde = move(st.pavarde);
         nd = move(st.nd);
         egz = st.egz;
-        galutinis = st.galutinis;
+        galutinisV = st.galutinisV;
+        galutinisM = st.galutinisM;
+        st.clear();
     }
     Studentas &operator=(Studentas &&st) noexcept
     {
@@ -86,13 +95,15 @@ public:
         pavarde = move(st.pavarde);
         nd = move(st.nd);
         egz = st.egz;
-        galutinis = st.galutinis;
+        galutinisV = st.galutinisV;
+        galutinisM = st.galutinisM;
+        st.clear();
 
         return *this;
     }
     friend ostream &operator<<(ostream &os, const Studentas &st)
     {
-        os << st.vardas << " " << st.pavarde << " " << st.SkaiciuotiV() << " " << st.SkaiciuotiM() << "\n";
+        os << st.vardas << " " << st.pavarde << " " << st.galutinisV << " " << st.galutinisM << "\n";
         return os;
     }
     friend istream &operator>>(istream &is, Studentas &st)
@@ -115,6 +126,8 @@ public:
         st.egz = visiPazymiai.back();
         visiPazymiai.pop_back();
         st.nd = visiPazymiai;
+        st.galutinisV = st.SkaiciuotiV();
+        st.galutinisM = st.SkaiciuotiM();
 
         return is;
     }
@@ -127,17 +140,16 @@ public:
     {
         nd = n;
         egz = e;
-    }
-    void setGal(int g)
-    {
-        galutinis = g;
+        galutinisV = SkaiciuotiV();
+        galutinisM = SkaiciuotiM();
     }
     inline string getVardas() const override { return vardas; }
     inline string getPavarde() const override { return pavarde; }
     inline int getEgz() const { return egz; }
     inline vector<int> getNd() const { return nd; }
-    inline int getGal() const { return galutinis; }
-    float SkaiciuotiV() const
+    inline int getGalV() const { return galutinisV; }
+    inline int getGalM() const { return galutinisM; }
+    float SkaiciuotiV()
     {
         int s = 0;
         for (int i = 0; i < nd.size(); i++)
@@ -147,25 +159,25 @@ public:
         float galutinis = 0.4 * (1.0 * s / nd.size()) + 0.6 * egz;
         return galutinis;
     }
-    float SkaiciuotiM() const
+    float SkaiciuotiM()
     {
-        vector<int> nd2 = nd;
-        float paz;
-        sort(nd2.begin(), nd2.end());
 
-        if (nd2.size() % 2 == 0)
+        float paz;
+        sort(nd.begin(), nd.end());
+
+        if (nd.size() % 2 == 0)
         {
-            paz = 1.0 * (nd2[nd2.size() / 2 - 1] + nd2[nd2.size() / 2]) / 2;
+            paz = 1.0 * (nd[nd.size() / 2 - 1] + nd[nd.size() / 2]) / 2;
         }
         else
         {
-            paz = nd2[nd2.size() / 2];
+            paz = nd[nd.size() / 2];
         }
 
         float galutinis = 0.4 * paz + 0.6 * egz;
         return galutinis;
     }
-    ~Studentas()
+    void clear()
     {
         if (TEST_MODE)
             cout << "Studento destruktorius\n";
@@ -173,8 +185,10 @@ public:
         pavarde.clear();
         nd.clear();
         egz = 0;
-        galutinis = 0;
+        galutinisV = 0;
+        galutinisM = 0;
     }
+    ~Studentas() { clear(); }
 };
 
 #endif

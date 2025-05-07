@@ -19,6 +19,7 @@
 
 using std::accumulate;
 using std::cin;
+using std::copy;
 using std::cout;
 using std::deque;
 using std::exception;
@@ -56,12 +57,12 @@ void rasytiIFaila(string pav, T &v, string pas)
     if (pas == "v")
     {
         sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
-             { return a.SkaiciuotiV() > b.SkaiciuotiV(); });
+             { return a.getGalV() > b.getGalV(); });
     }
     else if (pas == "m")
     {
         sort(v.begin(), v.end(), [](const Studentas &a, const Studentas &b)
-             { return a.SkaiciuotiM() > b.SkaiciuotiM(); });
+             { return a.getGalM() > b.getGalM(); });
     }
     ofstream fr(pav);
     fr << "Vardas      Pavardė        Galutinis (Vid.)  Galutinis (Med.)\n";
@@ -69,7 +70,7 @@ void rasytiIFaila(string pav, T &v, string pas)
     for (const Studentas &i : v)
     {
         fr << left << setw(12) << i.getVardas() << setw(16) << i.getPavarde();
-        fr << fixed << setw(17) << setprecision(2) << i.SkaiciuotiV() << i.SkaiciuotiM() << "\n";
+        fr << fixed << setw(17) << setprecision(2) << i.getGalV() << i.getGalM() << "\n";
     }
 }
 
@@ -150,8 +151,7 @@ string rusiuotiStudentus(T &A, T &v, T &g, int var)
     {
         for (Studentas st : A)
         {
-            st.setGal(st.SkaiciuotiV());
-            if (st.getGal() < 5.0)
+            if (st.getGalV() < 5.0)
                 v.push_back(st);
             else
                 g.push_back(st);
@@ -161,8 +161,7 @@ string rusiuotiStudentus(T &A, T &v, T &g, int var)
     {
         for (Studentas st : A)
         {
-            st.setGal(st.SkaiciuotiM());
-            if (st.getGal() < 5.0)
+            if (st.getGalM() < 5.0)
                 v.push_back(st);
             else
                 g.push_back(st);
@@ -195,7 +194,7 @@ string rusiuotiStudentus(T &A, T &v, int var)
     {
         for (int i = A.size() - 1; i >= 0; --i)
         {
-            if (A[i].SkaiciuotiV() < 5.0)
+            if (A[i].getGalV() < 5.0)
             {
                 v.push_back(A[i]);
                 A.pop_back();
@@ -206,7 +205,7 @@ string rusiuotiStudentus(T &A, T &v, int var)
     {
         for (int i = A.size() - 1; i >= 0; --i)
         {
-            if (A[i].SkaiciuotiM() < 5.0)
+            if (A[i].getGalM() < 5.0)
             {
                 v.push_back(A[i]);
                 A.pop_back();
@@ -242,7 +241,7 @@ string rusiuotiStudentus3(T &A, T &v, int var)
     {
         A.erase(remove_if(A.begin(), A.end(), [&](const Studentas &st)
                           {
-                       if (st.SkaiciuotiV() < 5.0)
+                       if (st.getGalV() < 5.0)
                        {
                            v.push_back(st);
                            return true;
@@ -254,7 +253,7 @@ string rusiuotiStudentus3(T &A, T &v, int var)
     {
         A.erase(remove_if(A.begin(), A.end(), [&](const Studentas &st)
                           {
-                       if (st.SkaiciuotiM() < 5.0)
+                       if (st.getGalM() < 5.0)
                        {
                            v.push_back(st);
                            return true;

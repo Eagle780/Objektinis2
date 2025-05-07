@@ -53,11 +53,9 @@ int main()
     if (test == 't')
     {
         TEST_MODE = true;
-        // Zmogus t
-
-        // Zmogus *temp = new Studentas();
-        // cout << temp << "\n";
-        // delete temp;
+        Zmogus *temp = new Studentas();
+        cout << temp << "\n";
+        delete temp;
 
         Studentas temp1;
         cin >> temp1;
@@ -65,25 +63,26 @@ int main()
         cout << "---\n";
 
         Studentas temp2 = temp1;
-        cout << "temp1: " << temp1;
-        cout << "temp2: " << temp2;
+        cout << "pradinis temp1: " << temp1;
+        cout << "nukopijuotas temp2: " << temp2;
         cout << "---\n";
 
         Studentas temp3 = move(temp2);
-        cout << "temp3: " << temp3;
+        cout << "perkeltas temp3: " << temp3;
+        cout << "perkeltas temp2: " << temp2;
         cout << "---\n";
 
         Studentas temp4("vardas", "pavarde", {10, 10, 10}, 8);
-        cout << "temp4: " << temp4;
+        cout << "sukurtas temp4: " << temp4;
         cout << "---\n";
 
         temp2 = temp4;
         temp3 = move(temp4);
-        cout << "temp2: " << temp2;
-        cout << "temp3: " << temp3;
-
-        TEST_MODE = false;
+        cout << "nukopijuotas temp2: " << temp2;
+        cout << "perkeltas temp3: " << temp3;
+        cout << "perkeltas temp4: " << temp4;
     }
+    TEST_MODE = false;
     cout << "\n";
 
     while (true)
@@ -252,13 +251,13 @@ int main()
         else if (variantas == 3)
         {
             sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
-                 { return a.SkaiciuotiV() > b.SkaiciuotiV(); });
+                 { return a.getGalV() > b.getGalV(); });
         }
 
         else if (variantas == 4)
         {
             sort(A.begin(), A.end(), [](const Studentas &a, const Studentas &b)
-                 { return a.SkaiciuotiM() > b.SkaiciuotiM(); });
+                 { return a.getGalM() > b.getGalM(); });
         }
     }
     else if (k == 2)
@@ -278,13 +277,13 @@ int main()
         else if (variantas == 3)
         {
             sort(B.begin(), B.end(), [](const Studentas &a, const Studentas &b)
-                 { return a.SkaiciuotiV() > b.SkaiciuotiV(); });
+                 { return a.getGalV() > b.getGalV(); });
         }
 
         else if (variantas == 4)
         {
             sort(B.begin(), B.end(), [](const Studentas &a, const Studentas &b)
-                 { return a.SkaiciuotiM() > b.SkaiciuotiM(); });
+                 { return a.getGalM() > b.getGalM(); });
         }
     }
     else if (k == 3)
@@ -304,13 +303,13 @@ int main()
         else if (variantas == 3)
         {
             C.sort([](const Studentas &a, const Studentas &b)
-                   { return a.SkaiciuotiV() > b.SkaiciuotiV(); });
+                   { return a.getGalV() > b.getGalV(); });
         }
 
         else if (variantas == 4)
         {
             C.sort([](const Studentas &a, const Studentas &b)
-                   { return a.SkaiciuotiM() > b.SkaiciuotiM(); });
+                   { return a.getGalM() > b.getGalM(); });
         }
     }
     laikas = t3.elapsed();
