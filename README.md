@@ -1,4 +1,4 @@
-# 1.5 versija
+# 2.0 versija
 
 Projekto Apžvalga
 
@@ -15,6 +15,7 @@ Projekto Apžvalga
 - v1.0: programa papildyta dar dviem konteineriais ir 3-jomis strategijomis,
 - v1.1: "Studentas" pakeistas iš stuktūros į klasę,
 - v1.2: Sukurti Studento klasės kopijavimo ir perkėlimo konstruktoriai ir metodai ir perdengtos įvesties ir išvesties operacijos.
+- v1.5: Sukurta bazinė (abstrakti) klasė "Žmogus", o "Studentas" padaryta "Žmogaus" išvestine klase
 
 ## Platesnis programos aprašymas
 
