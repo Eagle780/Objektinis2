@@ -1,0 +1,11 @@
+var searchData=
+[
+  ['rūšiavimas_3a_0',['Studentų rūšiavimas:',['../md__r_e_a_d_m_e.html#autotoc_md4',1,'']]],
+  ['rasytiifaila_1',['rasytiIFaila',['../funkcijos_8cpp.html#aeec72cb3828aff363d87ef50b3741285',1,'rasytiIFaila(string pav, list&lt; Studentas &gt; &amp;v, string pas):&#160;funkcijos.cpp'],['../header_8h.html#aba6401bc5ebe51892cdd4c24de59e5a7',1,'rasytiIFaila(string pav, T &amp;v, string pas):&#160;header.h'],['../header_8h.html#aeec72cb3828aff363d87ef50b3741285',1,'rasytiIFaila(string pav, list&lt; Studentas &gt; &amp;v, string pas):&#160;funkcijos.cpp']]],
+  ['readme_2emd_2',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
+  ['reset_3',['reset',['../class_timer.html#a9020542d73357a4eef512eefaf57524b',1,'Timer']]],
+  ['rezultatai_4',['Spartos Testavimo Rezultatai',['../md__r_e_a_d_m_e.html#autotoc_md10',1,'']]],
+  ['rezultatai_5',['rezultatai',['../md__r_e_a_d_m_e.html#autotoc_md21',1,'Kompiliatoriaus flag&apos;ų testavimo rezultatai'],['../md__r_e_a_d_m_e.html#autotoc_md14',1,'Strategijos testavimo rezultatai'],['../md__r_e_a_d_m_e.html#autotoc_md18',1,'Struktūros ir klasės testavimo rezultatai']]],
+  ['rusiuotistudentus_6',['rusiuotiStudentus',['../funkcijos_8cpp.html#a2cb66e60817b06d6074ae6a63a2e3cb8',1,'rusiuotiStudentus(list&lt; Studentas &gt; &amp;A, list&lt; Studentas &gt; &amp;v, int var):&#160;funkcijos.cpp'],['../header_8h.html#a001583105cbd757951d71bdaccdf8ee1',1,'rusiuotiStudentus(T &amp;A, T &amp;v, T &amp;g, int var):&#160;header.h'],['../header_8h.html#aff388eeb095693776ad9f681472a6077',1,'rusiuotiStudentus(T &amp;A, T &amp;v, int var):&#160;header.h'],['../header_8h.html#a2cb66e60817b06d6074ae6a63a2e3cb8',1,'rusiuotiStudentus(list&lt; Studentas &gt; &amp;A, list&lt; Studentas &gt; &amp;v, int var):&#160;funkcijos.cpp']]],
+  ['rusiuotistudentus3_7',['rusiuotiStudentus3',['../funkcijos_8cpp.html#a5ad0d6e49be2a6df0eb5797122a15d60',1,'rusiuotiStudentus3(list&lt; Studentas &gt; &amp;A, list&lt; Studentas &gt; &amp;v, int var):&#160;funkcijos.cpp'],['../header_8h.html#a07fd15aeae93c6eca9790b55744cd7e2',1,'rusiuotiStudentus3(T &amp;A, T &amp;v, int var):&#160;header.h'],['../header_8h.html#a5ad0d6e49be2a6df0eb5797122a15d60',1,'rusiuotiStudentus3(list&lt; Studentas &gt; &amp;A, list&lt; Studentas &gt; &amp;v, int var):&#160;funkcijos.cpp']]]
+];

@@ -1,0 +1,260 @@
+\chapter{1.5 versija}
+\hypertarget{index}{}\label{index}\index{1.5 versija@{1.5 versija}}
+\label{index_md__r_e_a_d_m_e}%
+\Hypertarget{index_md__r_e_a_d_m_e}%
+
+
+Projekto Apžvalga
+
+Ši programa sugeneruoja studentų duomenų failus, suskaičiuoja studentų galutinį balą pagal pasirinktą kriterijų suskirsto studentus į dvi kategorijas pagal jų galutinį balą ir matuoja užtruktą laiką kiekviename etape.
+
+Šioje versijoje taip pat pridėta galimybė pasirinkti, kokio tipo konteinerį (vector, deque ar list) ir kokią strategiją norite naudoti.\hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{Praeitų versijų aprašymai}{Praeitų versijų aprašymai}}\label{index_autotoc_md1}
+
+\begin{DoxyItemize}
+\item v0.\+1\+: programa leidžia įrašyti arba sugeneruoti savus studentus, o rezultatus rodo ekrane,
+\item v0.\+2\+: pridėtas skaitymas iš failo/ surašymas į failą,
+\item v0.\+3\+: funkcijos ir struktūros perkeltos į atskirus failus, pridėtas išimčių valdymas, leidžiantis sumažinti programos užstigimų šansą,
+\item v0.\+4\+: programa pati generuoja reikiamus failus, kuriuos naudoja tolimesniems skaičiavimams, pridėti laiko matavimai,
+\item v1.\+0\+: programa papildyta dar dviem konteineriais ir 3-\/jomis strategijomis,
+\item v1.\+1\+: "{}\+Studentas"{} pakeistas iš stuktūros į klasę,
+\item v1.\+2\+: Sukurti Studento klasės kopijavimo ir perkėlimo konstruktoriai ir metodai ir perdengtos įvesties ir išvesties operacijos.
+\end{DoxyItemize}\hypertarget{index_autotoc_md2}{}\doxysection{\texorpdfstring{Platesnis programos aprašymas}{Platesnis programos aprašymas}}\label{index_autotoc_md2}
+\hypertarget{index_autotoc_md3}{}\doxysubsection{\texorpdfstring{Failų generavimas\+:}{Failų generavimas\+:}}\label{index_autotoc_md3}
+
+\begin{DoxyItemize}
+\item Sugeneruojami penki skirtingo dydžio studentų sąrašų failai (1,000, 10,000, 100,000, 1,000,000 ir 10,000,000 įrašų).
+\end{DoxyItemize}\hypertarget{index_autotoc_md4}{}\doxysubsection{\texorpdfstring{Studentų rūšiavimas\+:}{Studentų rūšiavimas\+:}}\label{index_autotoc_md4}
+
+\begin{DoxyItemize}
+\item Studentai skirstomi į dvi grupes\+:
+\begin{DoxyItemize}
+\item „\+Vargšiukai“ – Galutinis balas \texorpdfstring{$<$}{<} 5.\+0
+\item „\+Galvočiai“ – Galutinis balas ≥ 5.\+0
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{index_autotoc_md5}{}\doxysubsection{\texorpdfstring{Matuojamas laikas\+:}{Matuojamas laikas\+:}}\label{index_autotoc_md5}
+
+\begin{DoxyItemize}
+\item Failo sukūrimui
+\item Duomenų nuskaitymui
+\item Duomenų failo rūšiavimui
+\item Studentų rūšiavimui
+\item Surūšiuotų duomenų išvedimui į naujus failus
+\item Bendram programos veikimo laikui
+\end{DoxyItemize}\hypertarget{index_autotoc_md6}{}\doxysection{\texorpdfstring{Kaip Paleisti Programą}{Kaip Paleisti Programą}}\label{index_autotoc_md6}
+Klonuokite repozitoriją\+: \begin{DoxyVerb}git clone https://github.com/Eagle780/Objektinis.git
+\end{DoxyVerb}
+
+
+Pereikite į v1.\+0 šaką\+: \begin{DoxyVerb}git checkout v1.0
+\end{DoxyVerb}
+
+
+Aplanke atsidarykite terminalą ir įrašykite\+: \begin{DoxyVerb}mkdir build
+cd build
+cmake ..
+cmake --build . --config Release
+\end{DoxyVerb}
+
+
+Paleidžiamasis failas (Galutinis\+Balas.\+exe) atsiras build/\+Release aplanke. Pirmą kartą paleidus programą bus sugeneruojami visi 5 testavimo failai. Visi sekantys paleidimai naudos tuos pačius 5 failus. Naujas failas bus sukurtas tik tada, jei senasis bus ištrintas.\hypertarget{index_autotoc_md7}{}\doxysection{\texorpdfstring{Naudojimosi instrukcija}{Naudojimosi instrukcija}}\label{index_autotoc_md7}
+Pradžioje Jūsų bus klausiama, ar norite atlikti metodų testą, po to bus prašoma pasirinkti norimą konteinerį, po to pateiktas meniu leis išsirinkti naujų studentų įrašymų būdą. Baigus įrašymą (arba norint iškart skaityti studentus iš failo) pasirenkamas 4-\/tas meniu variantas. Tada galėsite pasirinkti, pagal ką norite rūšiuoti pagrindinį konteinerį. Po rūšiavimo liks pasirinkti būdą, kuriuo norite suskirstyti "{}vargšiukus"{} ir "{}galvočius"{} į skirtingus konteinerius. Baigus darbą spaudžiama "{}\+Enter"{}.\hypertarget{index_autotoc_md8}{}\doxysubsection{\texorpdfstring{Duomenų išvedimas/įvedimas}{Duomenų išvedimas/įvedimas}}\label{index_autotoc_md8}
+Naudojant ne vien .exe programą, o ir patį kodą, "{}studentas.\+h"{} galima rasti perdengtus \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} (įvedimo) ir \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} (išvedimo) metodus. Jie leidžia patogiau ir greičiau naudotis klase. Jei norite pamatyti paprastą pavyzdį, kaip jie veikia, paleidus .exe failą paleiskite testą (įrašykite t raidę).
+
+Iškart po raidės t įvedimo jums reikės suvesti studento duomenis, pvz\+: \begin{DoxyVerb}vardas pavarde 10 9 10 10
+\end{DoxyVerb}
+
+
+Paskutinis pažimys bus nuskaitytas kaip egzamino rezultatas.
+
+Įvedimo operatorių galima naudoti ne vien rankiniam įvedimui, bet ir nukaitymui iš failo, kadangi perdengtas operatorius kaip kintamąjį taip pat turi ir įvedimo būdą.
+
+Studentą taip pat galima ir išvesti, panaudojus praeito pavyzdžio duomenis, bus išvedama \begin{DoxyVerb}vardas pavarde 9.86667 10
+\end{DoxyVerb}
+
+
+Išvestis taip pat, kaip ir įvestis, gali būti naudojama ir darbui su failais, kadangi operacija kaip kintamąjį paima išvesties metodą.\hypertarget{index_autotoc_md9}{}\doxysection{\texorpdfstring{Testavimo sistemos parametrai}{Testavimo sistemos parametrai}}\label{index_autotoc_md9}
+
+\begin{DoxyItemize}
+\item CPU -\/ AMD Ryzen 5 5600H, 3.\+30\+GHz
+\item RAM -\/ 2x8\+GB DDR4 3200MHz
+\item SSD -\/ PCIe gen 3 NVMe M.\+2 512GB
+\end{DoxyItemize}\hypertarget{index_autotoc_md10}{}\doxysection{\texorpdfstring{Spartos Testavimo Rezultatai}{Spartos Testavimo Rezultatai}}\label{index_autotoc_md10}
+Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimus. Žemiau pateikiamos rezultatų lentelės\+:\hypertarget{index_autotoc_md11}{}\doxysubsection{\texorpdfstring{vector}{vector}}\label{index_autotoc_md11}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas    }\\\cline{1-4}
+\endhead
+1,000 įrašų   &0.\+00169   &0.\+00203   &0.\+00154    \\\cline{1-4}
+10,000 įrašų   &0.\+01694   &0.\+0303   &0.\+0268    \\\cline{1-4}
+100,000 įrašų   &0.\+354   &0.\+376   &0.\+354    \\\cline{1-4}
+1,000,000 įrašų   &1.\+937   &4.\+932   &4.\+205    \\\cline{1-4}
+10,000,000 įrašų   &18.\+483   &76.\+858   &4.\+717   \\\cline{1-4}
+\end{longtabu}
+\hypertarget{index_autotoc_md12}{}\doxysubsection{\texorpdfstring{deque}{deque}}\label{index_autotoc_md12}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas    }\\\cline{1-4}
+\endhead
+1,000 įrašų   &0.\+00178   &0.\+00215   &0.\+00164    \\\cline{1-4}
+10,000 įrašų   &0.\+0148   &0.\+0252   &0.\+0276    \\\cline{1-4}
+100,000 įrašų   &0.\+179   &0.\+387   &0.\+374    \\\cline{1-4}
+1,000,000 įrašų   &1.\+952   &5.\+101   &4.\+349    \\\cline{1-4}
+10,000,000 įrašų   &18.\+483   &77.\+137   &4.\+821   \\\cline{1-4}
+\end{longtabu}
+\hypertarget{index_autotoc_md13}{}\doxysubsection{\texorpdfstring{list}{list}}\label{index_autotoc_md13}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas    }\\\cline{1-4}
+\endhead
+1,000 įrašų   &0.\+00196   &0.\+00169   &0.\+00111    \\\cline{1-4}
+10,000 įrašų   &0.\+0178   &0.\+0382   &0.\+0231    \\\cline{1-4}
+100,000 įrašų   &0.\+185   &0.\+342   &0.\+275    \\\cline{1-4}
+1,000,000 įrašų   &2.\+093   &5.\+427   &3.\+029    \\\cline{1-4}
+10,000,000 įrašų   &18.\+732   &77.\+154   &6.\+214   \\\cline{1-4}
+\end{longtabu}
+
+
+Kaip matome, laikai, naudojant vien tik skirtingus konteinerius, skiriasi, nors ir nežymiai. Vektorius vidutiniškai veikia greičiausiai, o list\textquotesingle{}as -\/ lėčiausiai.\hypertarget{index_autotoc_md14}{}\doxysection{\texorpdfstring{Strategijos testavimo rezultatai}{Strategijos testavimo rezultatai}}\label{index_autotoc_md14}
+Testuojama buvo ne vien lyginant skirtingų konteinerių naudojimą, bet ir pritaikant skirtingas studentų rūšiavimo strategijas
+
+1 strategija\+: Studentai rūšiuojami į du skirtingus to pačio tipo konteinerius, 2 strategija\+: Naudojamas tik vienas papildomas konteineris, o perkelti įrašai ištrinami iš pradinio konteinerio 3 strategija\+: Greitesnis iš 2-\/ų buvusių taip pat taikant ir bibliotekas\hypertarget{index_autotoc_md15}{}\doxysubsection{\texorpdfstring{vector}{vector}}\label{index_autotoc_md15}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 2 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 3 strategija    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 2 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 3 strategija    }\\\cline{1-4}
+\endhead
+1,000 įrašų   &0.\+00030   &0.\+0055   &0.\+00024    \\\cline{1-4}
+10,000 įrašų   &0.\+0027   &0.\+511   &0.\+0018    \\\cline{1-4}
+100,000 įrašų   &0.\+030   &40.\+92   &0.\+013    \\\cline{1-4}
+1,000,000 įrašų   &0.\+457   &\texorpdfstring{$>$}{>}1000   &0.\+235    \\\cline{1-4}
+10,000,000 įrašų   &4.\+868   &-\/   &5.\+268   \\\cline{1-4}
+\end{longtabu}
+\hypertarget{index_autotoc_md16}{}\doxysubsection{\texorpdfstring{deque}{deque}}\label{index_autotoc_md16}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 2 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 3 strategija    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 2 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 3 strategija    }\\\cline{1-4}
+\endhead
+1,000 įrašų   &0.\+00039   &0.\+00109   &0.\+00023    \\\cline{1-4}
+10,000 įrašų   &0.\+0027   &0.\+1232   &0.\+0019    \\\cline{1-4}
+100,000 įrašų   &0.\+031   &12.\+62   &0.\+016    \\\cline{1-4}
+1,000,000 įrašų   &0.\+427   &\texorpdfstring{$>$}{>}1000   &0.\+253    \\\cline{1-4}
+10,000,000 įrašų   &4.\+866   &-\/   &5.\+411   \\\cline{1-4}
+\end{longtabu}
+\hypertarget{index_autotoc_md17}{}\doxysubsection{\texorpdfstring{list}{list}}\label{index_autotoc_md17}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 2 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 3 strategija    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 2 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 3 strategija    }\\\cline{1-4}
+\endhead
+1,000 įrašų   &0.\+00052   &0.\+00023   &0.\+00032    \\\cline{1-4}
+10,000 įrašų   &0.\+0041   &0.\+0020   &0.\+0024    \\\cline{1-4}
+100,000 įrašų   &0.\+043   &0.\+025   &0.\+029    \\\cline{1-4}
+1,000,000 įrašų   &0.\+430   &0.\+302   &0.\+392    \\\cline{1-4}
+10,000,000 įrašų   &6.\+158   &4.\+731   &6.\+329   \\\cline{1-4}
+\end{longtabu}
+
+
+Išbandžius visas strategijas su visais konteineriais, galime pastebėti įdomų dalyką, kad 3 startegija yra greičiausia su visais konteineriais išskyrus list\textquotesingle{}ą. Norint naudoti list\textquotesingle{}ą būtų geriausia taikyti 2 strategiją. 2 strategijos neefktyvumą, atsižvelgiant į vektorių ir deque laikus, galima paaiškinti tuo, kad atliekant kiekvieną perkėlimo operaciją, visi elementai turi būti perkopijuoti į naują vietą, neskaitant išmesto elemento. List\textquotesingle{}as nepatiria tokių minusų, nes jam reikia tik pakeisti rodykles į kitus narius. Tai taip pat iš dalies paaiškina, kodėl 2 strategija yra greitesnė nei 3, kai kalba eina apie list\textquotesingle{}ą.\hypertarget{index_autotoc_md18}{}\doxysection{\texorpdfstring{Struktūros ir klasės testavimo rezultatai}{Struktūros ir klasės testavimo rezultatai}}\label{index_autotoc_md18}
+Šioje versijoje taip pat reikėjo palyginti realizacijos spartą naudojant struktūrą (v1.\+0) ir klasę (dabartinė, v1.\+1). Abi programos naudojo vektorių ir 3 strategiją\+:\hypertarget{index_autotoc_md19}{}\doxysubsection{\texorpdfstring{klasė}{klasė}}\label{index_autotoc_md19}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimas į failus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bendras laikas    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimas į failus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bendras laikas    }\\\cline{1-6}
+\endhead
+100,000 įrašų   &0.\+203   &0.\+103   &0.\+020   &0.\+266   &0.\+689    \\\cline{1-6}
+1,000,000 įrašų   &2.\+142   &1.\+196   &0.\+251   &2.\+165   &5.\+901   \\\cline{1-6}
+\end{longtabu}
+\hypertarget{index_autotoc_md20}{}\doxysubsection{\texorpdfstring{struktūra}{struktūra}}\label{index_autotoc_md20}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimas į failus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bendras laikas    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimas į failus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bendras laikas    }\\\cline{1-6}
+\endhead
+100,000 įrašų   &0.\+260   &0.\+128   &0.\+021   &0.\+257   &0.\+733    \\\cline{1-6}
+1,000,000 įrašų   &2.\+626   &1.\+609   &0.\+277   &3.\+286   &7.\+835   \\\cline{1-6}
+\end{longtabu}
+
+
+Iš rezultatų matome, kad, nors ir nežymiai, klasė veikia greičiau nei struktūra.\hypertarget{index_autotoc_md21}{}\doxysection{\texorpdfstring{Kompiliatoriaus flag\textquotesingle{}ų testavimo rezultatai}{Kompiliatoriaus flag\textquotesingle{}ų testavimo rezultatai}}\label{index_autotoc_md21}
+Programos greitis gali priklausyti ne vien nuo pačio kodo pateikimų, bet ir nuo paprasto flag\textquotesingle{}o (kompiliatoriaus optimizavimo lygio) pakeitimo kompiliuojant kodą. Testavimui naudotas 1,000,000 studentų failas bei vektorius ir 3 strategija\+:\hypertarget{index_autotoc_md22}{}\doxysubsection{\texorpdfstring{Klasė}{Klasė}}\label{index_autotoc_md22}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{7}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Flag   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimas į failus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bendras laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ dydis (KB)    }\\\cline{1-7}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Flag   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimas į failus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bendras laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ dydis (KB)    }\\\cline{1-7}
+\endhead
+Be flag   &1.\+953   &15.\+422   &0.\+606   &15.\+954   &33.\+939   &722    \\\cline{1-7}
+O1   &1.\+124   &2.\+935   &0.\+237   &4.\+270   &8.\+570   &379    \\\cline{1-7}
+O2   &1.\+086   &2.\+796   &0.\+229   &4.\+079   &8.\+195   &349    \\\cline{1-7}
+O3   &1.\+137   &3.\+108   &0.\+239   &4.\+194   &8.\+652   &358   \\\cline{1-7}
+\end{longtabu}
+\hypertarget{index_autotoc_md23}{}\doxysubsection{\texorpdfstring{Struktūra}{Struktūra}}\label{index_autotoc_md23}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{7}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Flag   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimas į failus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bendras laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ dydis (KB)    }\\\cline{1-7}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Flag   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimas į failus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bendras laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ dydis (KB)    }\\\cline{1-7}
+\endhead
+Be flag   &1.\+869   &16.\+665   &0.\+623   &16.\+668   &34.\+533   &721    \\\cline{1-7}
+O1   &1.\+093   &3.\+549   &0.\+269   &5.\+143   &10.\+349   &383    \\\cline{1-7}
+O2   &1.\+146   &3.\+458   &0.\+275   &4.\+878   &9.\+891   &351    \\\cline{1-7}
+O3   &1.\+112   &3.\+475   &0.\+276   &4.\+946   &10.\+043   &354   \\\cline{1-7}
+\end{longtabu}
+
+
+Kaip galima pastebėti iš rezultatų, greičiausias (ir mažiausiai vietos užimantis) flag\textquotesingle{}as yra ne O3, bet O2. Taip gali atsitikti todėl, nes O3 taiko sudėtingesnius kompiliavimo metodus, kurie parodo savo naudą naudojant dar daugiau duomenų, nei buvo naudojama dabar.\hypertarget{index_autotoc_md24}{}\doxysection{\texorpdfstring{Nuotraukos}{Nuotraukos}}\label{index_autotoc_md24}
+Programos veikimo pavyzdys\+:
+
+ 

@@ -1,0 +1,200 @@
+\doxysection{studentas.\+h}
+\hypertarget{studentas_8h_source}{}\label{studentas_8h_source}\mbox{\hyperlink{studentas_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00011}00011\ \textcolor{preprocessor}{\#ifndef\ STUDENT\_H}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00012}00012\ \textcolor{preprocessor}{\#define\ STUDENT\_H}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{zmogus_8h}{zmogus.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00021}00021\ \textcolor{keyword}{using\ }std::cout;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00022}00022\ \textcolor{keyword}{using\ }std::istream;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00023}00023\ \textcolor{keyword}{using\ }std::istringstream;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00024}00024\ \textcolor{keyword}{using\ }std::move;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00025}00025\ \textcolor{keyword}{using\ }std::ostream;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00026}00026\ \textcolor{keyword}{using\ }std::sort;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00027}00027\ \textcolor{keyword}{using\ }std::string;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00028}00028\ \textcolor{keyword}{using\ }std::vector;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00030}\mbox{\hyperlink{studentas_8h_a0bad07778f2ad19ae7fcd80ed76fb24d}{00030}}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{studentas_8h_a0bad07778f2ad19ae7fcd80ed76fb24d}{TEST\_MODE}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00032}\mbox{\hyperlink{class_studentas}{00032}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_studentas_ab459e995e8c9b24cdc9aec5b09a66539}{Studentas}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_zmogus_aa7a8ba4d3c4778f9b35d59eef3e72574}{Zmogus}}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00033}00033\ \{}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00034}00034\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00035}00035\ \ \ \ \ \textcolor{keywordtype}{string}\ vardas;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00036}00036\ \ \ \ \ \textcolor{keywordtype}{string}\ pavarde;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00037}00037\ \ \ \ \ vector<int>\ nd;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{int}\ egz;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00039}00039\ \ \ \ \ \textcolor{keywordtype}{float}\ galutinisV;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00040}00040\ \ \ \ \ \textcolor{keywordtype}{float}\ galutinisM;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00042}00042\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00047}\mbox{\hyperlink{class_studentas_ab459e995e8c9b24cdc9aec5b09a66539}{00047}}\ \ \ \ \ \mbox{\hyperlink{class_studentas_ab459e995e8c9b24cdc9aec5b09a66539}{Studentas}}()\ :\ egz(0)\ \{\}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00056}\mbox{\hyperlink{class_studentas_ae77f635127a5b6d4ef6e1f2de5ca1757}{00056}}\ \ \ \ \ \mbox{\hyperlink{class_studentas_ae77f635127a5b6d4ef6e1f2de5ca1757}{Studentas}}(\textcolor{keywordtype}{string}\ v,\ \textcolor{keywordtype}{string}\ p,\ vector<int>\ n,\ \textcolor{keywordtype}{int}\ e)}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00057}00057\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ vardas\ =\ v;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ pavarde\ =\ p;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ nd\ =\ n;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ egz\ =\ e;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00062}00062\ \ \ \ \ \ \ \ \ galutinisV\ =\ \mbox{\hyperlink{class_studentas_a148d7cfd9a24e11de95fa4ae6b055db4}{SkaiciuotiV}}();}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ galutinisM\ =\ \mbox{\hyperlink{class_studentas_aad81aa77f874ad0601d3a7f5b2515c66}{SkaiciuotiM}}();}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00064}00064\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00070}\mbox{\hyperlink{class_studentas_a14efb12b554d84f818a2fc69221a8ccf}{00070}}\ \ \ \ \ \mbox{\hyperlink{class_studentas_a14efb12b554d84f818a2fc69221a8ccf}{Studentas}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_studentas_ab459e995e8c9b24cdc9aec5b09a66539}{Studentas}}\ \&st)}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00071}00071\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{studentas_8h_a0bad07778f2ad19ae7fcd80ed76fb24d}{TEST\_MODE}})}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Studento\ kopijavimo\ konstruktorius\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ vardas\ =\ st.vardas;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00075}00075\ \ \ \ \ \ \ \ \ pavarde\ =\ st.pavarde;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00076}00076\ \ \ \ \ \ \ \ \ nd.resize(st.nd.size());}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ copy(st.nd.begin(),\ st.nd.end(),\ nd.begin());}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ egz\ =\ st.egz;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00079}00079\ \ \ \ \ \ \ \ \ galutinisV\ =\ st.galutinisV;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ galutinisM\ =\ st.galutinisM;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00088}\mbox{\hyperlink{class_studentas_a220cdc8e73d872a7d267a6fd794cb94f}{00088}}\ \ \ \ \ \mbox{\hyperlink{class_studentas_ab459e995e8c9b24cdc9aec5b09a66539}{Studentas}}\ \&\mbox{\hyperlink{class_studentas_a220cdc8e73d872a7d267a6fd794cb94f}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_studentas_ab459e995e8c9b24cdc9aec5b09a66539}{Studentas}}\ \&st)}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00089}00089\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{studentas_8h_a0bad07778f2ad19ae7fcd80ed76fb24d}{TEST\_MODE}})}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Studento\ kopijavimo\ operacija\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ ==\ \&st)}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!nd.empty())}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ nd.\mbox{\hyperlink{class_studentas_a27b489c8e9e6feedbd47e4beaa759a0a}{clear}}();}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ vardas\ =\ st.vardas;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ pavarde\ =\ st.pavarde;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ nd.resize(st.nd.size());}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00101}00101\ \ \ \ \ \ \ \ \ copy(st.nd.begin(),\ st.nd.end(),\ nd.begin());}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00102}00102\ \ \ \ \ \ \ \ \ egz\ =\ st.egz;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00103}00103\ \ \ \ \ \ \ \ \ galutinisV\ =\ st.galutinisV;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00104}00104\ \ \ \ \ \ \ \ \ galutinisM\ =\ st.galutinisM;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00107}00107\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00113}\mbox{\hyperlink{class_studentas_a97115c4faba9be06bb8cd6145ebef988}{00113}}\ \ \ \ \ \mbox{\hyperlink{class_studentas_a97115c4faba9be06bb8cd6145ebef988}{Studentas}}(\mbox{\hyperlink{class_studentas_ab459e995e8c9b24cdc9aec5b09a66539}{Studentas}}\ \&\&st)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00114}00114\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{studentas_8h_a0bad07778f2ad19ae7fcd80ed76fb24d}{TEST\_MODE}})}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Studento\ perkelimo\ konstruktorius\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00117}00117\ \ \ \ \ \ \ \ \ vardas\ =\ move(st.vardas);}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00118}00118\ \ \ \ \ \ \ \ \ pavarde\ =\ move(st.pavarde);}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00119}00119\ \ \ \ \ \ \ \ \ nd\ =\ move(st.nd);}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00120}00120\ \ \ \ \ \ \ \ \ egz\ =\ st.egz;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00121}00121\ \ \ \ \ \ \ \ \ galutinisV\ =\ st.galutinisV;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ galutinisM\ =\ st.galutinisM;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00123}00123\ \ \ \ \ \ \ \ \ st.clear();}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00124}00124\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00131}\mbox{\hyperlink{class_studentas_ab9e8ffa08d3833cfa06acc2184c5875e}{00131}}\ \ \ \ \ \mbox{\hyperlink{class_studentas_ab459e995e8c9b24cdc9aec5b09a66539}{Studentas}}\ \&\mbox{\hyperlink{class_studentas_ab9e8ffa08d3833cfa06acc2184c5875e}{operator=}}(\mbox{\hyperlink{class_studentas_ab459e995e8c9b24cdc9aec5b09a66539}{Studentas}}\ \&\&st)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00132}00132\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{studentas_8h_a0bad07778f2ad19ae7fcd80ed76fb24d}{TEST\_MODE}})}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Studento\ perkelimo\ operacija\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00135}00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ ==\ \&st)}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00138}00138\ \ \ \ \ \ \ \ \ vardas\ =\ move(st.vardas);}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00139}00139\ \ \ \ \ \ \ \ \ pavarde\ =\ move(st.pavarde);}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00140}00140\ \ \ \ \ \ \ \ \ nd\ =\ move(st.nd);}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00141}00141\ \ \ \ \ \ \ \ \ egz\ =\ st.egz;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00142}00142\ \ \ \ \ \ \ \ \ galutinisV\ =\ st.galutinisV;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00143}00143\ \ \ \ \ \ \ \ \ galutinisM\ =\ st.galutinisM;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00144}00144\ \ \ \ \ \ \ \ \ st.clear();}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00146}00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00147}00147\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00155}\mbox{\hyperlink{class_studentas_a282226afbc8a0dcc1d31bd354ac1a81c}{00155}}\ \ \ \ \ \textcolor{keyword}{friend}\ ostream\ \&\mbox{\hyperlink{class_studentas_a282226afbc8a0dcc1d31bd354ac1a81c}{operator<<}}(ostream\ \&os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_studentas_ab459e995e8c9b24cdc9aec5b09a66539}{Studentas}}\ \&st)}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00156}00156\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00157}00157\ \ \ \ \ \ \ \ \ os\ <<\ st.vardas\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ st.pavarde\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ st.galutinisV\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ st.galutinisM\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00159}00159\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00167}\mbox{\hyperlink{class_studentas_a4ec247aa7686c55042d20203ad0ad06b}{00167}}\ \ \ \ \ \textcolor{keyword}{friend}\ istream\ \&\mbox{\hyperlink{class_studentas_a4ec247aa7686c55042d20203ad0ad06b}{operator>>}}(istream\ \&is,\ \mbox{\hyperlink{class_studentas_ab459e995e8c9b24cdc9aec5b09a66539}{Studentas}}\ \&st)}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00168}00168\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00169}00169\ \ \ \ \ \ \ \ \ is\ >>\ st.vardas\ >>\ st.pavarde;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00170}00170\ \ \ \ \ \ \ \ \ st.nd.clear();}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00172}00172\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ eilute;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00173}00173\ \ \ \ \ \ \ \ \ getline(is,\ eilute);}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00174}00174\ \ \ \ \ \ \ \ \ istringstream\ iss(eilute);}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00176}00176\ \ \ \ \ \ \ \ \ vector<int>\ visiPazymiai;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00177}00177\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ paz;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00179}00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (iss\ >>\ paz)}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00180}00180\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ visiPazymiai.push\_back(paz);}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00182}00182\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00184}00184\ \ \ \ \ \ \ \ \ st.egz\ =\ visiPazymiai.back();}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00185}00185\ \ \ \ \ \ \ \ \ visiPazymiai.pop\_back();}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00186}00186\ \ \ \ \ \ \ \ \ st.nd\ =\ visiPazymiai;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00187}00187\ \ \ \ \ \ \ \ \ st.galutinisV\ =\ st.\mbox{\hyperlink{class_studentas_a148d7cfd9a24e11de95fa4ae6b055db4}{SkaiciuotiV}}();}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00188}00188\ \ \ \ \ \ \ \ \ st.galutinisM\ =\ st.\mbox{\hyperlink{class_studentas_aad81aa77f874ad0601d3a7f5b2515c66}{SkaiciuotiM}}();}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00190}00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ is;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00191}00191\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00198}\mbox{\hyperlink{class_studentas_aab017285c3b3e7794f264e4bdb935265}{00198}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_studentas_aab017285c3b3e7794f264e4bdb935265}{setVarPav}}(\textcolor{keywordtype}{string}\ v,\ \textcolor{keywordtype}{string}\ p)}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00199}00199\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00200}00200\ \ \ \ \ \ \ \ \ vardas\ =\ v;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00201}00201\ \ \ \ \ \ \ \ \ pavarde\ =\ p;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00202}00202\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00209}\mbox{\hyperlink{class_studentas_a2937de900cd3bad83ffd6eb2ceae1bef}{00209}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_studentas_a2937de900cd3bad83ffd6eb2ceae1bef}{setPaz}}(vector<int>\ n,\ \textcolor{keywordtype}{int}\ e)}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00210}00210\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00211}00211\ \ \ \ \ \ \ \ \ nd\ =\ n;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00212}00212\ \ \ \ \ \ \ \ \ egz\ =\ e;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00213}00213\ \ \ \ \ \ \ \ \ galutinisV\ =\ \mbox{\hyperlink{class_studentas_a148d7cfd9a24e11de95fa4ae6b055db4}{SkaiciuotiV}}();}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00214}00214\ \ \ \ \ \ \ \ \ galutinisM\ =\ \mbox{\hyperlink{class_studentas_aad81aa77f874ad0601d3a7f5b2515c66}{SkaiciuotiM}}();}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00215}00215\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00216}\mbox{\hyperlink{class_studentas_a0c015572b8016d34c18840647b957523}{00216}}\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_studentas_a0c015572b8016d34c18840647b957523}{getVardas}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ vardas;\ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00217}\mbox{\hyperlink{class_studentas_ad4857087857fa77ea0e68137d5bc9217}{00217}}\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_studentas_ad4857087857fa77ea0e68137d5bc9217}{getPavarde}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ pavarde;\ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00218}\mbox{\hyperlink{class_studentas_a2f9dcb2fef2e6b3dbc1581779a90a68a}{00218}}\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_studentas_a2f9dcb2fef2e6b3dbc1581779a90a68a}{getEgz}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ egz;\ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00219}\mbox{\hyperlink{class_studentas_a0dc91509cc589c6fdab3ac725bd41014}{00219}}\ \ \ \ \ \textcolor{keyword}{inline}\ vector<int>\ \mbox{\hyperlink{class_studentas_a0dc91509cc589c6fdab3ac725bd41014}{getNd}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ nd;\ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00220}\mbox{\hyperlink{class_studentas_acd958ca47f9c3b9f1a7e492067430580}{00220}}\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_studentas_acd958ca47f9c3b9f1a7e492067430580}{getGalV}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ galutinisV;\ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00221}\mbox{\hyperlink{class_studentas_ae55a7d597d549832b805971ea4976e72}{00221}}\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_studentas_ae55a7d597d549832b805971ea4976e72}{getGalM}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ galutinisM;\ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00227}\mbox{\hyperlink{class_studentas_a148d7cfd9a24e11de95fa4ae6b055db4}{00227}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_studentas_a148d7cfd9a24e11de95fa4ae6b055db4}{SkaiciuotiV}}()}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00228}00228\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00229}00229\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ s\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00230}00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nd.size();\ i++)}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00231}00231\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ s\ +=\ nd[i];}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00233}00233\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00234}00234\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ galutinis\ =\ 0.4\ *\ (1.0\ *\ s\ /\ nd.size())\ +\ 0.6\ *\ egz;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00235}00235\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ galutinis;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00236}00236\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00242}\mbox{\hyperlink{class_studentas_aad81aa77f874ad0601d3a7f5b2515c66}{00242}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_studentas_aad81aa77f874ad0601d3a7f5b2515c66}{SkaiciuotiM}}()}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00243}00243\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00245}00245\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ paz;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00246}00246\ \ \ \ \ \ \ \ \ sort(nd.begin(),\ nd.end());}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00248}00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nd.size()\ \%\ 2\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00249}00249\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ paz\ =\ 1.0\ *\ (nd[nd.size()\ /\ 2\ -\/\ 1]\ +\ nd[nd.size()\ /\ 2])\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00251}00251\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00252}00252\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00253}00253\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ paz\ =\ nd[nd.size()\ /\ 2];}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00255}00255\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00257}00257\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ galutinis\ =\ 0.4\ *\ paz\ +\ 0.6\ *\ egz;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00258}00258\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ galutinis;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00259}00259\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00264}\mbox{\hyperlink{class_studentas_a27b489c8e9e6feedbd47e4beaa759a0a}{00264}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_studentas_a27b489c8e9e6feedbd47e4beaa759a0a}{clear}}()}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00265}00265\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00266}00266\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{studentas_8h_a0bad07778f2ad19ae7fcd80ed76fb24d}{TEST\_MODE}})}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Studento\ destruktorius\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00268}00268\ \ \ \ \ \ \ \ \ vardas.clear();}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00269}00269\ \ \ \ \ \ \ \ \ pavarde.clear();}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00270}00270\ \ \ \ \ \ \ \ \ nd.clear();}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00271}00271\ \ \ \ \ \ \ \ \ egz\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00272}00272\ \ \ \ \ \ \ \ \ galutinisV\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00273}00273\ \ \ \ \ \ \ \ \ galutinisM\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00274}00274\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00275}\mbox{\hyperlink{class_studentas_a63e449e0f51a0b14340d02ee71b4be23}{00275}}\ \ \ \ \ \mbox{\hyperlink{class_studentas_a63e449e0f51a0b14340d02ee71b4be23}{\string~Studentas}}()\ \{\ \mbox{\hyperlink{class_studentas_a27b489c8e9e6feedbd47e4beaa759a0a}{clear}}();\ \}}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00276}00276\ \};}
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{studentas_8h_source_l00278}00278\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
