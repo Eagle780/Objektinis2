@@ -1,3 +1,13 @@
+/**
+ * @file studentas.h
+ * @author Eglė
+ * @brief  Studento klasė
+ * @version 0.1
+ * @date 2025-05-07
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
 #ifndef STUDENT_H
 #define STUDENT_H
 
@@ -30,7 +40,19 @@ private:
     float galutinisM;
 
 public:
+    /**
+     * @brief Tuščias studento konstruktorius
+     *
+     */
     Studentas() : egz(0) {}
+    /**
+     * @brief Pilnas studento konstruktorius
+     *
+     * @param v Vardas
+     * @param p Pavardė
+     * @param n Namų darbų pažymiai (vektorius)
+     * @param e Egzamino pažymys
+     */
     Studentas(string v, string p, vector<int> n, int e)
     {
         vardas = v;
@@ -40,6 +62,11 @@ public:
         galutinisV = SkaiciuotiV();
         galutinisM = SkaiciuotiM();
     };
+    /**
+     * @brief Kopijavimo konstruktorius
+     *
+     * @param st Studentas, kurio duomenis norima kopijuoti
+     */
     Studentas(const Studentas &st)
     {
         if (TEST_MODE)
@@ -52,6 +79,12 @@ public:
         galutinisV = st.galutinisV;
         galutinisM = st.galutinisM;
     }
+    /**
+     * @brief Kopijavimo operacija
+     *
+     * @param st Studentas, kurio duomenis norima kopijuoti
+     * @return Studentas, į kurį buvo nukopijuoti duomenys
+     */
     Studentas &operator=(const Studentas &st)
     {
         if (TEST_MODE)
@@ -72,6 +105,11 @@ public:
 
         return *this;
     }
+    /**
+     * @brief Studento perkelimo konstruktorius
+     *
+     * @param st Studentas, kurio duomenis norima perkelti
+     */
     Studentas(Studentas &&st) noexcept
     {
         if (TEST_MODE)
@@ -84,6 +122,12 @@ public:
         galutinisM = st.galutinisM;
         st.clear();
     }
+    /**
+     * @brief Studento perkelimo operacija
+     *
+     * @param st Studentas, kurio duomenis norima perkelti
+     * @return Studentas, į kurį buvo perkelti duomenys
+     */
     Studentas &operator=(Studentas &&st) noexcept
     {
         if (TEST_MODE)
@@ -101,11 +145,25 @@ public:
 
         return *this;
     }
+    /**
+     * @brief Studento išvedimo operacija
+     *
+     * @param os Būdas, kuriuo išvedama
+     * @param st Išvedamas studentas
+     * @return ostream&
+     */
     friend ostream &operator<<(ostream &os, const Studentas &st)
     {
         os << st.vardas << " " << st.pavarde << " " << st.galutinisV << " " << st.galutinisM << "\n";
         return os;
     }
+    /**
+     * @brief Studento įvedimo operacija
+     *
+     * @param is Būdas, kuriuo įvedama
+     * @param st Įvedamas studentas
+     * @return istream&
+     */
     friend istream &operator>>(istream &is, Studentas &st)
     {
         is >> st.vardas >> st.pavarde;
@@ -131,11 +189,23 @@ public:
 
         return is;
     }
+    /**
+     * @brief Studento vardo ir pavardės set'eris
+     *
+     * @param v Vardas
+     * @param p Pavardė
+     */
     void setVarPav(string v, string p)
     {
         vardas = v;
         pavarde = p;
     }
+    /**
+     * @brief Studento namų darbų ir egzamino pažymių set'eris
+     *
+     * @param n namų darbų pažymių vektorius
+     * @param e egzamino pažymys
+     */
     void setPaz(vector<int> n, int e)
     {
         nd = n;
@@ -149,6 +219,11 @@ public:
     inline vector<int> getNd() const { return nd; }
     inline int getGalV() const { return galutinisV; }
     inline int getGalM() const { return galutinisM; }
+    /**
+     * @brief Skaičiuojamas studento galutinis balas pagal vidurkį
+     *
+     * @return Grąžinama suskaičiuota galutinio balo reikšmė, kuri išsaugoma "galutinisV"
+     */
     float SkaiciuotiV()
     {
         int s = 0;
@@ -159,6 +234,11 @@ public:
         float galutinis = 0.4 * (1.0 * s / nd.size()) + 0.6 * egz;
         return galutinis;
     }
+    /**
+     * @brief Skaičiuojamas studento galutinis balas pagal medianą
+     *
+     * @return Grąžinama suskaičiuota galutinio balo reikšmė, kuri išsaugoma "galutinisM"
+     */
     float SkaiciuotiM()
     {
 
@@ -177,6 +257,10 @@ public:
         float galutinis = 0.4 * paz + 0.6 * egz;
         return galutinis;
     }
+    /**
+     * @brief funkcija, kuri iškviečiama iškvietus destruktorių
+     *
+     */
     void clear()
     {
         if (TEST_MODE)
