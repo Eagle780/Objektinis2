@@ -81,6 +81,10 @@ Studentą taip pat galima ir išvesti, panaudojus praeito pavyzdžio duomenis, b
 
 Išvestis taip pat, kaip ir įvestis, gali būti naudojama ir darbui su failais, kadangi operacija kaip kintamąjį paima išvesties metodą.
 
+## Dokumentacija
+
+Dokumentacijos failai yra docs/ aplanke. Ten rasite html/ ir latex/ aplankus taip pat ir jau pilnai sugeneruotą .pdf pavidalo dokumentaciją. Norint dokumentaciją matyti naršyklėje, html/ aplanke susiraskite failą "index.html" ir atidarykite jį naudodamiesi "Live Server" ar kitu .html failų paleidimo būdu.
+
 ## Testavimo sistemos parametrai
 
 - CPU - AMD Ryzen 5 5600H, 3.30GHz
