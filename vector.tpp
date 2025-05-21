@@ -8,29 +8,40 @@ Vector<T>::Vector() : size(0), capacity(1)
 }
 
 template <typename T>
-Vector<T>::Vector(const Vector<T> &rhs) : size(rhs.size), capacity(rhs.capacity), array(new int[capacity])
+Vector<T>::Vector(const Vector<T> &rhs) : size(rhs.size), capacity(rhs.capacity)
 {
-    for (int i = 0; i < rhs.Size(); ++i)
-    {
-        array[i] = rhs.array[i];
-    }
-}
-
-template <typename T>
-Vector<T>::Vector(int elements, const T &value) : size(elements), capacity(elements), array(new int[capacity])
-{
+    array = alloc.allocate(capacity);
     for (int i = 0; i < size; ++i)
     {
-        array[i] = value;
+        alloc.construct(&array[i], rhs.array[i]);
     }
 }
 
 template <typename T>
-Vector<T>::Vector(const std::initializer_list<T> &list) : size(0), capacity(list.size()), array(new int[capacity])
+Vector<T>::Vector(Vector<T> &&rhs) noexcept : size(rhs.size), capacity(rhs.capacity), array(rhs.array)
 {
-    for (int i : list)
+    other.size = 0;
+    other.capacity = 0;
+    other.array = nullptr;
+}
+
+template <typename T>
+Vector<T>::Vector(int elements, const T &value) : size(elements), capacity(elements)
+{
+    array = alloc.allocate(capacity);
+    for (int i = 0; i < size; ++i)
     {
-        Push_back(i);
+        alloc.construct(&array[i], value);
+    }
+}
+
+template <typename T>
+Vector<T>::Vector(const std::initializer_list<T> &list) : size(0), capacity(list.size())
+{
+    array = alloc.allocate(capacity);
+    for (const T &elem : list)
+    {
+        Emplace_back(elem);
     }
 }
 
@@ -77,12 +88,6 @@ template <typename T>
 int Vector<T>::Size() const
 {
     return size;
-}
-
-template <typename T>
-int Vector<T>::Max_size() const
-{
-    return 0;
 }
 
 template <typename T>
@@ -195,22 +200,38 @@ bool Vector<T>::operator<=(const Vector<T> &rhs) const
 template <typename T>
 Vector<T> &Vector<T>::operator=(const Vector<T> &rhs)
 {
-    if (rhs.Size() > size)
+    if (this != &rhs)
     {
+        Clear();
+        alloc.deallocate(array, capacity);
+
+        size = rhs.size;
+        capacity = rhs.capacity;
+        array = alloc.allocate(capacity);
         for (int i = 0; i < size; ++i)
         {
-            alloc.destroy(&array[i]);
+            alloc.construct(&array[i], rhs.array[i]);
         }
-        alloc.deallocate(array, capacity);
-        capacity = rhs.Capacity();
-        array = new int[capacity];
     }
-    for (int i = 0; i < rhs.Size(); ++i)
-    {
-        array[i] = rhs.array[i];
-    }
-    size = rhs.Size();
+    return *this;
+}
 
+template <typename T>
+Vector<T> &Vector<T>::operator=(const Vector<T> &&rhs) noexcept
+{
+    if (this != &rhs)
+    {
+        Clear();
+        alloc.deallocate(array, capacity);
+
+        size = rhs.size;
+        capacity = rhs.capacity;
+        array = rhs.array;
+
+        rhs.size = 0;
+        rhs.capacity = 0;
+        rhs.array = nullptr;
+    }
     return *this;
 }
 
@@ -231,7 +252,7 @@ T &Vector<T>::At(int index)
 {
     if ((index < 0) || (index >= size))
     {
-        throw std::exception();
+        throw std::out_of_range("At: Indeksas uz ribu");
     }
     return array[index];
 }
@@ -253,7 +274,7 @@ void Vector<T>::Insert(int index, const T &value)
 {
     if ((index < 0) || (index >= size))
     {
-        throw std::exception();
+        throw std::out_of_range("Insert: Indeksas uz ribu");
     }
 
     if (size != capacity)
@@ -288,7 +309,7 @@ void Vector<T>::Erase(int index)
 {
     if ((index < 0) || (index >= size))
     {
-        throw std::exception();
+        throw std::out_of_range("Erase: Indeksas uz ribu");
     }
 
     for (int i = index; i < size - 1; ++i)
@@ -314,6 +335,28 @@ void Vector<T>::Emplace_back(Args &&...args)
     }
     alloc.construct(&array[size], std::forward<Args>(args)...);
     ++size;
+}
+
+template <typename T>
+template <typename... Args>
+T *Vector<T>::Emplace(int index, Args &&...args)
+{
+    if (index < 0 || index > size)
+        throw std::out_of_range("Emplace: Indeksas uz ribu");
+
+    if (size >= capacity)
+        Reserve(capacity == 0 ? 1 : capacity * 2);
+
+    for (int i = size; i > index; --i)
+    {
+        alloc.construct(&array[i], std::move(array[i - 1]));
+        alloc.destroy(&array[i - 1]);
+    }
+
+    alloc.construct(&array[index], std::forward<Args>(args)...);
+    ++size;
+
+    return &array[index];
 }
 
 template <typename T>

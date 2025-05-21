@@ -27,6 +27,7 @@ private:
 public:
     Vector();
     Vector(const Vector<T> &rhs);
+    Vector(Vector<T> &&rhs) noexcept;
     Vector(int elements, const T &value = T());
     Vector(const std::initializer_list<T> &list);
     ~Vector();
@@ -36,7 +37,6 @@ public:
 
     bool isEmpty() const;
     int Size() const;
-    int Max_size() const;
     int Capacity() const;
     void Reserve(int new_cap);
     void Shrink_to_fit();
@@ -49,6 +49,7 @@ public:
     bool operator<=(const Vector<T> &rhs) const;
 
     Vector<T> &operator=(const Vector<T> &rhs);
+    Vector<T> &operator=(const Vector<T> &&rhs) noexcept;
     allocator_type Get_allocator() const;
 
     value_type &operator[](int index);
@@ -65,6 +66,8 @@ public:
 
     template <typename... Args>
     void Emplace_back(Args &&...args);
+    template <typename... Args>
+    T *Emplace(int index, Args &&...args);
 
     void Assign(int count, const T &value);
     void Assign(std::initializer_list<T> ilist);
