@@ -49,6 +49,7 @@ public:
     bool operator<=(const Vector<T> &rhs) const;
 
     Vector<T> &operator=(const Vector<T> &rhs);
+    allocator_type Get_allocator() const;
 
     value_type &operator[](int index);
     value_type &At(int index);
@@ -61,6 +62,9 @@ public:
     void Insert(int index, const T &value);
     void Erase(int index);
     void Clear();
+
+    template <typename... Args>
+    void Emplace_back(Args &&...args);
 
     void Assign(int count, const T &value);
     void Assign(std::initializer_list<T> ilist);

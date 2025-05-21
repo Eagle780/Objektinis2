@@ -12,6 +12,7 @@
 #define HEADER_H
 
 #include "Studentas.h"
+#include "vector.h"
 #include <iostream>
 #include <iomanip>
 #include <vector>
