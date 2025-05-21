@@ -6,11 +6,23 @@
 template <typename T>
 class Vector
 {
+public:
+    using value_type = T;
+    using reference = T &;
+    using const_reference = const T &;
+    using pointer = T *;
+    using const_pointer = const T *;
+    using iterator = T *;
+    using const_iterator = const T *;
+    using reverse_iterator = T *;
+    using const_reverse_iterator = const T *;
+    using allocator_type = std::allocator<T>;
+
 private:
     int size;
     int capacity;
     T *array;
-    std::allocator<T> alloc;
+    allocator_type alloc;
 
 public:
     Vector();
@@ -38,34 +50,32 @@ public:
 
     Vector<T> &operator=(const Vector<T> &rhs);
 
-    T &operator[](int index);
-    T &At(int index);
-    T &Front();
-    T &Back();
+    value_type &operator[](int index);
+    value_type &At(int index);
+    value_type &Front();
+    value_type &Back();
+
+    pointer Data();
+    const_pointer Data() const;
 
     void Insert(int index, const T &value);
     void Erase(int index);
     void Clear();
 
     void Assign(int count, const T &value);
-    // template <class InputIt>
-    //  void assign(InputIt first, InputIt last);
     void Assign(std::initializer_list<T> ilist);
 
-    T *Data();
-    const T *Data() const;
+    iterator Begin() { return array; }
+    iterator End() { return array + size; }
+    const_iterator Begin() const { return array; }
+    const_iterator End() const { return array + size; }
+    const_iterator Cbegin() const { return array; }
+    const_iterator Cend() const { return array + size; }
 
-    T *Begin() { return array; }
-    T *End() { return array + size; }
-    const T *Begin() const { return array; }
-    const T *End() const { return array + size; }
-    const T *Cbegin() const { return array; }
-    const T *Cend() const { return array + size; }
-
-    T *Rbegin() { return array + size - 1; }
-    T *Rend() { return array - 1; }
-    const T *Rbegin() const { return array + size - 1; }
-    const T *Rend() const { return array - 1; }
+    iterator Rbegin() { return array + size - 1; }
+    iterator Rend() { return array - 1; }
+    const_iterator Rbegin() const { return array + size - 1; }
+    const_iterator Rend() const { return array - 1; }
 
     void Resize(int count);
     void Resize(int count, const T &value);

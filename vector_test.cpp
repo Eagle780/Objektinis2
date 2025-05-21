@@ -99,30 +99,33 @@ int main()
     cout << w.Data() << endl;
     cout << "---" << endl;
 
-    Vector<int> c = {1, 2, 3};
-    for (int i = 0; i < c.Size(); ++i)
+    Vector<int> d = {1, 2, 3};
+    for (int i = 0; i < d.Size(); ++i)
     {
-        cout << c[i] << " ";
+        cout << d[i] << " ";
     }
     cout << endl;
-    c.Resize(5);
-    for (int i = 0; i < c.Size(); ++i)
+    d.Resize(5);
+    for (int i = 0; i < d.Size(); ++i)
     {
-        cout << c[i] << " ";
+        cout << d[i] << " ";
     }
     cout << endl;
-    c.Resize(2);
-    for (int i = 0; i < c.Size(); ++i)
+    d.Resize(2);
+    for (int i = 0; i < d.Size(); ++i)
     {
-        cout << c[i] << " ";
+        cout << d[i] << " ";
     }
     cout << endl;
-    c.Resize(6, 4);
-    for (int i = 0; i < c.Size(); ++i)
+    d.Resize(6, 4);
+    for (int i = 0; i < d.Size(); ++i)
     {
-        cout << c[i] << " ";
+        cout << d[i] << " ";
     }
     cout << endl;
+
+    Vector<int> a{1, 2, 3}, b{1, 4, 3}, c{1, 2, 3, 4};
+    cout << "a > b " << (a > b) << " a > c " << (a > c) << " b > c " << (b > c) << " a <= b " << (a <= b) << " a <= c " << (a <= c) << " b <= c " << (b <= c) << endl;
 
     Vector<int> vi;
     vi.PushBack(5);
