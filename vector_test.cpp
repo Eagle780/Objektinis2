@@ -5,8 +5,7 @@ using namespace std;
 
 int main()
 {
-    /*
-    Vector v;
+    Vector<int> v;
     cout << "sukurimas" << endl;
     for (int i = 1; i < 12; ++i)
     {
@@ -14,27 +13,31 @@ int main()
     }
     for (int i = 0; i < v.Size(); ++i)
     {
-        cout << v.Array(i) << " ";
+        cout << v[i] << " ";
     }
     cout << endl;
     cout << "capacity: " << v.Capacity() << " size: " << v.Size() << " is empty: " << v.isEmpty() << endl;
+    cout << "---" << endl;
 
     cout << "kppijavimo konstruktorius" << endl;
-    Vector w = v;
+    Vector<int> w = v;
     for (int i = 0; i < w.Size(); ++i)
     {
-        cout << w.Array(i) << " ";
+        cout << w[i] << " ";
     }
     cout << endl;
     cout << "capacity: " << w.Capacity() << " size: " << w.Size() << " is empty: " << w.isEmpty() << " ar equal: " << (v == w) << endl;
     w.PushBack(100);
+    cout << "---" << endl;
+
     cout << "pushback" << endl;
     for (int i = 0; i < w.Size(); ++i)
     {
-        cout << w.Array(i) << " ";
+        cout << w[i] << " ";
     }
     cout << endl;
     cout << "capacity: " << w.Capacity() << " size: " << w.Size() << " is empty: " << w.isEmpty() << " ar equal: " << (v == w) << endl;
+    cout << "---" << endl;
 
     w.PopBack();
     w.PopBack();
@@ -47,6 +50,7 @@ int main()
     }
     cout << endl;
     cout << "capacity: " << w.Capacity() << " size: " << w.Size() << " is empty: " << w.isEmpty() << " ar equal: " << (v == w) << endl;
+    cout << "---" << endl;
 
     cout << "erase" << endl;
     w.Erase(4);
@@ -62,11 +66,67 @@ int main()
     }
     cout << endl;
     cout << "capacity: " << w.Capacity() << " size: " << w.Size() << " is empty: " << w.isEmpty() << " ar equal: " << (v == w) << endl;
-    */
+    cout << "---" << endl;
+
+    cout << "shrink" << endl;
+    w.Shrink_to_fit();
+    cout << "capacity: " << w.Capacity() << " size: " << w.Size() << " is empty: " << w.isEmpty() << " ar equal: " << (v == w) << endl;
+    cout << "---" << endl;
+
+    cout << "reserve" << endl;
+    w.Reserve(20);
+    cout << "capacity: " << w.Capacity() << " size: " << w.Size() << " is empty: " << w.isEmpty() << " ar equal: " << (v == w) << endl;
+    cout << "---" << endl;
+
+    cout << "at, front, back" << endl;
+    cout << w.At(3) << " " << w.Front() << " " << w.Back() << endl;
+    cout << "---" << endl;
+
+    cout << "begin, back, reverse" << endl;
+    cout << *w.Begin() << " " << *w.End() << " " << *w.Rbegin() << " " << *w.Rend() << endl;
+    cout << "---" << endl;
+
+    cout << "insert, clear" << endl;
+    cout << w.Data() << endl;
+    w.Insert(4, 100);
+    for (int i = 0; i < w.Size(); ++i)
+    {
+        cout << w[i] << " ";
+    }
+    cout << endl;
+    w.Clear();
+    cout << "capacity: " << w.Capacity() << " size: " << w.Size() << " is empty: " << w.isEmpty() << " ar equal: " << (v == w) << endl;
+    cout << w.Data() << endl;
+    cout << "---" << endl;
+
+    Vector<int> c = {1, 2, 3};
+    for (int i = 0; i < c.Size(); ++i)
+    {
+        cout << c[i] << " ";
+    }
+    cout << endl;
+    c.Resize(5);
+    for (int i = 0; i < c.Size(); ++i)
+    {
+        cout << c[i] << " ";
+    }
+    cout << endl;
+    c.Resize(2);
+    for (int i = 0; i < c.Size(); ++i)
+    {
+        cout << c[i] << " ";
+    }
+    cout << endl;
+    c.Resize(6, 4);
+    for (int i = 0; i < c.Size(); ++i)
+    {
+        cout << c[i] << " ";
+    }
+    cout << endl;
 
     Vector<int> vi;
     vi.PushBack(5);
-    cout << vi[0] << endl;
+    cout << vi[0] << " " << vi.Data() << endl;
 
     Vector<std::string> vs;
     vs.PushBack("hello");
@@ -92,7 +152,7 @@ int main()
 
     cout << characters.Data() << endl;
 
-    characters.Assign({'C', '+', '+', '1', '1'});
+    characters.Assign({'C', '+', '+', '1', '7'});
     for (int i = 0; i < characters.Size(); ++i)
     {
         cout << characters[i] << " ";

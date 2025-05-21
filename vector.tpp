@@ -39,7 +39,6 @@ Vector<T>::~Vector()
 {
     size = capacity = 0;
     delete[] array;
-    std::cout << "done" << std::endl;
 }
 
 template <typename T>
@@ -102,6 +101,31 @@ int Vector<T>::Capacity() const
 template <typename T>
 void Vector<T>::Reserve(int new_cap)
 {
+    if (new_cap <= capacity)
+        return;
+    capacity = new_cap;
+    T *newArray = new T[capacity];
+    for (int i = 0; i < size; ++i)
+    {
+        newArray[i] = array[i];
+    }
+    delete[] array;
+    array = newArray;
+}
+
+template <typename T>
+void Vector<T>::Shrink_to_fit()
+{
+    if (capacity == size)
+        return;
+    capacity = size;
+    T *newArray = new T[capacity];
+    for (int i = 0; i < size; ++i)
+    {
+        newArray[i] = array[i];
+    }
+    delete[] array;
+    array = newArray;
 }
 
 template <typename T>
@@ -124,6 +148,46 @@ template <typename T>
 bool Vector<T>::operator!=(const Vector &rhs) const
 {
     return !(*this == rhs);
+}
+
+template <typename T>
+bool Vector<T>::operator>(const Vector<T> &rhs) const
+{
+    int minSize = std::min(size, rhs.size);
+    for (int i = 0; i < minSize; ++i)
+    {
+        if (array[i] > rhs.array[i])
+            return true;
+        if (rhs.array[i] > array[i])
+            return false;
+    }
+    return size > rhs.size;
+}
+
+template <typename T>
+bool Vector<T>::operator>=(const Vector<T> &rhs) const
+{
+    return !(*this < rhs);
+}
+
+template <typename T>
+bool Vector<T>::operator<(const Vector<T> &rhs) const
+{
+    int minSize = std::min(size, rhs.size);
+    for (int i = 0; i < minSize; ++i)
+    {
+        if (array[i] < rhs.array[i])
+            return true;
+        if (rhs.array[i] < array[i])
+            return false;
+    }
+    return size < rhs.size;
+}
+
+template <typename T>
+bool Vector<T>::operator<=(const Vector<T> &rhs) const
+{
+    return !(*this > rhs);
 }
 
 template <typename T>
@@ -262,4 +326,48 @@ const T *Vector<T>::Data() const
     if (isEmpty())
         return nullptr;
     return array;
+}
+
+template <typename T>
+void Vector<T>::Resize(int count)
+{
+    if (count < 0)
+    {
+        throw std::exception();
+    }
+    if (count == size)
+        return;
+    else if (count < size)
+        size = count;
+    else
+    {
+        Reserve(std::max(count, capacity * 2));
+        for (int i = size; i < count; ++i)
+        {
+            array[i] = T();
+        }
+        size = count;
+    }
+}
+
+template <typename T>
+void Vector<T>::Resize(int count, const T &value)
+{
+    if (count < 0)
+    {
+        throw std::exception();
+    }
+    if (count == size)
+        return;
+    else if (count < size)
+        size = count;
+    else
+    {
+        Reserve(std::max(count, capacity * 2));
+        for (int i = size; i < count; ++i)
+        {
+            array[i] = value;
+        }
+        size = count;
+    }
 }

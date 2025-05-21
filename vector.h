@@ -27,9 +27,15 @@ public:
     int Max_size() const;
     int Capacity() const;
     void Reserve(int new_cap);
+    void Shrink_to_fit();
 
     bool operator==(const Vector<T> &rhs) const;
     bool operator!=(const Vector<T> &rhs) const;
+    bool operator>(const Vector<T> &rhs) const;
+    bool operator>=(const Vector<T> &rhs) const;
+    bool operator<(const Vector<T> &rhs) const;
+    bool operator<=(const Vector<T> &rhs) const;
+
     Vector<T> &operator=(const Vector<T> &rhs);
 
     T &operator[](int index);
@@ -49,17 +55,20 @@ public:
     T *Data();
     const T *Data() const;
 
-    T *begin() { return array; }
-    T *end() { return array + size; }
-    const T *begin() const { return array; }
-    const T *end() const { return array + size; }
-    const T *cbegin() const { return array; }
-    const T *cend() const { return array + size; }
+    T *Begin() { return array; }
+    T *End() { return array + size; }
+    const T *Begin() const { return array; }
+    const T *End() const { return array + size; }
+    const T *Cbegin() const { return array; }
+    const T *Cend() const { return array + size; }
 
-    T *rbegin() { return array + size - 1; }
-    T *rend() { return array - 1; }
-    const T *rbegin() const { return array + size - 1; }
-    const T *rend() const { return array - 1; }
+    T *Rbegin() { return array + size - 1; }
+    T *Rend() { return array - 1; }
+    const T *Rbegin() const { return array + size - 1; }
+    const T *Rend() const { return array - 1; }
+
+    void Resize(int count);
+    void Resize(int count, const T &value);
 };
 
 #include "vector.tpp"
