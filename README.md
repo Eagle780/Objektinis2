@@ -86,8 +86,11 @@ Išvestis taip pat, kaip ir įvestis, gali būti naudojama ir darbui su failais,
 Šioje versijoje buvo realizuota nuosava vektoriaus klasė, čia pateiksiu kelių funkcijų implementacijos pavyzdžius:
 
 1.  Push_back(elementas)
+
     Jei vektoriaus viduje esancio masyvo dydis yra mažesnis už talpą, prie masyvo galo pridedamas naujas elementas, o kintamasis, kuris nurodo masyvo dydi, padidinamas vienetu.
+
     Jei vektorias viduje esančio masyvo dydis yra lygus talpai, tai pirma visi elementai perkopijuojami į nauja masyvą, kurio talpa būtų dvigubai didesnė už praeito, senasis masyvas ištrinamas, o prie naujojo galo pridedamas naujas elementas.
+
     Pvz:
 
         Vector<int> v;
@@ -100,9 +103,13 @@ Išvestis taip pat, kaip ir įvestis, gali būti naudojama ir darbui su failais,
         10 20
 
 2.  Shrink_to_fit()
+
     Naudojamas norint sumažinti vektoriaus viduje esančio masyvo talpą, kad ji būtų lygi masyvo dydžiui.
+
     Jei dydis jau yra lygus talpai, grįžtama iš funkcijos ir niekas neįvykta.
+
     Kitu atveju sukuriamas naujas masyvas, kurio talpa būtu lygi senojo masyvo dydžiui, į jį nukopijuojami visi elementai, esantys senajame masyve, senasis ištrinamas, o naujasis masyvas tampa vektoriaus masyvu.
+
     Pvz:
 
         Vector<int> v;
@@ -119,10 +126,15 @@ Išvestis taip pat, kaip ir įvestis, gali būti naudojama ir darbui su failais,
         3
 
 3.  == operatorius
+
     Lygina, ar kiekvienas pirmojo vektoriaus elementas yra lygus antrojo vektoriaus elementui tame pačiame indekse.
+
     Jei dydžiai skiriasi, grąžinama false.
+
     Jei bent vienas elementas iš primojo vektoriaus neatitinka tame pačiame indekse esančio elemento iš antrojo vektoriaus, grąžinama false.
+
     Kitu atveju grąžinama true.
+
     Pvz:
 
         Vector<int> a{1, 2, 3}, b{1, 2, 3}, c{1, 2, 3, 4};
@@ -133,10 +145,15 @@ Išvestis taip pat, kaip ir įvestis, gali būti naudojama ir darbui su failais,
         1 0
 
 4.  Resize(naujas_dydis(, reikšmė))
+
     Keičia vektoriaus viduje esančio masyvo dydį.
+
     Jei naujasis dydis lygus esamam dydžiui, grįžtama.
+
     Jei naujas dydis yra mažesnis už esamą, masyvo dydį rodančiam kintamajui priskiriama naujojo dydžio reikšmė.
+
     Jei naujas dydis didesnis už esamą, kuriamas naujas masyvas, kuriam rezervuojama didesnė reikšmė tarp naujojo dydžio ir talpos\*2. Į jį nukopijuojami visi senojo masyvo elementai ir nuo pabaigos iki norimo dydžio indeksų pridedama tuščio konstruktoriaus sukurtas elementas (jei nėra reikšmės) arba norima reikmė (jei ji yra).
+
     Pvz:
 
         Vector<int> d = {1, 2, 3};
@@ -172,7 +189,9 @@ Išvestis taip pat, kaip ir įvestis, gali būti naudojama ir darbui su failais,
         1 2 4 4 4 4
 
 5.  = operatorius
+
     Nukopijuoja visus antrojo vektoriaus elementus ir kintamuosius į pirmąjį.
+
     Pvz:
 
         Vector<int> a{1, 2, 3};
