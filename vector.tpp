@@ -1,10 +1,14 @@
+#include <iostream>
 #include "vector.h"
 
-Vector::Vector() : size(0), capacity(5), array(new int[capacity])
+template <typename T>
+Vector<T>::Vector() : size(0), capacity(1)
 {
+    array = new T[capacity];
 }
 
-Vector::Vector(const Vector &rhs) : size(rhs.size), capacity(rhs.capacity), array(new int[capacity])
+template <typename T>
+Vector<T>::Vector(const Vector<T> &rhs) : size(rhs.size), capacity(rhs.capacity), array(new int[capacity])
 {
     for (int i = 0; i < rhs.Size(); ++i)
     {
@@ -12,7 +16,8 @@ Vector::Vector(const Vector &rhs) : size(rhs.size), capacity(rhs.capacity), arra
     }
 }
 
-Vector::Vector(int elements, const T &value = T()) : size(elements), capacity(elements), array(new int[capacity])
+template <typename T>
+Vector<T>::Vector(int elements, const T &value) : size(elements), capacity(elements), array(new int[capacity])
 {
     for (int i = 0; i < size; ++i)
     {
@@ -20,7 +25,8 @@ Vector::Vector(int elements, const T &value = T()) : size(elements), capacity(el
     }
 }
 
-Vector::Vector(const std::initializer_list<int> &list) : size(0), capacity(list.size()), array(new int[capacity])
+template <typename T>
+Vector<T>::Vector(const std::initializer_list<T> &list) : size(0), capacity(list.size()), array(new int[capacity])
 {
     for (int i : list)
     {
@@ -28,14 +34,16 @@ Vector::Vector(const std::initializer_list<int> &list) : size(0), capacity(list.
     }
 }
 
-Vector::~Vector()
+template <typename T>
+Vector<T>::~Vector()
 {
     size = capacity = 0;
     delete[] array;
     std::cout << "done" << std::endl;
 }
 
-void Vector::PushBack(int value)
+template <typename T>
+void Vector<T>::PushBack(const T &value)
 {
     if (size < capacity)
     {
@@ -45,7 +53,7 @@ void Vector::PushBack(int value)
     else
     {
         capacity *= 2;
-        int *newArray = new int[capacity];
+        T *newArray = new T[capacity];
         for (int i = 0; i < size; ++i)
         {
             newArray[i] = array[i];
@@ -57,7 +65,8 @@ void Vector::PushBack(int value)
     }
 }
 
-void Vector::PopBack()
+template <typename T>
+void Vector<T>::PopBack()
 {
     if (size == 0)
     {
@@ -66,27 +75,37 @@ void Vector::PopBack()
     --size;
 }
 
-bool Vector::isEmpty() const
+template <typename T>
+bool Vector<T>::isEmpty() const
 {
     return size == 0;
 }
 
-int Vector::Size() const
+template <typename T>
+int Vector<T>::Size() const
 {
     return size;
 }
 
-int Vector::Capacity() const
+template <typename T>
+int Vector<T>::Max_size() const
+{
+    return 0;
+}
+
+template <typename T>
+int Vector<T>::Capacity() const
 {
     return capacity;
 }
 
-int Vector::Array(int pos) const
+template <typename T>
+void Vector<T>::Reserve(int new_cap)
 {
-    return array[pos];
 }
 
-bool Vector::operator==(const Vector &rhs) const
+template <typename T>
+bool Vector<T>::operator==(const Vector &rhs) const
 {
     if (Size() != rhs.Size())
         return false;
@@ -101,12 +120,14 @@ bool Vector::operator==(const Vector &rhs) const
     return true;
 }
 
-bool Vector::operator!=(const Vector &rhs) const
+template <typename T>
+bool Vector<T>::operator!=(const Vector &rhs) const
 {
     return !(*this == rhs);
 }
 
-Vector &Vector::operator=(const Vector &rhs)
+template <typename T>
+Vector<T> &Vector<T>::operator=(const Vector<T> &rhs)
 {
     if (rhs.Size() > size)
     {
@@ -123,12 +144,14 @@ Vector &Vector::operator=(const Vector &rhs)
     return *this;
 }
 
-int &Vector::operator[](int index)
+template <typename T>
+T &Vector<T>::operator[](int index)
 {
     return array[index];
 }
 
-int &Vector::At(int index)
+template <typename T>
+T &Vector<T>::At(int index)
 {
     if ((index < 0) || (index >= size))
     {
@@ -137,17 +160,20 @@ int &Vector::At(int index)
     return array[index];
 }
 
-int &Vector::Front()
+template <typename T>
+T &Vector<T>::Front()
 {
     return array[0];
 }
 
-int &Vector::Back()
+template <typename T>
+T &Vector<T>::Back()
 {
     return array[size - 1];
 }
 
-void Vector::Insert(int index, int value)
+template <typename T>
+void Vector<T>::Insert(int index, const T &value)
 {
     if ((index < 0) || (index >= size))
     {
@@ -166,7 +192,7 @@ void Vector::Insert(int index, int value)
     else
     {
         capacity *= 2;
-        int *newArray = new int[capacity];
+        T *newArray = new T[capacity];
         for (int i = 0; i < size; ++i)
         {
             newArray[i] = array[i];
@@ -177,7 +203,8 @@ void Vector::Insert(int index, int value)
     }
 }
 
-void Vector::Erase(int index)
+template <typename T>
+void Vector<T>::Erase(int index)
 {
     if ((index < 0) || (index >= size))
     {
@@ -191,7 +218,48 @@ void Vector::Erase(int index)
     --size;
 }
 
-void Vector::Clear()
+template <typename T>
+void Vector<T>::Clear()
 {
     size = 0;
+}
+
+template <typename T>
+void Vector<T>::Assign(int count, const T &value)
+{
+    delete[] array;
+    size = 0;
+    array = new T[count];
+    for (int i = 0; i < count; ++i)
+    {
+        PushBack(value);
+    }
+}
+
+template <typename T>
+void Vector<T>::Assign(std::initializer_list<T> ilist)
+{
+    delete[] array;
+    size = 0;
+    array = new T[ilist.size()];
+    for (auto i : ilist)
+    {
+        PushBack(i);
+    }
+}
+
+template <typename T>
+T *Vector<T>::Data()
+{
+    if (isEmpty())
+        return nullptr;
+    return array;
+}
+
+template <typename T>
+const T *Vector<T>::Data() const
+{
+    if (isEmpty())
+        return nullptr;
+    return array;
 }
