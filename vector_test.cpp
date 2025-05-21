@@ -9,7 +9,7 @@ int main()
     cout << "sukurimas" << endl;
     for (int i = 1; i < 12; ++i)
     {
-        v.PushBack(i);
+        v.Push_back(i);
     }
     for (int i = 0; i < v.Size(); ++i)
     {
@@ -27,7 +27,7 @@ int main()
     }
     cout << endl;
     cout << "capacity: " << w.Capacity() << " size: " << w.Size() << " is empty: " << w.isEmpty() << " ar equal: " << (v == w) << endl;
-    w.PushBack(100);
+    w.Push_back(100);
     cout << "---" << endl;
 
     cout << "pushback" << endl;
@@ -39,8 +39,8 @@ int main()
     cout << "capacity: " << w.Capacity() << " size: " << w.Size() << " is empty: " << w.isEmpty() << " ar equal: " << (v == w) << endl;
     cout << "---" << endl;
 
-    w.PopBack();
-    w.PopBack();
+    w.Pop_back();
+    w.Pop_back();
 
     w = v;
     cout << "kopijavimo operacija" << endl;
@@ -128,15 +128,15 @@ int main()
     cout << "a > b " << (a > b) << " a > c " << (a > c) << " b > c " << (b > c) << " a <= b " << (a <= b) << " a <= c " << (a <= c) << " b <= c " << (b <= c) << endl;
 
     Vector<int> vi;
-    vi.PushBack(5);
+    vi.Push_back(5);
     cout << vi[0] << " " << vi.Data() << endl;
 
     Vector<std::string> vs;
-    vs.PushBack("hello");
+    vs.Push_back("hello");
     cout << vs[0] << endl;
 
     Vector<Studentas> studenti;
-    studenti.PushBack(Studentas("Vardenis", "Pavardenis", {8, 9}, 10));
+    studenti.Push_back(Studentas("Vardenis", "Pavardenis", {8, 9}, 10));
     cout << studenti[0].getVardas() << " " << studenti[0].getPavarde() << " ";
     for (int i = 0; i < studenti[0].getNd().size(); i++)
     {

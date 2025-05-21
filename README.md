@@ -85,16 +85,19 @@ Išvestis taip pat, kaip ir įvestis, gali būti naudojama ir darbui su failais,
 
 Šioje versijoje buvo realizuota nuosava vektoriaus klasė, čia pateiksiu kelių funkcijų implementacijos pavyzdžius:
 
-1. Push_back
-   Jei vektoriaus viduje esancio masyvo dydis yra mažesnis už talpą, prie masyvo galo pridedamas naujas elementas, o kintamasis, kuris nurodo masyvo dydi, padidinamas vienetu.
-   Jei vektorias viduje esančio masyvo dydis yra lygus talpai, tai pirma visi elementai perkopijuojami į nauja masyvą, kurio talpa būtų dvigubai didesnė už praeito, senasis masyvas ištrinamas, o prie naujojo galo pridedamas naujas elementas.
-   pvz:
-   Vector<int> v;
-   v.Push_back(10);
-   v.Push_back(20);
-   cout << v[0] << " " << v[1] << endl;
-   Terminale gausite
-   10 20
+1.  Push_back
+    Jei vektoriaus viduje esancio masyvo dydis yra mažesnis už talpą, prie masyvo galo pridedamas naujas elementas, o kintamasis, kuris nurodo masyvo dydi, padidinamas vienetu.
+    Jei vektorias viduje esančio masyvo dydis yra lygus talpai, tai pirma visi elementai perkopijuojami į nauja masyvą, kurio talpa būtų dvigubai didesnė už praeito, senasis masyvas ištrinamas, o prie naujojo galo pridedamas naujas elementas.
+    pvz:
+
+        Vector<int> v;
+        v.Push_back(10);
+        v.Push_back(20);
+        cout << v[0] << " " << v[1] << endl;
+
+    Terminale gausite
+
+        10 20
 
 ## Dokumentacija
 
