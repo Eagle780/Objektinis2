@@ -31,8 +31,8 @@ public:
     Vector(const std::initializer_list<T> &list);
     ~Vector();
 
-    void PushBack(const T &value);
-    void PopBack();
+    void Push_back(const T &value);
+    void Pop_back();
 
     bool isEmpty() const;
     int Size() const;

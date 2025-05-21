@@ -30,7 +30,7 @@ Vector<T>::Vector(const std::initializer_list<T> &list) : size(0), capacity(list
 {
     for (int i : list)
     {
-        PushBack(i);
+        Push_back(i);
     }
 }
 
@@ -42,7 +42,7 @@ Vector<T>::~Vector()
 }
 
 template <typename T>
-void Vector<T>::PushBack(const T &value)
+void Vector<T>::Push_back(const T &value)
 {
     if (size < capacity)
     {
@@ -65,7 +65,7 @@ void Vector<T>::PushBack(const T &value)
 }
 
 template <typename T>
-void Vector<T>::PopBack()
+void Vector<T>::Pop_back()
 {
     if (size == 0)
     {
@@ -296,7 +296,7 @@ void Vector<T>::Assign(int count, const T &value)
     array = new T[count];
     for (int i = 0; i < count; ++i)
     {
-        PushBack(value);
+        Push_back(value);
     }
 }
 
@@ -308,7 +308,7 @@ void Vector<T>::Assign(std::initializer_list<T> ilist)
     array = new T[ilist.size()];
     for (auto i : ilist)
     {
-        PushBack(i);
+        Push_back(i);
     }
 }
 
