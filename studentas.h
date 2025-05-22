@@ -12,12 +12,14 @@
 #define STUDENT_H
 
 #include "zmogus.h"
+#include "vector.h"
 #include <string>
 #include <vector>
 #include <algorithm>
 #include <iostream>
 #include <sstream>
 
+using std::copy;
 using std::cout;
 using std::istream;
 using std::istringstream;
@@ -73,7 +75,7 @@ public:
             cout << "Studento kopijavimo konstruktorius\n";
         vardas = st.vardas;
         pavarde = st.pavarde;
-        nd.resize(st.nd.Size());
+        nd.resize(st.nd.size());
         copy(st.nd.begin(), st.nd.end(), nd.begin());
         egz = st.egz;
         galutinisV = st.galutinisV;
@@ -97,7 +99,7 @@ public:
 
         vardas = st.vardas;
         pavarde = st.pavarde;
-        nd.resize(st.nd.Size());
+        nd.resize(st.nd.size());
         copy(st.nd.begin(), st.nd.end(), nd.begin());
         egz = st.egz;
         galutinisV = st.galutinisV;
@@ -231,11 +233,11 @@ public:
     float SkaiciuotiV()
     {
         int s = 0;
-        for (int i = 0; i < nd.Size(); i++)
+        for (int i = 0; i < nd.size(); i++)
         {
             s += nd[i];
         }
-        float galutinis = 0.4 * (1.0 * s / nd.Size()) + 0.6 * egz;
+        float galutinis = 0.4 * (1.0 * s / nd.size()) + 0.6 * egz;
         return galutinis;
     }
     /**
@@ -249,13 +251,13 @@ public:
         float paz;
         sort(nd.begin(), nd.end());
 
-        if (nd.Size() % 2 == 0)
+        if (nd.size() % 2 == 0)
         {
-            paz = 1.0 * (nd[nd.Size() / 2 - 1] + nd[nd.Size() / 2]) / 2;
+            paz = 1.0 * (nd[nd.size() / 2 - 1] + nd[nd.size() / 2]) / 2;
         }
         else
         {
-            paz = nd[nd.Size() / 2];
+            paz = nd[nd.size() / 2];
         }
 
         float galutinis = 0.4 * paz + 0.6 * egz;

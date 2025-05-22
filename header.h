@@ -12,7 +12,6 @@
 #define HEADER_H
 
 #include "Studentas.h"
-#include "vector.h"
 #include <iostream>
 #include <iomanip>
 #include <vector>
@@ -46,6 +45,7 @@ using std::numeric_limits;
 using std::ofstream;
 using std::partition;
 using std::rand;
+using std::remove_if;
 using std::setprecision;
 using std::setw;
 using std::sort;

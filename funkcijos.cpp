@@ -55,8 +55,8 @@ Studentas generuotiVardus(Studentas temp)
 
     srand(time(0));
 
-    string vardas = Vardai[rand() % Vardai.Size()];
-    string pavarde = Pavardes[rand() % Pavardes.Size()];
+    string vardas = Vardai[rand() % Vardai.size()];
+    string pavarde = Pavardes[rand() % Pavardes.size()];
     temp.setVarPav(vardas, pavarde);
 
     return temp;
@@ -87,7 +87,7 @@ Studentas irasytiPazymius(Studentas temp)
         }
         else if (a == 0)
         {
-            if (nd.Size() == 0)
+            if (nd.size() == 0)
                 cout << "Iveskite bent viena pazymi\n";
             else
                 break;

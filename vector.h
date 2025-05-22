@@ -19,8 +19,8 @@ public:
     using allocator_type = std::allocator<T>;
 
 private:
-    int size;
-    int capacity;
+    int Size;
+    int Capacity;
     T *array;
     allocator_type alloc;
 
@@ -36,8 +36,8 @@ public:
     void pop_back();
 
     bool empty() const;
-    int Size() const;
-    int Capacity() const;
+    int size() const;
+    int capacity() const;
     void reserve(int new_cap);
     void shrink_to_fit();
 
@@ -49,7 +49,7 @@ public:
     bool operator<=(const Vector<T> &rhs) const;
 
     Vector<T> &operator=(const Vector<T> &rhs);
-    Vector<T> &operator=(const Vector<T> &&rhs) noexcept;
+    Vector<T> &operator=(Vector<T> &&rhs) noexcept;
     allocator_type get_allocator() const;
 
     value_type &operator[](int index);
@@ -62,6 +62,8 @@ public:
 
     void insert(int index, const T &value);
     void erase(int index);
+    iterator erase(const_iterator pos);
+    iterator erase(const_iterator first, const_iterator last);
     void clear();
 
     template <typename... Args>
@@ -73,15 +75,15 @@ public:
     void assign(std::initializer_list<T> ilist);
 
     iterator begin() { return array; }
-    iterator end() { return array + size; }
+    iterator end() { return array + Size; }
     const_iterator begin() const { return array; }
-    const_iterator end() const { return array + size; }
+    const_iterator end() const { return array + Size; }
     const_iterator cbegin() const { return array; }
-    const_iterator cend() const { return array + size; }
+    const_iterator cend() const { return array + Size; }
 
-    iterator rbegin() { return array + size - 1; }
+    iterator rbegin() { return array + Size - 1; }
     iterator rend() { return array - 1; }
-    const_iterator rbegin() const { return array + size - 1; }
+    const_iterator rbegin() const { return array + Size - 1; }
     const_iterator rend() const { return array - 1; }
 
     void resize(int count);

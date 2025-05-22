@@ -2,146 +2,142 @@
 #include "vector.h"
 
 template <typename T>
-Vector<T>::Vector() : size(0), capacity(1)
+Vector<T>::Vector() : Size(0), Capacity(1)
 {
-    array = alloc.allocate(capacity);
+    array = alloc.allocate(Capacity);
 }
 
 template <typename T>
-Vector<T>::Vector(const Vector<T> &rhs) : size(rhs.size), capacity(rhs.capacity)
+Vector<T>::Vector(const Vector<T> &rhs) : Size(rhs.Size), Capacity(rhs.Capacity)
 {
-    array = alloc.allocate(capacity);
-    for (int i = 0; i < size; ++i)
+    array = alloc.allocate(Capacity);
+    for (int i = 0; i < Size; ++i)
     {
         std::allocator_traits<decltype(alloc)>::construct(alloc, &array[i], rhs.array[i]);
     }
 }
 
 template <typename T>
-Vector<T>::Vector(Vector<T> &&rhs) noexcept : size(rhs.size), capacity(rhs.capacity), array(rhs.array)
+Vector<T>::Vector(Vector<T> &&rhs) noexcept : Size(rhs.Size), Capacity(rhs.Capacity), array(rhs.array)
 {
-    rhs.size = 0;
-    rhs.capacity = 0;
+    rhs.size() = 0;
+    rhs.capacity() = 0;
     rhs.array = nullptr;
 }
 
 template <typename T>
-Vector<T>::Vector(int elements, const T &value) : size(elements), capacity(elements)
+Vector<T>::Vector(int elements, const T &value) : Size(elements), Capacity(elements)
 {
-    array = alloc.allocate(capacity);
-    for (int i = 0; i < size; ++i)
+    array = alloc.allocate(Capacity);
+    for (int i = 0; i < Size; ++i)
     {
         std::allocator_traits<decltype(alloc)>::construct(alloc, &array[i], value);
     }
 }
 
 template <typename T>
-Vector<T>::Vector(const std::initializer_list<T> &list) : size(0), capacity(list.size())
+Vector<T>::Vector(const std::initializer_list<T> &list) : Size(0), Capacity(list.size())
 {
-    array = alloc.allocate(capacity);
+    array = alloc.allocate(Capacity);
     for (const T &elem : list)
     {
-        Emplace_back(elem);
+        emplace_back(elem);
     }
 }
 
 template <typename T>
 Vector<T>::~Vector()
 {
-    size = capacity = 0;
-    for (int i = 0; i < size; ++i)
+    Size = Capacity = 0;
+    for (int i = 0; i < Size; ++i)
     {
         std::allocator_traits<decltype(alloc)>::destroy(alloc, &array[i]);
     }
-    alloc.deallocate(array, capacity);
+    alloc.deallocate(array, Capacity);
 }
 
 template <typename T>
 void Vector<T>::push_back(const T &value)
 {
-    if (size >= capacity)
+    if (Size >= Capacity)
     {
-        Reserve(capacity * 2);
+        reserve(Capacity * 2);
     }
 
-    std::allocator_traits<decltype(alloc)>::construct(alloc, &array[size], value);
-    ++size;
+    std::allocator_traits<decltype(alloc)>::construct(alloc, &array[Size], value);
+    ++Size;
 }
 
 template <typename T>
 void Vector<T>::pop_back()
 {
-    if (size == 0)
+    if (Size == 0)
     {
         throw std::exception();
     }
-    --size;
+    --Size;
 }
 
 template <typename T>
 bool Vector<T>::empty() const
 {
-    return size == 0;
+    return Size == 0;
 }
 
 template <typename T>
-int Vector<T>::Size() const
+int Vector<T>::size() const
 {
-    return size;
+    return Size;
 }
 
 template <typename T>
-int Vector<T>::Capacity() const
+int Vector<T>::capacity() const
 {
-    return capacity;
+    return Capacity;
 }
 
 template <typename T>
 void Vector<T>::reserve(int new_cap)
 {
-    if (new_cap <= capacity)
+    if (new_cap <= Capacity)
         return;
     T *newArray = alloc.allocate(new_cap);
-    for (int i = 0; i < size; ++i)
+    for (int i = 0; i < Size; ++i)
     {
         std::allocator_traits<decltype(alloc)>::construct(alloc, &newArray[i], std::move(array[i]));
         std::allocator_traits<decltype(alloc)>::destroy(alloc, &array[i]);
     }
-    for (int i = 0; i < size; ++i)
-    {
-        std::allocator_traits<decltype(alloc)>::destroy(alloc, &array[i]);
-    }
-    alloc.deallocate(array, capacity);
+    alloc.deallocate(array, Capacity);
     array = newArray;
-    capacity = new_cap;
+    Capacity = new_cap;
 }
 
 template <typename T>
 void Vector<T>::shrink_to_fit()
 {
-    if (capacity == size)
+    if (Capacity == Size)
         return;
-    capacity = size;
-    T *newArray = alloc.allocate(capacity);
-    for (int i = 0; i < size; ++i)
+    Capacity = Size;
+    T *newArray = alloc.allocate(Capacity);
+    for (int i = 0; i < Size; ++i)
     {
         std::allocator_traits<decltype(alloc)>::construct(alloc, &newArray[i], array[i]);
     }
-    for (int i = 0; i < size; ++i)
+    for (int i = 0; i < Size; ++i)
     {
         std::allocator_traits<decltype(alloc)>::destroy(alloc, &array[i]);
     }
-    alloc.deallocate(array, capacity);
+    alloc.deallocate(array, Capacity);
     array = newArray;
 }
 
 template <typename T>
 bool Vector<T>::operator==(const Vector<T> &rhs) const
 {
-    if (size != rhs.Size())
+    if (Size != rhs.size())
         return false;
 
-    for (int i = 0; i < Size(); ++i)
+    for (int i = 0; i < size(); ++i)
     {
         if (!(array[i] == rhs.array[i]))
         {
@@ -160,7 +156,7 @@ bool Vector<T>::operator!=(const Vector &rhs) const
 template <typename T>
 bool Vector<T>::operator>(const Vector<T> &rhs) const
 {
-    int minSize = std::min(size, rhs.size);
+    int minSize = std::min(Size, rhs.Size);
     for (int i = 0; i < minSize; ++i)
     {
         if (array[i] > rhs.array[i])
@@ -168,7 +164,7 @@ bool Vector<T>::operator>(const Vector<T> &rhs) const
         if (rhs.array[i] > array[i])
             return false;
     }
-    return size > rhs.size;
+    return Size > rhs.Size;
 }
 
 template <typename T>
@@ -180,7 +176,7 @@ bool Vector<T>::operator>=(const Vector<T> &rhs) const
 template <typename T>
 bool Vector<T>::operator<(const Vector<T> &rhs) const
 {
-    int minSize = std::min(size, rhs.size);
+    int minSize = std::min(Size, rhs.Size);
     for (int i = 0; i < minSize; ++i)
     {
         if (array[i] < rhs.array[i])
@@ -188,7 +184,7 @@ bool Vector<T>::operator<(const Vector<T> &rhs) const
         if (rhs.array[i] < array[i])
             return false;
     }
-    return size < rhs.size;
+    return Size < rhs.Size;
 }
 
 template <typename T>
@@ -202,13 +198,13 @@ Vector<T> &Vector<T>::operator=(const Vector<T> &rhs)
 {
     if (this != &rhs)
     {
-        Clear();
-        alloc.deallocate(array, capacity);
+        clear();
+        alloc.deallocate(array, Capacity);
 
-        size = rhs.size;
-        capacity = rhs.capacity;
-        array = alloc.allocate(capacity);
-        for (int i = 0; i < size; ++i)
+        Size = rhs.Size;
+        Capacity = rhs.Capacity;
+        array = alloc.allocate(Capacity);
+        for (int i = 0; i < Size; ++i)
         {
             std::allocator_traits<decltype(alloc)>::construct(alloc, &array[i], rhs.array[i]);
         }
@@ -217,19 +213,19 @@ Vector<T> &Vector<T>::operator=(const Vector<T> &rhs)
 }
 
 template <typename T>
-Vector<T> &Vector<T>::operator=(const Vector<T> &&rhs) noexcept
+Vector<T> &Vector<T>::operator=(Vector<T> &&rhs) noexcept
 {
     if (this != &rhs)
     {
-        Clear();
-        alloc.deallocate(array, capacity);
+        clear();
+        alloc.deallocate(array, Capacity);
 
-        size = rhs.size;
-        capacity = rhs.capacity;
+        Size = rhs.Size;
+        Capacity = rhs.Capacity;
         array = rhs.array;
 
-        rhs.size = 0;
-        rhs.capacity = 0;
+        rhs.Size = 0;
+        rhs.Capacity = 0;
         rhs.array = nullptr;
     }
     return *this;
@@ -250,7 +246,7 @@ T &Vector<T>::operator[](int index)
 template <typename T>
 T &Vector<T>::at(int index)
 {
-    if ((index < 0) || (index >= size))
+    if ((index < 0) || (index >= Size))
     {
         throw std::out_of_range("At: Indeksas uz ribu");
     }
@@ -266,94 +262,137 @@ T &Vector<T>::front()
 template <typename T>
 T &Vector<T>::back()
 {
-    return array[size - 1];
+    return array[Size - 1];
 }
 
 template <typename T>
 void Vector<T>::insert(int index, const T &value)
 {
-    if ((index < 0) || (index >= size))
+    if ((index < 0) || (index >= Size))
     {
         throw std::out_of_range("Insert: Indeksas uz ribu");
     }
 
-    if (size != capacity)
+    if (Size != Capacity)
     {
-        for (int i = size - 1; i >= index; --i)
+        for (int i = Size - 1; i >= index; --i)
         {
             std::allocator_traits<decltype(alloc)>::construct(alloc, &array[i + 1], array[i]);
         }
         array[index] = value;
-        ++size;
+        ++Size;
     }
     else
     {
-        capacity *= 2;
-        T *newArray = alloc.allocate(capacity);
-        for (int i = 0; i < size; ++i)
+        Capacity *= 2;
+        T *newArray = alloc.allocate(Capacity);
+        for (int i = 0; i < Size; ++i)
         {
             std::allocator_traits<decltype(alloc)>::construct(alloc, &newArray[i], array[i]);
         }
-        for (int i = 0; i < size; ++i)
+        for (int i = 0; i < Size; ++i)
         {
             std::allocator_traits<decltype(alloc)>::destroy(alloc, &array[i]);
         }
-        alloc.deallocate(array, capacity);
+        alloc.deallocate(array, Capacity);
         array = newArray;
-        Insert(index, value);
+        insert(index, value);
     }
 }
 
 template <typename T>
 void Vector<T>::erase(int index)
 {
-    if ((index < 0) || (index >= size))
+    if ((index < 0) || (index >= Size))
     {
         throw std::out_of_range("Erase: Indeksas uz ribu");
     }
 
-    for (int i = index; i < size - 1; ++i)
+    for (int i = index; i < Size - 1; ++i)
     {
         std::allocator_traits<decltype(alloc)>::construct(alloc, &array[i], array[i + 1]);
     }
-    --size;
+    --Size;
+}
+template <typename T>
+typename Vector<T>::iterator Vector<T>::erase(const_iterator pos)
+{
+    int index = pos - array;
+    if (index < 0 || index >= Size)
+    {
+        throw std::out_of_range("Erase: Indeksas uz ribu");
+    }
+    std::allocator_traits<allocator_type>::destroy(alloc, &array[index]);
+    for (int i = index; i < Size - 1; ++i)
+    {
+        std::allocator_traits<allocator_type>::construct(alloc, &array[i], std::move(array[i + 1]));
+        std::allocator_traits<allocator_type>::destroy(alloc, &array[i + 1]);
+    }
+
+    --Size;
+    return array + index;
+}
+template <typename T>
+typename Vector<T>::iterator Vector<T>::erase(const_iterator first, const_iterator last)
+{
+    int start = first - array;
+    int end = last - array;
+
+    if (start < 0 || start > end || end > Size)
+    {
+        throw std::out_of_range("Erase: Indeksai uz ribu");
+    }
+
+    int count = end - start;
+    for (int i = start; i < end; ++i)
+    {
+        std::allocator_traits<allocator_type>::destroy(alloc, &array[i]);
+    }
+    for (int i = end; i < Size; ++i)
+    {
+        std::allocator_traits<allocator_type>::construct(alloc, &array[i - count], std::move(array[i]));
+        std::allocator_traits<allocator_type>::destroy(alloc, &array[i]);
+    }
+
+    Size -= count;
+    return array + start;
 }
 
 template <typename T>
 void Vector<T>::clear()
 {
-    size = 0;
+    Size = 0;
 }
 
 template <typename T>
 template <typename... Args>
 void Vector<T>::emplace_back(Args &&...args)
 {
-    if (size >= capacity)
+    if (Size >= Capacity)
     {
-        Reserve(capacity == 0 ? 1 : capacity * 2);
+        reserve(Capacity == 0 ? 1 : Capacity * 2);
     }
-    std::allocator_traits<decltype(alloc)>::construct(alloc, &array[size], std::forward<Args>(args)...);
-    ++size;
+    std::allocator_traits<decltype(alloc)>::construct(alloc, &array[Size], std::forward<Args>(args)...);
+    ++Size;
 }
 
 template <typename T>
 template <typename... Args>
 T *Vector<T>::emplace(int index, Args &&...args)
 {
-    if (index < 0 || index > size)
+    if (index < 0 || index > Size)
         throw std::out_of_range("Emplace: Indeksas uz ribu");
 
-    if (size >= capacity)
-        Reserve(capacity == 0 ? 1 : capacity * 2);
+    if (Size >= Capacity)
+        reserve(Capacity == 0 ? 1 : Capacity * 2);
 
-    for (int i = size; i > index; --i)
+    for (int i = Size; i > index; --i)
     {
         std::allocator_traits<decltype(alloc)>::construct(alloc, &array[i], std::move(array[i - 1]));
         std::allocator_traits<decltype(alloc)>::destroy(alloc, &array[i - 1]);
     }
     std::allocator_traits<decltype(alloc)>::construct(alloc, &array[index], std::forward<Args>(args)...);
-    ++size;
+    ++Size;
 
     return &array[index];
 }
@@ -361,40 +400,40 @@ T *Vector<T>::emplace(int index, Args &&...args)
 template <typename T>
 void Vector<T>::assign(int count, const T &value)
 {
-    for (int i = 0; i < size; ++i)
+    for (int i = 0; i < Size; ++i)
     {
         std::allocator_traits<decltype(alloc)>::destroy(alloc, &array[i]);
     }
-    alloc.deallocate(array, capacity);
-    size = 0;
-    array = alloc.allocate(capacity);
+    alloc.deallocate(array, Capacity);
+    Size = 0;
+    array = alloc.allocate(Capacity);
     for (int i = 0; i < count; ++i)
     {
-        Push_back(value);
+        push_back(value);
     }
 }
 
 template <typename T>
 void Vector<T>::assign(std::initializer_list<T> ilist)
 {
-    for (int i = 0; i < size; ++i)
+    for (int i = 0; i < Size; ++i)
     {
         std::allocator_traits<decltype(alloc)>::destroy(alloc, &array[i]);
     }
-    alloc.deallocate(array, capacity);
-    size = 0;
-    capacity = ilist.size();
+    alloc.deallocate(array, Capacity);
+    Size = 0;
+    Capacity = ilist.size();
     array = alloc.allocate(ilist.size());
     for (const T &i : ilist)
     {
-        Push_back(i);
+        push_back(i);
     }
 }
 
 template <typename T>
 T *Vector<T>::data()
 {
-    if (isEmpty())
+    if (empty())
         return nullptr;
     return array;
 }
@@ -402,7 +441,7 @@ T *Vector<T>::data()
 template <typename T>
 const T *Vector<T>::data() const
 {
-    if (isEmpty())
+    if (empty())
         return nullptr;
     return array;
 }
@@ -414,24 +453,24 @@ void Vector<T>::resize(int count)
     {
         throw std::exception();
     }
-    if (count == size)
+    if (count == Size)
         return;
-    else if (count < size)
+    else if (count < Size)
     {
-        for (int i = count; i < size; ++i)
+        for (int i = count; i < Size; ++i)
         {
             std::allocator_traits<decltype(alloc)>::destroy(alloc, &array[i]);
         }
-        size = count;
+        Size = count;
     }
     else
     {
-        Reserve(std::max(count, capacity * 2));
-        for (int i = size; i < count; ++i)
+        reserve(std::max(count, Capacity * 2));
+        for (int i = Size; i < count; ++i)
         {
             std::allocator_traits<decltype(alloc)>::construct(alloc, &array[i]);
         }
-        size = count;
+        Size = count;
     }
 }
 
@@ -442,23 +481,23 @@ void Vector<T>::resize(int count, const T &value)
     {
         throw std::exception();
     }
-    if (count == size)
+    if (count == Size)
         return;
-    else if (count < size)
+    else if (count < Size)
     {
-        for (int i = count; i < size; ++i)
+        for (int i = count; i < Size; ++i)
         {
             std::allocator_traits<decltype(alloc)>::destroy(alloc, &array[i]);
         }
-        size = count;
+        Size = count;
     }
     else
     {
-        Reserve(std::max(count, capacity * 2));
-        for (int i = size; i < count; ++i)
+        reserve(std::max(count, Capacity * 2));
+        for (int i = Size; i < count; ++i)
         {
             std::allocator_traits<decltype(alloc)>::construct(alloc, &array[i], value);
         }
-        size = count;
+        Size = count;
     }
 }
