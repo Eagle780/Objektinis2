@@ -57,7 +57,7 @@ Vector<T>::~Vector()
 }
 
 template <typename T>
-void Vector<T>::Push_back(const T &value)
+void Vector<T>::push_back(const T &value)
 {
     if (size >= capacity)
     {
@@ -69,7 +69,7 @@ void Vector<T>::Push_back(const T &value)
 }
 
 template <typename T>
-void Vector<T>::Pop_back()
+void Vector<T>::pop_back()
 {
     if (size == 0)
     {
@@ -97,7 +97,7 @@ int Vector<T>::Capacity() const
 }
 
 template <typename T>
-void Vector<T>::Reserve(int new_cap)
+void Vector<T>::reserve(int new_cap)
 {
     if (new_cap <= capacity)
         return;
@@ -117,7 +117,7 @@ void Vector<T>::Reserve(int new_cap)
 }
 
 template <typename T>
-void Vector<T>::Shrink_to_fit()
+void Vector<T>::shrink_to_fit()
 {
     if (capacity == size)
         return;
@@ -236,7 +236,7 @@ Vector<T> &Vector<T>::operator=(const Vector<T> &&rhs) noexcept
 }
 
 template <typename T>
-std::allocator<T> Vector<T>::Get_allocator() const
+std::allocator<T> Vector<T>::get_allocator() const
 {
     return alloc;
 }
@@ -248,7 +248,7 @@ T &Vector<T>::operator[](int index)
 }
 
 template <typename T>
-T &Vector<T>::At(int index)
+T &Vector<T>::at(int index)
 {
     if ((index < 0) || (index >= size))
     {
@@ -258,19 +258,19 @@ T &Vector<T>::At(int index)
 }
 
 template <typename T>
-T &Vector<T>::Front()
+T &Vector<T>::front()
 {
     return array[0];
 }
 
 template <typename T>
-T &Vector<T>::Back()
+T &Vector<T>::back()
 {
     return array[size - 1];
 }
 
 template <typename T>
-void Vector<T>::Insert(int index, const T &value)
+void Vector<T>::insert(int index, const T &value)
 {
     if ((index < 0) || (index >= size))
     {
@@ -305,7 +305,7 @@ void Vector<T>::Insert(int index, const T &value)
 }
 
 template <typename T>
-void Vector<T>::Erase(int index)
+void Vector<T>::erase(int index)
 {
     if ((index < 0) || (index >= size))
     {
@@ -320,14 +320,14 @@ void Vector<T>::Erase(int index)
 }
 
 template <typename T>
-void Vector<T>::Clear()
+void Vector<T>::clear()
 {
     size = 0;
 }
 
 template <typename T>
 template <typename... Args>
-void Vector<T>::Emplace_back(Args &&...args)
+void Vector<T>::emplace_back(Args &&...args)
 {
     if (size >= capacity)
     {
@@ -339,7 +339,7 @@ void Vector<T>::Emplace_back(Args &&...args)
 
 template <typename T>
 template <typename... Args>
-T *Vector<T>::Emplace(int index, Args &&...args)
+T *Vector<T>::emplace(int index, Args &&...args)
 {
     if (index < 0 || index > size)
         throw std::out_of_range("Emplace: Indeksas uz ribu");
@@ -359,7 +359,7 @@ T *Vector<T>::Emplace(int index, Args &&...args)
 }
 
 template <typename T>
-void Vector<T>::Assign(int count, const T &value)
+void Vector<T>::assign(int count, const T &value)
 {
     for (int i = 0; i < size; ++i)
     {
@@ -375,7 +375,7 @@ void Vector<T>::Assign(int count, const T &value)
 }
 
 template <typename T>
-void Vector<T>::Assign(std::initializer_list<T> ilist)
+void Vector<T>::assign(std::initializer_list<T> ilist)
 {
     for (int i = 0; i < size; ++i)
     {
@@ -392,7 +392,7 @@ void Vector<T>::Assign(std::initializer_list<T> ilist)
 }
 
 template <typename T>
-T *Vector<T>::Data()
+T *Vector<T>::data()
 {
     if (isEmpty())
         return nullptr;
@@ -400,7 +400,7 @@ T *Vector<T>::Data()
 }
 
 template <typename T>
-const T *Vector<T>::Data() const
+const T *Vector<T>::data() const
 {
     if (isEmpty())
         return nullptr;
@@ -408,7 +408,7 @@ const T *Vector<T>::Data() const
 }
 
 template <typename T>
-void Vector<T>::Resize(int count)
+void Vector<T>::resize(int count)
 {
     if (count < 0)
     {
@@ -436,7 +436,7 @@ void Vector<T>::Resize(int count)
 }
 
 template <typename T>
-void Vector<T>::Resize(int count, const T &value)
+void Vector<T>::resize(int count, const T &value)
 {
     if (count < 0)
     {

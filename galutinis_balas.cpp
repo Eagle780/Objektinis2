@@ -12,11 +12,11 @@ int main()
 
     cinEx();
 
-    vector<Studentas> A;
+    Vector<Studentas> A;
     deque<Studentas> B;
     list<Studentas> C;
 
-    vector<Studentas> vargsiukai, galvociai;
+    Vector<Studentas> vargsiukai, galvociai;
     deque<Studentas> vargsiukaiB, galvociaiB;
     list<Studentas> vargsiukaiC, galvociaiC;
 
@@ -88,7 +88,7 @@ int main()
     while (true)
     {
         cout << "Koki konteineri naudoti duomenu saugojimui?\n";
-        cout << "1 - vector, 2 - deque, 3 - list\n";
+        cout << "1 - Vector, 2 - deque, 3 - list\n";
         try
         {
             cin >> k;

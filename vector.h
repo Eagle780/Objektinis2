@@ -32,14 +32,14 @@ public:
     Vector(const std::initializer_list<T> &list);
     ~Vector();
 
-    void Push_back(const T &value);
-    void Pop_back();
+    void push_back(const T &value);
+    void pop_back();
 
     bool isEmpty() const;
     int Size() const;
     int Capacity() const;
-    void Reserve(int new_cap);
-    void Shrink_to_fit();
+    void reserve(int new_cap);
+    void shrink_to_fit();
 
     bool operator==(const Vector<T> &rhs) const;
     bool operator!=(const Vector<T> &rhs) const;
@@ -50,42 +50,42 @@ public:
 
     Vector<T> &operator=(const Vector<T> &rhs);
     Vector<T> &operator=(const Vector<T> &&rhs) noexcept;
-    allocator_type Get_allocator() const;
+    allocator_type get_allocator() const;
 
     value_type &operator[](int index);
-    value_type &At(int index);
-    value_type &Front();
-    value_type &Back();
+    value_type &at(int index);
+    value_type &front();
+    value_type &back();
 
-    pointer Data();
-    const_pointer Data() const;
+    pointer data();
+    const_pointer data() const;
 
-    void Insert(int index, const T &value);
-    void Erase(int index);
-    void Clear();
+    void insert(int index, const T &value);
+    void erase(int index);
+    void clear();
 
     template <typename... Args>
-    void Emplace_back(Args &&...args);
+    void emplace_back(Args &&...args);
     template <typename... Args>
-    T *Emplace(int index, Args &&...args);
+    T *emplace(int index, Args &&...args);
 
-    void Assign(int count, const T &value);
-    void Assign(std::initializer_list<T> ilist);
+    void assign(int count, const T &value);
+    void assign(std::initializer_list<T> ilist);
 
-    iterator Begin() { return array; }
-    iterator End() { return array + size; }
-    const_iterator Begin() const { return array; }
-    const_iterator End() const { return array + size; }
-    const_iterator Cbegin() const { return array; }
-    const_iterator Cend() const { return array + size; }
+    iterator begin() { return array; }
+    iterator end() { return array + size; }
+    const_iterator begin() const { return array; }
+    const_iterator end() const { return array + size; }
+    const_iterator cbegin() const { return array; }
+    const_iterator cend() const { return array + size; }
 
-    iterator Rbegin() { return array + size - 1; }
-    iterator Rend() { return array - 1; }
-    const_iterator Rbegin() const { return array + size - 1; }
-    const_iterator Rend() const { return array - 1; }
+    iterator rbegin() { return array + size - 1; }
+    iterator rend() { return array - 1; }
+    const_iterator rbegin() const { return array + size - 1; }
+    const_iterator rend() const { return array - 1; }
 
-    void Resize(int count);
-    void Resize(int count, const T &value);
+    void resize(int count);
+    void resize(int count, const T &value);
 };
 
 #include "vector.tpp"
