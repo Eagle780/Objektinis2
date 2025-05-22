@@ -1,5 +1,4 @@
-#pragma once
-
+#define TESTAI2
 #include "../header.h"
 #include "gtest/gtest.h"
 
@@ -18,29 +17,17 @@ TEST(VektoriausTest, PopBackTest)
     EXPECT_EQ(v.Size(), 2);
 }
 
-TEST(VektoriausTest, EmplaceBackTest)
-{
-    Vector<std::string> v1;
-    v1.Emplace_back(3);
-    Vector<std::string> v2;
-    v2.Emplace_back(5, 'a');
-    EXPECT_EQ(v1.Size(), 1);
-    EXPECT_EQ(v1[0], 3);
-    EXPECT_EQ(v2.Size(), 1);
-    EXPECT_EQ(v2[0], "aaaaa");
-}
-
 TEST(VektoriausTest, EmplaceTest)
 {
-    Vector<std::string> v;
-    v.Emplace_back("vienas");
-    v.Emplace_back("trys");
-    v.Emplace(1, "du");
+    Vector<int> v;
+    v.Emplace_back(1);
+    v.Emplace_back(3);
+    v.Emplace(1, 2);
 
     EXPECT_EQ(v.Size(), 3);
-    EXPECT_EQ(v[0], "vienas");
-    EXPECT_EQ(v[1], "du");
-    EXPECT_EQ(v[2], "trys");
+    EXPECT_EQ(v[0], 1);
+    EXPECT_EQ(v[1], 2);
+    EXPECT_EQ(v[2], 3);
 }
 
 TEST(VektoriausTest, ResizeTest)
@@ -89,4 +76,14 @@ TEST(VektoriausTest, ClearTest)
     v.Clear();
     EXPECT_EQ(v.Size(), 0);
     EXPECT_TRUE(v.isEmpty());
+}
+
+TEST(VektoriausTest, CopyKonstruktoriusTest)
+{
+    Vector<int> temp1;
+    temp1.Push_back(42);
+
+    Vector<int> temp2(temp1);
+    EXPECT_EQ(temp2.Size(), 1);
+    EXPECT_EQ(temp2[0], 42);
 }

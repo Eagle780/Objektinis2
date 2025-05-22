@@ -1,4 +1,4 @@
-#define TESTAI
+#define TESTAI1
 #include "../header.h"
 #include "gtest/gtest.h"
 

@@ -145,6 +145,10 @@ public:
 
         return *this;
     }
+    bool operator==(const Studentas &rhs)
+    {
+        return vardas == rhs.getVardas() && pavarde == rhs.getPavarde() && nd == rhs.getNd() && egz == rhs.getEgz();
+    }
     /**
      * @brief Studento išvedimo operacija
      *
