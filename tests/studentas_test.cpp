@@ -69,9 +69,7 @@ TEST(StudentasTest, IvedimoTest)
 
 TEST(StudentasTest, IsvedimoTest)
 {
-    vector<int> nd = {10, 8, 10};
-    int egz = 10;
-    Studentas temp("vardas", "pavarde", nd, egz);
+    Studentas temp("vardas", "pavarde", {10, 8, 10}, 10);
     std::stringstream out;
     out << temp;
     string result = out.str();

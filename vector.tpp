@@ -20,8 +20,8 @@ Vector<T>::Vector(const Vector<T> &rhs) : Size(rhs.Size), Capacity(rhs.Capacity)
 template <typename T>
 Vector<T>::Vector(Vector<T> &&rhs) noexcept : Size(rhs.Size), Capacity(rhs.Capacity), array(rhs.array)
 {
-    rhs.size() = 0;
-    rhs.capacity() = 0;
+    rhs.Size = 0;
+    rhs.Capacity = 0;
     rhs.array = nullptr;
 }
 

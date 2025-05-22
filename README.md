@@ -217,6 +217,8 @@ Atlikto testo rezultatai:
 
 Kaip galima pastebėti iš rezultatų, mano klasės vektorius yra nežymiai greitesnis, kai į vektorių dedama iki 100,000 skaičių, po to standartinis vektorius tampa greitesnis.
 
+Abiejų vektorių atminties perskirstymu įvyksta tiek pat: 27.
+
 ## Dokumentacija
 
 Dokumentacijos failai yra docs/ aplanke. Ten rasite html/ ir latex/ aplankus taip pat ir jau pilnai sugeneruotą .pdf pavidalo dokumentaciją. Norint dokumentaciją matyti naršyklėje, html/ aplanke susiraskite failą "index.html" ir atidarykite jį naudodamiesi "Live Server" ar kitu .html failų paleidimo būdu.
