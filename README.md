@@ -205,6 +205,18 @@ Išvestis taip pat, kaip ir įvestis, gali būti naudojama ir darbui su failais,
 
         1 2 3
 
+## spartumo testavimai
+
+Buvo atlikti testai, kurie lygino mano sukurtos Vector klasės ir įprasto vector konteinerio užtruktą laiką push_back() funkcija pildant juos tam tikru kiekiu elementų (skaičių).
+Atlikto testo rezultatai:
+
+| Tipas              | 10,000    | 100,000  | 1,000,000 | 10,000,000 | 100,000,000 |
+| ------------------ | --------- | -------- | --------- | ---------- | ----------- |
+| Vector klasė       | 0.0000834 | 0.000503 | 0.00229   | 0.0231     | 0.201       |
+| vector konteineris | 0.0000573 | 0.000345 | 0.00282   | 0.0258     | 0.227       |
+
+Kaip galima pastebėti iš rezultatų, mano klasės vektorius yra nežymiai greitesnis, kai į vektorių dedama iki 100,000 skaičių, po to standartinis vektorius tampa greitesnis.
+
 ## Dokumentacija
 
 Dokumentacijos failai yra docs/ aplanke. Ten rasite html/ ir latex/ aplankus taip pat ir jau pilnai sugeneruotą .pdf pavidalo dokumentaciją. Norint dokumentaciją matyti naršyklėje, html/ aplanke susiraskite failą "index.html" ir atidarykite jį naudodamiesi "Live Server" ar kitu .html failų paleidimo būdu.

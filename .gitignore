@@ -14,6 +14,8 @@ headerc.h
 galvociai.txt
 vargsiukai.txt
 main.exe
+paly.exe
 build/
 Doxyfile
 vector_test1.cpp
+vector_palyginimai.cpp
