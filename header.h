@@ -91,7 +91,7 @@ template <typename T>
 void skaitytiFaila(string failas, T &A)
 {
 
-    vector<int> nd;
+    Vector<int> nd;
     try
     {
         ifstream fd(failas);
@@ -113,7 +113,7 @@ void skaitytiFaila(string failas, T &A)
             getline(fd, eilute);
             istringstream iss(eilute);
 
-            vector<int> visiPazymiai;
+            Vector<int> visiPazymiai;
             int pazimys;
             while (iss >> pazimys)
             {

@@ -8,7 +8,7 @@ void cinEx()
 
 Studentas generuotiPazymius(Studentas temp)
 {
-    vector<int> nd;
+    Vector<int> nd;
     int n = 0;
     int a = 0;
     while (true)
@@ -50,13 +50,13 @@ Studentas generuotiPazymius(Studentas temp)
 
 Studentas generuotiVardus(Studentas temp)
 {
-    vector<string> Vardai = {"Jonas", "Antanas", "Petras", "Dovydas", "Tomas"};
-    vector<string> Pavardes = {"Jonaitis", "Petrauskas", "Kazlauskas", "Antanaitis", "Ivanauskas"};
+    Vector<string> Vardai = {"Jonas", "Antanas", "Petras", "Dovydas", "Tomas"};
+    Vector<string> Pavardes = {"Jonaitis", "Petrauskas", "Kazlauskas", "Antanaitis", "Ivanauskas"};
 
     srand(time(0));
 
-    string vardas = Vardai[rand() % Vardai.size()];
-    string pavarde = Pavardes[rand() % Pavardes.size()];
+    string vardas = Vardai[rand() % Vardai.Size()];
+    string pavarde = Pavardes[rand() % Pavardes.Size()];
     temp.setVarPav(vardas, pavarde);
 
     return temp;
@@ -64,7 +64,7 @@ Studentas generuotiVardus(Studentas temp)
 
 Studentas irasytiPazymius(Studentas temp)
 {
-    vector<int> nd;
+    Vector<int> nd;
     int a;
     cout << "Iveskite pazymius (norint baigti pazymiu rasyma, irasykite 0):\n";
     while (true)
@@ -87,7 +87,7 @@ Studentas irasytiPazymius(Studentas temp)
         }
         else if (a == 0)
         {
-            if (nd.size() == 0)
+            if (nd.Size() == 0)
                 cout << "Iveskite bent viena pazymi\n";
             else
                 break;

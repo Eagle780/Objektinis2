@@ -34,7 +34,7 @@ class Studentas : public Zmogus
 private:
     string vardas;
     string pavarde;
-    vector<int> nd;
+    Vector<int> nd;
     int egz;
     float galutinisV;
     float galutinisM;
@@ -53,7 +53,7 @@ public:
      * @param n Namų darbų pažymiai (vektorius)
      * @param e Egzamino pažymys
      */
-    Studentas(string v, string p, vector<int> n, int e)
+    Studentas(string v, string p, Vector<int> n, int e)
     {
         vardas = v;
         pavarde = p;
@@ -73,7 +73,7 @@ public:
             cout << "Studento kopijavimo konstruktorius\n";
         vardas = st.vardas;
         pavarde = st.pavarde;
-        nd.resize(st.nd.size());
+        nd.resize(st.nd.Size());
         copy(st.nd.begin(), st.nd.end(), nd.begin());
         egz = st.egz;
         galutinisV = st.galutinisV;
@@ -97,7 +97,7 @@ public:
 
         vardas = st.vardas;
         pavarde = st.pavarde;
-        nd.resize(st.nd.size());
+        nd.resize(st.nd.Size());
         copy(st.nd.begin(), st.nd.end(), nd.begin());
         egz = st.egz;
         galutinisV = st.galutinisV;
@@ -177,7 +177,7 @@ public:
         getline(is, eilute);
         istringstream iss(eilute);
 
-        vector<int> visiPazymiai;
+        Vector<int> visiPazymiai;
         int paz;
 
         while (iss >> paz)
@@ -210,7 +210,7 @@ public:
      * @param n namų darbų pažymių vektorius
      * @param e egzamino pažymys
      */
-    void setPaz(vector<int> n, int e)
+    void setPaz(Vector<int> n, int e)
     {
         nd = n;
         egz = e;
@@ -220,7 +220,7 @@ public:
     inline string getVardas() const override { return vardas; }
     inline string getPavarde() const override { return pavarde; }
     inline int getEgz() const { return egz; }
-    inline vector<int> getNd() const { return nd; }
+    inline Vector<int> getNd() const { return nd; }
     inline int getGalV() const { return galutinisV; }
     inline int getGalM() const { return galutinisM; }
     /**
@@ -231,11 +231,11 @@ public:
     float SkaiciuotiV()
     {
         int s = 0;
-        for (int i = 0; i < nd.size(); i++)
+        for (int i = 0; i < nd.Size(); i++)
         {
             s += nd[i];
         }
-        float galutinis = 0.4 * (1.0 * s / nd.size()) + 0.6 * egz;
+        float galutinis = 0.4 * (1.0 * s / nd.Size()) + 0.6 * egz;
         return galutinis;
     }
     /**
@@ -249,13 +249,13 @@ public:
         float paz;
         sort(nd.begin(), nd.end());
 
-        if (nd.size() % 2 == 0)
+        if (nd.Size() % 2 == 0)
         {
-            paz = 1.0 * (nd[nd.size() / 2 - 1] + nd[nd.size() / 2]) / 2;
+            paz = 1.0 * (nd[nd.Size() / 2 - 1] + nd[nd.Size() / 2]) / 2;
         }
         else
         {
-            paz = nd[nd.size() / 2];
+            paz = nd[nd.Size() / 2];
         }
 
         float galutinis = 0.4 * paz + 0.6 * egz;

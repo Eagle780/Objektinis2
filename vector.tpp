@@ -79,7 +79,7 @@ void Vector<T>::pop_back()
 }
 
 template <typename T>
-bool Vector<T>::isEmpty() const
+bool Vector<T>::empty() const
 {
     return size == 0;
 }

@@ -35,7 +35,7 @@ public:
     void push_back(const T &value);
     void pop_back();
 
-    bool isEmpty() const;
+    bool empty() const;
     int Size() const;
     int Capacity() const;
     void reserve(int new_cap);
