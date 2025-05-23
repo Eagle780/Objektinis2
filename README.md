@@ -1,10 +1,10 @@
-# 2.0 versija
+# 3.0 versija
 
 Projekto Apžvalga
 
 Ši programa sugeneruoja studentų duomenų failus, suskaičiuoja studentų galutinį balą pagal pasirinktą kriterijų suskirsto studentus į dvi kategorijas pagal jų galutinį balą ir matuoja užtruktą laiką kiekviename etape.
 
-Šioje versijoje taip pat pridėta galimybė pasirinkti, kokio tipo konteinerį (vector, deque ar list) ir kokią strategiją norite naudoti.
+Šioje versijoje vector konteineris buvo pakeistas į nuosavą Vector klasę, kuri turi daugiau nei 80% įprasto vektoriaus konteinerio funkcionalumo.
 
 ## Praeitų versijų aprašymai
 
@@ -16,6 +16,7 @@ Projekto Apžvalga
 - v1.1: "Studentas" pakeistas iš stuktūros į klasę,
 - v1.2: Sukurti Studento klasės kopijavimo ir perkėlimo konstruktoriai ir metodai ir perdengtos įvesties ir išvesties operacijos.
 - v1.5: Sukurta bazinė (abstrakti) klasė "Žmogus", o "Studentas" padaryta "Žmogaus" išvestine klase
+- v2.0: Pridėti Unit testai Studentų klasei
 
 ## Platesnis programos aprašymas
 
