@@ -11,7 +11,7 @@
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00008}00008\ }
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00009}\mbox{\hyperlink{funkcijos_8cpp_a40c65f43590bc55d7d9b018dceb10a31}{00009}}\ \mbox{\hyperlink{class_studentas}{Studentas}}\ \mbox{\hyperlink{funkcijos_8cpp_a40c65f43590bc55d7d9b018dceb10a31}{generuotiPazymius}}(\mbox{\hyperlink{class_studentas}{Studentas}}\ temp)}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00010}00010\ \{}
-\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00011}00011\ \ \ \ \ vector<int>\ nd;}
+\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00011}00011\ \ \ \ \ \mbox{\hyperlink{class_vector}{Vector<int>}}\ nd;}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00012}00012\ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ 0;}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{keywordtype}{int}\ a\ =\ 0;}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})}
@@ -42,24 +42,24 @@
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ i++)}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00040}00040\ \ \ \ \ \{}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ a\ =\ 1\ +\ rand()\ \%\ 10;}
-\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ nd.push\_back(a);}
+\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ nd.\mbox{\hyperlink{class_vector_a4415960a83615855ec32f8169f641786}{push\_back}}(a);}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00043}00043\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00044}00044\ }
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordtype}{int}\ egz\ =\ 1\ +\ rand()\ \%\ 10;}
-\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00046}00046\ \ \ \ \ temp.\mbox{\hyperlink{class_studentas_a2937de900cd3bad83ffd6eb2ceae1bef}{setPaz}}(nd,\ egz);}
+\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00046}00046\ \ \ \ \ temp.\mbox{\hyperlink{class_studentas_ad8fead1d6b290ab279f80d085aa840f0}{setPaz}}(nd,\ egz);}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00047}00047\ }
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{return}\ temp;}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00049}00049\ \}}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00050}00050\ }
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00051}\mbox{\hyperlink{funkcijos_8cpp_af1d21c48106453a18bb88f34ff6f7b18}{00051}}\ \mbox{\hyperlink{class_studentas}{Studentas}}\ \mbox{\hyperlink{funkcijos_8cpp_af1d21c48106453a18bb88f34ff6f7b18}{generuotiVardus}}(\mbox{\hyperlink{class_studentas}{Studentas}}\ temp)}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00052}00052\ \{}
-\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00053}00053\ \ \ \ \ vector<string>\ Vardai\ =\ \{\textcolor{stringliteral}{"{}Jonas"{}},\ \textcolor{stringliteral}{"{}Antanas"{}},\ \textcolor{stringliteral}{"{}Petras"{}},\ \textcolor{stringliteral}{"{}Dovydas"{}},\ \textcolor{stringliteral}{"{}Tomas"{}}\};}
-\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00054}00054\ \ \ \ \ vector<string>\ Pavardes\ =\ \{\textcolor{stringliteral}{"{}Jonaitis"{}},\ \textcolor{stringliteral}{"{}Petrauskas"{}},\ \textcolor{stringliteral}{"{}Kazlauskas"{}},\ \textcolor{stringliteral}{"{}Antanaitis"{}},\ \textcolor{stringliteral}{"{}Ivanauskas"{}}\};}
+\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00053}00053\ \ \ \ \ \mbox{\hyperlink{class_vector}{Vector<string>}}\ Vardai\ =\ \{\textcolor{stringliteral}{"{}Jonas"{}},\ \textcolor{stringliteral}{"{}Antanas"{}},\ \textcolor{stringliteral}{"{}Petras"{}},\ \textcolor{stringliteral}{"{}Dovydas"{}},\ \textcolor{stringliteral}{"{}Tomas"{}}\};}
+\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00054}00054\ \ \ \ \ \mbox{\hyperlink{class_vector}{Vector<string>}}\ Pavardes\ =\ \{\textcolor{stringliteral}{"{}Jonaitis"{}},\ \textcolor{stringliteral}{"{}Petrauskas"{}},\ \textcolor{stringliteral}{"{}Kazlauskas"{}},\ \textcolor{stringliteral}{"{}Antanaitis"{}},\ \textcolor{stringliteral}{"{}Ivanauskas"{}}\};}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00055}00055\ }
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00056}00056\ \ \ \ \ srand(time(0));}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00057}00057\ }
-\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{string}\ vardas\ =\ Vardai[rand()\ \%\ Vardai.size()];}
-\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{string}\ pavarde\ =\ Pavardes[rand()\ \%\ Pavardes.size()];}
+\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{string}\ vardas\ =\ Vardai[rand()\ \%\ Vardai.\mbox{\hyperlink{class_vector_a196e9eedc9a88a48f64e69e39405fa72}{size}}()];}
+\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{string}\ pavarde\ =\ Pavardes[rand()\ \%\ Pavardes.\mbox{\hyperlink{class_vector_a196e9eedc9a88a48f64e69e39405fa72}{size}}()];}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00060}00060\ \ \ \ \ temp.\mbox{\hyperlink{class_studentas_aab017285c3b3e7794f264e4bdb935265}{setVarPav}}(vardas,\ pavarde);}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00061}00061\ }
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{return}\ temp;}
@@ -67,7 +67,7 @@
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00064}00064\ }
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00065}\mbox{\hyperlink{funkcijos_8cpp_af5f7deb0e80b531ffae43aded2435e5f}{00065}}\ \mbox{\hyperlink{class_studentas}{Studentas}}\ \mbox{\hyperlink{funkcijos_8cpp_af5f7deb0e80b531ffae43aded2435e5f}{irasytiPazymius}}(\mbox{\hyperlink{class_studentas}{Studentas}}\ temp)}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00066}00066\ \{}
-\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00067}00067\ \ \ \ \ vector<int>\ nd;}
+\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00067}00067\ \ \ \ \ \mbox{\hyperlink{class_vector}{Vector<int>}}\ nd;}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{keywordtype}{int}\ a;}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00069}00069\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Iveskite\ pazymius\ (norint\ baigti\ pazymiu\ rasyma,\ irasykite\ 0):\(\backslash\)n"{}};}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})}
@@ -86,11 +86,11 @@
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00083}00083\ }
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a\ >\ 0\ \&\&\ a\ <=\ 10)}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ nd.push\_back(a);}
+\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ nd.\mbox{\hyperlink{class_vector_a4415960a83615855ec32f8169f641786}{push\_back}}(a);}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (a\ ==\ 0)}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nd.size()\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nd.\mbox{\hyperlink{class_vector_a196e9eedc9a88a48f64e69e39405fa72}{size}}()\ ==\ 0)}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Iveskite\ bent\ viena\ pazymi\(\backslash\)n"{}};}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
@@ -125,7 +125,7 @@
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00123}00123\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00124}00124\ }
-\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00125}00125\ \ \ \ \ temp.\mbox{\hyperlink{class_studentas_a2937de900cd3bad83ffd6eb2ceae1bef}{setPaz}}(nd,\ a);}
+\DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00125}00125\ \ \ \ \ temp.\mbox{\hyperlink{class_studentas_ad8fead1d6b290ab279f80d085aa840f0}{setPaz}}(nd,\ a);}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00126}00126\ }
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{return}\ temp;}
 \DoxyCodeLine{\Hypertarget{funkcijos_8cpp_source_l00128}00128\ \}}

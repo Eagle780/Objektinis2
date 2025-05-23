@@ -12,7 +12,7 @@
 #define STUDENT_H
 
 #include "zmogus.h"
-#include "vector/vector.h"
+#include "vector.h"
 #include <string>
 #include <algorithm>
 #include <iostream>

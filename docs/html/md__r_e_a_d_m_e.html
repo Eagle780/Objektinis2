@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Galutinis balas: 2.0 versija</title>
+<title>Galutinis Balas: 2.0 versija</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Galutinis balas
+   <div id="projectname">Galutinis Balas<span id="projectnumber">&#160;3.0</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -168,16 +168,121 @@ Duomenų išvedimas/įvedimas</h2>
 <p>Studentą taip pat galima ir išvesti, panaudojus praeito pavyzdžio duomenis, bus išvedama </p><pre class="fragment">vardas pavarde 9.86667 10
 </pre><p>Išvestis taip pat, kaip ir įvestis, gali būti naudojama ir darbui su failais, kadangi operacija kaip kintamąjį paima išvesties metodą.</p>
 <h1><a class="anchor" id="autotoc_md9"></a>
+Vector klasės funkcijos</h1>
+<p>Šioje versijoje buvo realizuota nuosava vektoriaus klasė, čia pateiksiu kelių funkcijų implementacijos pavyzdžius:</p>
+<ol type="1">
+<li><p class="startli">Push_back(elementas)</p>
+<p class="startli">Jei vektoriaus viduje esancio masyvo dydis yra mažesnis už talpą, prie masyvo galo pridedamas naujas elementas, o kintamasis, kuris nurodo masyvo dydi, padidinamas vienetu.</p>
+<p class="startli">Jei vektorias viduje esančio masyvo dydis yra lygus talpai, tai pirma visi elementai perkopijuojami į nauja masyvą, kurio talpa būtų dvigubai didesnė už praeito, senasis masyvas ištrinamas, o prie naujojo galo pridedamas naujas elementas.</p>
+<p class="startli">Pvz: </p><pre class="fragment">Vector&lt;int&gt; v;
+v.Push_back(10);
+v.Push_back(20);
+cout &lt;&lt; v[0] &lt;&lt; " " &lt;&lt; v[1] &lt;&lt; endl;
+</pre><p class="startli">Terminale gausite </p><pre class="fragment">10 20
+</pre></li>
+</ol>
+<ol type="1">
+<li><p class="startli">Shrink_to_fit()</p>
+<p class="startli">Naudojamas norint sumažinti vektoriaus viduje esančio masyvo talpą, kad ji būtų lygi masyvo dydžiui.</p>
+<p class="startli">Jei dydis jau yra lygus talpai, grįžtama iš funkcijos ir niekas neįvykta.</p>
+<p class="startli">Kitu atveju sukuriamas naujas masyvas, kurio talpa būtu lygi senojo masyvo dydžiui, į jį nukopijuojami visi elementai, esantys senajame masyve, senasis ištrinamas, o naujasis masyvas tampa vektoriaus masyvu.</p>
+<p class="startli">Pvz: </p><pre class="fragment">Vector&lt;int&gt; v;
+v.Push_back(10);
+v.Push_back(20);
+v.Push_back(30);
+cout &lt;&lt; v.Capacity() &lt;&lt; endl;
+v.Shrink_to_fit();
+cout &lt;&lt; v.Capacity() &lt;&lt; endl;
+</pre><p class="startli">Terminale gausite </p><pre class="fragment">4
+3
+</pre></li>
+</ol>
+<ol type="1">
+<li><p class="startli">== operatorius</p>
+<p class="startli">Lygina, ar kiekvienas pirmojo vektoriaus elementas yra lygus antrojo vektoriaus elementui tame pačiame indekse.</p>
+<p class="startli">Jei dydžiai skiriasi, grąžinama false.</p>
+<p class="startli">Jei bent vienas elementas iš primojo vektoriaus neatitinka tame pačiame indekse esančio elemento iš antrojo vektoriaus, grąžinama false.</p>
+<p class="startli">Kitu atveju grąžinama true.</p>
+<p class="startli">Pvz: </p><pre class="fragment">Vector&lt;int&gt; a{1, 2, 3}, b{1, 2, 3}, c{1, 2, 3, 4};
+cout &lt;&lt; (a == b) &lt;&lt; " " &lt;&lt; (a == c) &lt;&lt; endl;
+</pre><p class="startli">Terminale gausite </p><pre class="fragment">1 0
+</pre></li>
+</ol>
+<ol type="1">
+<li><p class="startli">Resize(naujas_dydis(, reikšmė))</p>
+<p class="startli">Keičia vektoriaus viduje esančio masyvo dydį.</p>
+<p class="startli">Jei naujasis dydis lygus esamam dydžiui, grįžtama.</p>
+<p class="startli">Jei naujas dydis yra mažesnis už esamą, masyvo dydį rodančiam kintamajui priskiriama naujojo dydžio reikšmė.</p>
+<p class="startli">Jei naujas dydis didesnis už esamą, kuriamas naujas masyvas, kuriam rezervuojama didesnė reikšmė tarp naujojo dydžio ir talpos*2. Į jį nukopijuojami visi senojo masyvo elementai ir nuo pabaigos iki norimo dydžio indeksų pridedama tuščio konstruktoriaus sukurtas elementas (jei nėra reikšmės) arba norima reikmė (jei ji yra).</p>
+<p class="startli">Pvz: </p><pre class="fragment">Vector&lt;int&gt; d = {1, 2, 3};
+for (int i = 0; i &lt; d.Size(); ++i)
+{
+    cout &lt;&lt; d[i] &lt;&lt; " ";
+}
+cout &lt;&lt; endl;
+d.Resize(5);
+for (int i = 0; i &lt; d.Size(); ++i)
+{
+    cout &lt;&lt; d[i] &lt;&lt; " ";
+}
+cout &lt;&lt; endl;
+d.Resize(2);
+for (int i = 0; i &lt; d.Size(); ++i)
+{
+    cout &lt;&lt; d[i] &lt;&lt; " ";
+}
+cout &lt;&lt; endl;
+d.Resize(6, 4);
+for (int i = 0; i &lt; d.Size(); ++i)
+{
+    cout &lt;&lt; d[i] &lt;&lt; " ";
+}
+cout &lt;&lt; endl;
+</pre><p class="startli">Terminale gausime </p><pre class="fragment">1 2 3
+1 2 3 0 0
+1 2
+1 2 4 4 4 4
+</pre></li>
+</ol>
+<ol type="1">
+<li><p class="startli">= operatorius</p>
+<p class="startli">Nukopijuoja visus antrojo vektoriaus elementus ir kintamuosius į pirmąjį.</p>
+<p class="startli">Pvz: </p><pre class="fragment">Vector&lt;int&gt; a{1, 2, 3};
+Vector&lt;int&gt; b;
+b = a;
+for (int i=0; i &lt; b.Size(); ++i)
+    cout &lt;&lt; b[i] &lt;&lt; " ";
+cout &lt;&lt; endl;
+</pre><p class="startli">Terminale gausite </p><pre class="fragment">1 2 3
+</pre></li>
+</ol>
+<h1><a class="anchor" id="autotoc_md10"></a>
+spartumo testavimai</h1>
+<p>Buvo atlikti testai, kurie lygino mano sukurtos <a class="el" href="class_vector.html">Vector</a> klasės ir įprasto vector konteinerio užtruktą laiką push_back() funkcija pildant juos tam tikru kiekiu elementų (skaičių). Atlikto testo rezultatai:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Tipas   </th><th class="markdownTableHeadNone">10,000   </th><th class="markdownTableHeadNone">100,000   </th><th class="markdownTableHeadNone">1,000,000   </th><th class="markdownTableHeadNone">10,000,000   </th><th class="markdownTableHeadNone">100,000,000    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="class_vector.html">Vector</a> klasė   </td><td class="markdownTableBodyNone">0.0000834   </td><td class="markdownTableBodyNone">0.000503   </td><td class="markdownTableBodyNone">0.00229   </td><td class="markdownTableBodyNone">0.0231   </td><td class="markdownTableBodyNone">0.201    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">vector konteineris   </td><td class="markdownTableBodyNone">0.0000573   </td><td class="markdownTableBodyNone">0.000345   </td><td class="markdownTableBodyNone">0.00282   </td><td class="markdownTableBodyNone">0.0258   </td><td class="markdownTableBodyNone">0.227   </td></tr>
+</table>
+<p>Kaip galima pastebėti iš rezultatų, mano klasės vektorius yra nežymiai greitesnis, kai į vektorių dedama iki 100,000 skaičių, po to standartinis vektorius tampa greitesnis.</p>
+<p>Abiejų vektorių atminties perskirstymu įvyksta tiek pat: 27.</p>
+<h1><a class="anchor" id="autotoc_md11"></a>
+Dokumentacija</h1>
+<p>Dokumentacijos failai yra docs/ aplanke. Ten rasite html/ ir latex/ aplankus taip pat ir jau pilnai sugeneruotą .pdf pavidalo dokumentaciją. Norint dokumentaciją matyti naršyklėje, html/ aplanke susiraskite failą "index.html" ir atidarykite jį naudodamiesi "Live Server" ar kitu .html failų paleidimo būdu.</p>
+<h1><a class="anchor" id="autotoc_md12"></a>
 Testavimo sistemos parametrai</h1>
 <ul>
 <li>CPU - AMD Ryzen 5 5600H, 3.30GHz</li>
 <li>RAM - 2x8GB DDR4 3200MHz</li>
 <li>SSD - PCIe gen 3 NVMe M.2 512GB</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md13"></a>
 Spartos Testavimo Rezultatai</h1>
 <p>Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimus. Žemiau pateikiamos rezultatų lentelės:</p>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 vector</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -193,7 +298,7 @@ vector</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">10,000,000 įrašų   </td><td class="markdownTableBodyNone">18.483   </td><td class="markdownTableBodyNone">76.858   </td><td class="markdownTableBodyNone">4.717   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 deque</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -209,7 +314,7 @@ deque</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">10,000,000 įrašų   </td><td class="markdownTableBodyNone">18.483   </td><td class="markdownTableBodyNone">77.137   </td><td class="markdownTableBodyNone">4.821   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 list</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -226,11 +331,39 @@ list</h2>
 <td class="markdownTableBodyNone">10,000,000 įrašų   </td><td class="markdownTableBodyNone">18.732   </td><td class="markdownTableBodyNone">77.154   </td><td class="markdownTableBodyNone">6.214   </td></tr>
 </table>
 <p>Kaip matome, laikai, naudojant vien tik skirtingus konteinerius, skiriasi, nors ir nežymiai. Vektorius vidutiniškai veikia greičiausiai, o list'as - lėčiausiai.</p>
-<h1><a class="anchor" id="autotoc_md14"></a>
+<h1><a class="anchor" id="autotoc_md17"></a>
+Vektorių spartos palyginimas</h1>
+<p>Žemiau pateiktose lentelėse pateikti vektorių laikai:</p>
+<h2><a class="anchor" id="autotoc_md18"></a>
+įprastas vector</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Failo dydis   </th><th class="markdownTableHeadNone">Duomenų skaitymas   </th><th class="markdownTableHeadNone">Duomenų rūšiavimas   </th><th class="markdownTableHeadNone">Studentų rūšiavimas   </th><th class="markdownTableHeadNone">Išvedimas į failus   </th><th class="markdownTableHeadNone">Bendras laikas    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">100,000 įrašų   </td><td class="markdownTableBodyNone">0.451   </td><td class="markdownTableBodyNone">0.0130   </td><td class="markdownTableBodyNone">0.024   </td><td class="markdownTableBodyNone">0.138   </td><td class="markdownTableBodyNone">0.707    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1,000,000 įrašų   </td><td class="markdownTableBodyNone">4.934   </td><td class="markdownTableBodyNone">0.101   </td><td class="markdownTableBodyNone">0.234   </td><td class="markdownTableBodyNone">1.103   </td><td class="markdownTableBodyNone">6.478    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">10,000,000 įrašų   </td><td class="markdownTableBodyNone">41.759   </td><td class="markdownTableBodyNone">0.718   </td><td class="markdownTableBodyNone">2.920   </td><td class="markdownTableBodyNone">11.211   </td><td class="markdownTableBodyNone">56.613   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md19"></a>
+mano vector klasė</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Failo dydis   </th><th class="markdownTableHeadNone">Duomenų skaitymas   </th><th class="markdownTableHeadNone">Duomenų rūšiavimas   </th><th class="markdownTableHeadNone">Studentų rūšiavimas   </th><th class="markdownTableHeadNone">Išvedimas į failus   </th><th class="markdownTableHeadNone">Bendras laikas    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">100,000 įrašų   </td><td class="markdownTableBodyNone">0.489   </td><td class="markdownTableBodyNone">0.0121   </td><td class="markdownTableBodyNone">0.025   </td><td class="markdownTableBodyNone">0.177   </td><td class="markdownTableBodyNone">1.585    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1,000,000 įrašų   </td><td class="markdownTableBodyNone">5.443   </td><td class="markdownTableBodyNone">0.196   </td><td class="markdownTableBodyNone">0.325   </td><td class="markdownTableBodyNone">1.683   </td><td class="markdownTableBodyNone">7.653    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">10,000,000 įrašų   </td><td class="markdownTableBodyNone">37.09   </td><td class="markdownTableBodyNone">1.188   </td><td class="markdownTableBodyNone">2.603   </td><td class="markdownTableBodyNone">9.946   </td><td class="markdownTableBodyNone">50.837   </td></tr>
+</table>
+<p>Skirtumai nežymūs, mano vektorius yra greitesnis naudojant 10,000,000 studentų, tačiau lėtesnis kitais atvejais.</p>
+<h1><a class="anchor" id="autotoc_md20"></a>
 Strategijos testavimo rezultatai</h1>
 <p>Testuojama buvo ne vien lyginant skirtingų konteinerių naudojimą, bet ir pritaikant skirtingas studentų rūšiavimo strategijas</p>
 <p>1 strategija: Studentai rūšiuojami į du skirtingus to pačio tipo konteinerius, 2 strategija: Naudojamas tik vienas papildomas konteineris, o perkelti įrašai ištrinami iš pradinio konteinerio 3 strategija: Greitesnis iš 2-ų buvusių taip pat taikant ir bibliotekas</p>
-<h2><a class="anchor" id="autotoc_md15"></a>
+<h2><a class="anchor" id="autotoc_md21"></a>
 vector</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -246,7 +379,7 @@ vector</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">10,000,000 įrašų   </td><td class="markdownTableBodyNone">4.868   </td><td class="markdownTableBodyNone">-   </td><td class="markdownTableBodyNone">5.268   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md22"></a>
 deque</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -262,7 +395,7 @@ deque</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">10,000,000 įrašų   </td><td class="markdownTableBodyNone">4.866   </td><td class="markdownTableBodyNone">-   </td><td class="markdownTableBodyNone">5.411   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h2><a class="anchor" id="autotoc_md23"></a>
 list</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -279,10 +412,10 @@ list</h2>
 <td class="markdownTableBodyNone">10,000,000 įrašų   </td><td class="markdownTableBodyNone">6.158   </td><td class="markdownTableBodyNone">4.731   </td><td class="markdownTableBodyNone">6.329   </td></tr>
 </table>
 <p>Išbandžius visas strategijas su visais konteineriais, galime pastebėti įdomų dalyką, kad 3 startegija yra greičiausia su visais konteineriais išskyrus list'ą. Norint naudoti list'ą būtų geriausia taikyti 2 strategiją. 2 strategijos neefktyvumą, atsižvelgiant į vektorių ir deque laikus, galima paaiškinti tuo, kad atliekant kiekvieną perkėlimo operaciją, visi elementai turi būti perkopijuoti į naują vietą, neskaitant išmesto elemento. List'as nepatiria tokių minusų, nes jam reikia tik pakeisti rodykles į kitus narius. Tai taip pat iš dalies paaiškina, kodėl 2 strategija yra greitesnė nei 3, kai kalba eina apie list'ą.</p>
-<h1><a class="anchor" id="autotoc_md18"></a>
+<h1><a class="anchor" id="autotoc_md24"></a>
 Struktūros ir klasės testavimo rezultatai</h1>
 <p>Šioje versijoje taip pat reikėjo palyginti realizacijos spartą naudojant struktūrą (v1.0) ir klasę (dabartinė, v1.1). Abi programos naudojo vektorių ir 3 strategiją:</p>
-<h2><a class="anchor" id="autotoc_md19"></a>
+<h2><a class="anchor" id="autotoc_md25"></a>
 klasė</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -292,7 +425,7 @@ klasė</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">1,000,000 įrašų   </td><td class="markdownTableBodyNone">2.142   </td><td class="markdownTableBodyNone">1.196   </td><td class="markdownTableBodyNone">0.251   </td><td class="markdownTableBodyNone">2.165   </td><td class="markdownTableBodyNone">5.901   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md26"></a>
 struktūra</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -303,10 +436,10 @@ struktūra</h2>
 <td class="markdownTableBodyNone">1,000,000 įrašų   </td><td class="markdownTableBodyNone">2.626   </td><td class="markdownTableBodyNone">1.609   </td><td class="markdownTableBodyNone">0.277   </td><td class="markdownTableBodyNone">3.286   </td><td class="markdownTableBodyNone">7.835   </td></tr>
 </table>
 <p>Iš rezultatų matome, kad, nors ir nežymiai, klasė veikia greičiau nei struktūra.</p>
-<h1><a class="anchor" id="autotoc_md21"></a>
+<h1><a class="anchor" id="autotoc_md27"></a>
 Kompiliatoriaus flag'ų testavimo rezultatai</h1>
 <p>Programos greitis gali priklausyti ne vien nuo pačio kodo pateikimų, bet ir nuo paprasto flag'o (kompiliatoriaus optimizavimo lygio) pakeitimo kompiliuojant kodą. Testavimui naudotas 1,000,000 studentų failas bei vektorius ir 3 strategija:</p>
-<h2><a class="anchor" id="autotoc_md22"></a>
+<h2><a class="anchor" id="autotoc_md28"></a>
 Klasė</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -320,7 +453,7 @@ Klasė</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">O3   </td><td class="markdownTableBodyNone">1.137   </td><td class="markdownTableBodyNone">3.108   </td><td class="markdownTableBodyNone">0.239   </td><td class="markdownTableBodyNone">4.194   </td><td class="markdownTableBodyNone">8.652   </td><td class="markdownTableBodyNone">358   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md23"></a>
+<h2><a class="anchor" id="autotoc_md29"></a>
 Struktūra</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -335,7 +468,7 @@ Struktūra</h2>
 <td class="markdownTableBodyNone">O3   </td><td class="markdownTableBodyNone">1.112   </td><td class="markdownTableBodyNone">3.475   </td><td class="markdownTableBodyNone">0.276   </td><td class="markdownTableBodyNone">4.946   </td><td class="markdownTableBodyNone">10.043   </td><td class="markdownTableBodyNone">354   </td></tr>
 </table>
 <p>Kaip galima pastebėti iš rezultatų, greičiausias (ir mažiausiai vietos užimantis) flag'as yra ne O3, bet O2. Taip gali atsitikti todėl, nes O3 taiko sudėtingesnius kompiliavimo metodus, kurie parodo savo naudą naudojant dar daugiau duomenų, nei buvo naudojama dabar.</p>
-<h1><a class="anchor" id="autotoc_md24"></a>
+<h1><a class="anchor" id="autotoc_md30"></a>
 Nuotraukos</h1>
 <p>Programos veikimo pavyzdys:</p>
 <p><img src="https://github.com/user-attachments/assets/16aeabd3-fdcf-4e37-bdb8-f8606c23455a" alt="GalutinisBalas.exe" class="inline"/> </p>

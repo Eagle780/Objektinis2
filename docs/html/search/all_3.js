@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['cinex_0',['cinEx',['../funkcijos_8cpp.html#ac3975ebdea7c32ba3e823cd53ed9ebba',1,'cinEx():&#160;funkcijos.cpp'],['../header_8h.html#ac3975ebdea7c32ba3e823cd53ed9ebba',1,'cinEx():&#160;funkcijos.cpp']]],
-  ['clear_1',['clear',['../class_studentas.html#a27b489c8e9e6feedbd47e4beaa759a0a',1,'Studentas']]]
+  ['back_0',['back',['../class_vector.html#a69b5e4ba89cf9c422bf3fad406cdba4b',1,'Vector']]],
+  ['begin_1',['begin',['../class_vector.html#a466e8c045ea10d62c28b689888e9fe5a',1,'Vector::begin()'],['../class_vector.html#a514c5f6246f07f0012f1d00912838b19',1,'Vector::begin() const']]]
 ];

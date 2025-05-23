@@ -73,14 +73,171 @@ Studentą taip pat galima ir išvesti, panaudojus praeito pavyzdžio duomenis, b
 \end{DoxyVerb}
 
 
-Išvestis taip pat, kaip ir įvestis, gali būti naudojama ir darbui su failais, kadangi operacija kaip kintamąjį paima išvesties metodą.\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysection{\texorpdfstring{Testavimo sistemos parametrai}{Testavimo sistemos parametrai}}\label{md__r_e_a_d_m_e_autotoc_md9}
+Išvestis taip pat, kaip ir įvestis, gali būti naudojama ir darbui su failais, kadangi operacija kaip kintamąjį paima išvesties metodą.\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysection{\texorpdfstring{Vector klasės funkcijos}{Vector klasės funkcijos}}\label{md__r_e_a_d_m_e_autotoc_md9}
+Šioje versijoje buvo realizuota nuosava vektoriaus klasė, čia pateiksiu kelių funkcijų implementacijos pavyzdžius\+:
+
+
+\begin{DoxyEnumerate}
+\item Push\+\_\+back(elementas)
+
+Jei vektoriaus viduje esancio masyvo dydis yra mažesnis už talpą, prie masyvo galo pridedamas naujas elementas, o kintamasis, kuris nurodo masyvo dydi, padidinamas vienetu.
+
+Jei vektorias viduje esančio masyvo dydis yra lygus talpai, tai pirma visi elementai perkopijuojami į nauja masyvą, kurio talpa būtų dvigubai didesnė už praeito, senasis masyvas ištrinamas, o prie naujojo galo pridedamas naujas elementas.
+
+Pvz\+: \begin{DoxyVerb}Vector<int> v;
+v.Push_back(10);
+v.Push_back(20);
+cout << v[0] << " " << v[1] << endl;
+\end{DoxyVerb}
+
+
+Terminale gausite \begin{DoxyVerb}10 20
+\end{DoxyVerb}
+
+\end{DoxyEnumerate}
+
+
+\begin{DoxyEnumerate}
+\item Shrink\+\_\+to\+\_\+fit()
+
+Naudojamas norint sumažinti vektoriaus viduje esančio masyvo talpą, kad ji būtų lygi masyvo dydžiui.
+
+Jei dydis jau yra lygus talpai, grįžtama iš funkcijos ir niekas neįvykta.
+
+Kitu atveju sukuriamas naujas masyvas, kurio talpa būtu lygi senojo masyvo dydžiui, į jį nukopijuojami visi elementai, esantys senajame masyve, senasis ištrinamas, o naujasis masyvas tampa vektoriaus masyvu.
+
+Pvz\+: \begin{DoxyVerb}Vector<int> v;
+v.Push_back(10);
+v.Push_back(20);
+v.Push_back(30);
+cout << v.Capacity() << endl;
+v.Shrink_to_fit();
+cout << v.Capacity() << endl;
+\end{DoxyVerb}
+
+
+Terminale gausite \begin{DoxyVerb}4
+3
+\end{DoxyVerb}
+
+\end{DoxyEnumerate}
+
+
+\begin{DoxyEnumerate}
+\item == operatorius
+
+Lygina, ar kiekvienas pirmojo vektoriaus elementas yra lygus antrojo vektoriaus elementui tame pačiame indekse.
+
+Jei dydžiai skiriasi, grąžinama false.
+
+Jei bent vienas elementas iš primojo vektoriaus neatitinka tame pačiame indekse esančio elemento iš antrojo vektoriaus, grąžinama false.
+
+Kitu atveju grąžinama true.
+
+Pvz\+: \begin{DoxyVerb}Vector<int> a{1, 2, 3}, b{1, 2, 3}, c{1, 2, 3, 4};
+cout << (a == b) << " " << (a == c) << endl;
+\end{DoxyVerb}
+
+
+Terminale gausite \begin{DoxyVerb}1 0
+\end{DoxyVerb}
+
+\end{DoxyEnumerate}
+
+
+\begin{DoxyEnumerate}
+\item Resize(naujas\+\_\+dydis(, reikšmė))
+
+Keičia vektoriaus viduje esančio masyvo dydį.
+
+Jei naujasis dydis lygus esamam dydžiui, grįžtama.
+
+Jei naujas dydis yra mažesnis už esamą, masyvo dydį rodančiam kintamajui priskiriama naujojo dydžio reikšmė.
+
+Jei naujas dydis didesnis už esamą, kuriamas naujas masyvas, kuriam rezervuojama didesnė reikšmė tarp naujojo dydžio ir talpos\texorpdfstring{$\ast$}{*}2. Į jį nukopijuojami visi senojo masyvo elementai ir nuo pabaigos iki norimo dydžio indeksų pridedama tuščio konstruktoriaus sukurtas elementas (jei nėra reikšmės) arba norima reikmė (jei ji yra).
+
+Pvz\+: \begin{DoxyVerb}Vector<int> d = {1, 2, 3};
+for (int i = 0; i < d.Size(); ++i)
+{
+    cout << d[i] << " ";
+}
+cout << endl;
+d.Resize(5);
+for (int i = 0; i < d.Size(); ++i)
+{
+    cout << d[i] << " ";
+}
+cout << endl;
+d.Resize(2);
+for (int i = 0; i < d.Size(); ++i)
+{
+    cout << d[i] << " ";
+}
+cout << endl;
+d.Resize(6, 4);
+for (int i = 0; i < d.Size(); ++i)
+{
+    cout << d[i] << " ";
+}
+cout << endl;
+\end{DoxyVerb}
+
+
+Terminale gausime \begin{DoxyVerb}1 2 3
+1 2 3 0 0
+1 2
+1 2 4 4 4 4
+\end{DoxyVerb}
+
+\end{DoxyEnumerate}
+
+
+\begin{DoxyEnumerate}
+\item = operatorius
+
+Nukopijuoja visus antrojo vektoriaus elementus ir kintamuosius į pirmąjį.
+
+Pvz\+: \begin{DoxyVerb}Vector<int> a{1, 2, 3};
+Vector<int> b;
+b = a;
+for (int i=0; i < b.Size(); ++i)
+    cout << b[i] << " ";
+cout << endl;
+\end{DoxyVerb}
+
+
+Terminale gausite \begin{DoxyVerb}1 2 3
+\end{DoxyVerb}
+
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysection{\texorpdfstring{spartumo testavimai}{spartumo testavimai}}\label{md__r_e_a_d_m_e_autotoc_md10}
+Buvo atlikti testai, kurie lygino mano sukurtos \doxylink{class_vector}{Vector} klasės ir įprasto vector konteinerio užtruktą laiką push\+\_\+back() funkcija pildant juos tam tikru kiekiu elementų (skaičių). Atlikto testo rezultatai\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tipas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10,000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100,000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1,000,000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10,000,000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100,000,000    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tipas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10,000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100,000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1,000,000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10,000,000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100,000,000    }\\\cline{1-6}
+\endhead
+\doxylink{class_vector}{Vector} klasė   &0.\+0000834   &0.\+000503   &0.\+00229   &0.\+0231   &0.\+201    \\\cline{1-6}
+vector konteineris   &0.\+0000573   &0.\+000345   &0.\+00282   &0.\+0258   &0.\+227   \\\cline{1-6}
+\end{longtabu}
+
+
+Kaip galima pastebėti iš rezultatų, mano klasės vektorius yra nežymiai greitesnis, kai į vektorių dedama iki 100,000 skaičių, po to standartinis vektorius tampa greitesnis.
+
+Abiejų vektorių atminties perskirstymu įvyksta tiek pat\+: 27.\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysection{\texorpdfstring{Dokumentacija}{Dokumentacija}}\label{md__r_e_a_d_m_e_autotoc_md11}
+Dokumentacijos failai yra docs/ aplanke. Ten rasite html/ ir latex/ aplankus taip pat ir jau pilnai sugeneruotą .pdf pavidalo dokumentaciją. Norint dokumentaciją matyti naršyklėje, html/ aplanke susiraskite failą "{}index.\+html"{} ir atidarykite jį naudodamiesi "{}\+Live Server"{} ar kitu .html failų paleidimo būdu.\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysection{\texorpdfstring{Testavimo sistemos parametrai}{Testavimo sistemos parametrai}}\label{md__r_e_a_d_m_e_autotoc_md12}
 
 \begin{DoxyItemize}
 \item CPU -\/ AMD Ryzen 5 5600H, 3.\+30\+GHz
 \item RAM -\/ 2x8\+GB DDR4 3200MHz
 \item SSD -\/ PCIe gen 3 NVMe M.\+2 512GB
-\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysection{\texorpdfstring{Spartos Testavimo Rezultatai}{Spartos Testavimo Rezultatai}}\label{md__r_e_a_d_m_e_autotoc_md10}
-Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimus. Žemiau pateikiamos rezultatų lentelės\+:\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysubsection{\texorpdfstring{vector}{vector}}\label{md__r_e_a_d_m_e_autotoc_md11}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md13}{}\doxysection{\texorpdfstring{Spartos Testavimo Rezultatai}{Spartos Testavimo Rezultatai}}\label{md__r_e_a_d_m_e_autotoc_md13}
+Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimus. Žemiau pateikiamos rezultatų lentelės\+:\hypertarget{md__r_e_a_d_m_e_autotoc_md14}{}\doxysubsection{\texorpdfstring{vector}{vector}}\label{md__r_e_a_d_m_e_autotoc_md14}
 \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
 \hline
@@ -97,7 +254,7 @@ Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimu
 1,000,000 įrašų   &1.\+937   &4.\+932   &4.\+205    \\\cline{1-4}
 10,000,000 įrašų   &18.\+483   &76.\+858   &4.\+717   \\\cline{1-4}
 \end{longtabu}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysubsection{\texorpdfstring{deque}{deque}}\label{md__r_e_a_d_m_e_autotoc_md12}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md15}{}\doxysubsection{\texorpdfstring{deque}{deque}}\label{md__r_e_a_d_m_e_autotoc_md15}
 \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
 \hline
@@ -114,7 +271,7 @@ Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimu
 1,000,000 įrašų   &1.\+952   &5.\+101   &4.\+349    \\\cline{1-4}
 10,000,000 įrašų   &18.\+483   &77.\+137   &4.\+821   \\\cline{1-4}
 \end{longtabu}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md13}{}\doxysubsection{\texorpdfstring{list}{list}}\label{md__r_e_a_d_m_e_autotoc_md13}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md16}{}\doxysubsection{\texorpdfstring{list}{list}}\label{md__r_e_a_d_m_e_autotoc_md16}
 \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
 \hline
@@ -133,10 +290,43 @@ Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimu
 \end{longtabu}
 
 
-Kaip matome, laikai, naudojant vien tik skirtingus konteinerius, skiriasi, nors ir nežymiai. Vektorius vidutiniškai veikia greičiausiai, o list\textquotesingle{}as -\/ lėčiausiai.\hypertarget{md__r_e_a_d_m_e_autotoc_md14}{}\doxysection{\texorpdfstring{Strategijos testavimo rezultatai}{Strategijos testavimo rezultatai}}\label{md__r_e_a_d_m_e_autotoc_md14}
+Kaip matome, laikai, naudojant vien tik skirtingus konteinerius, skiriasi, nors ir nežymiai. Vektorius vidutiniškai veikia greičiausiai, o list\textquotesingle{}as -\/ lėčiausiai.\hypertarget{md__r_e_a_d_m_e_autotoc_md17}{}\doxysection{\texorpdfstring{Vektorių spartos palyginimas}{Vektorių spartos palyginimas}}\label{md__r_e_a_d_m_e_autotoc_md17}
+Žemiau pateiktose lentelėse pateikti vektorių laikai\+:\hypertarget{md__r_e_a_d_m_e_autotoc_md18}{}\doxysubsection{\texorpdfstring{įprastas vector}{įprastas vector}}\label{md__r_e_a_d_m_e_autotoc_md18}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimas į failus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bendras laikas    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimas į failus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bendras laikas    }\\\cline{1-6}
+\endhead
+100,000 įrašų   &0.\+451   &0.\+0130   &0.\+024   &0.\+138   &0.\+707    \\\cline{1-6}
+1,000,000 įrašų   &4.\+934   &0.\+101   &0.\+234   &1.\+103   &6.\+478    \\\cline{1-6}
+10,000,000 įrašų   &41.\+759   &0.\+718   &2.\+920   &11.\+211   &56.\+613   \\\cline{1-6}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md19}{}\doxysubsection{\texorpdfstring{mano vector klasė}{mano vector klasė}}\label{md__r_e_a_d_m_e_autotoc_md19}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimas į failus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bendras laikas    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų skaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Duomenų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Studentų rūšiavimas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimas į failus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bendras laikas    }\\\cline{1-6}
+\endhead
+100,000 įrašų   &0.\+489   &0.\+0121   &0.\+025   &0.\+177   &1.\+585    \\\cline{1-6}
+1,000,000 įrašų   &5.\+443   &0.\+196   &0.\+325   &1.\+683   &7.\+653    \\\cline{1-6}
+10,000,000 įrašų   &37.\+09   &1.\+188   &2.\+603   &9.\+946   &50.\+837   \\\cline{1-6}
+\end{longtabu}
+
+
+Skirtumai nežymūs, mano vektorius yra greitesnis naudojant 10,000,000 studentų, tačiau lėtesnis kitais atvejais.\hypertarget{md__r_e_a_d_m_e_autotoc_md20}{}\doxysection{\texorpdfstring{Strategijos testavimo rezultatai}{Strategijos testavimo rezultatai}}\label{md__r_e_a_d_m_e_autotoc_md20}
 Testuojama buvo ne vien lyginant skirtingų konteinerių naudojimą, bet ir pritaikant skirtingas studentų rūšiavimo strategijas
 
-1 strategija\+: Studentai rūšiuojami į du skirtingus to pačio tipo konteinerius, 2 strategija\+: Naudojamas tik vienas papildomas konteineris, o perkelti įrašai ištrinami iš pradinio konteinerio 3 strategija\+: Greitesnis iš 2-\/ų buvusių taip pat taikant ir bibliotekas\hypertarget{md__r_e_a_d_m_e_autotoc_md15}{}\doxysubsection{\texorpdfstring{vector}{vector}}\label{md__r_e_a_d_m_e_autotoc_md15}
+1 strategija\+: Studentai rūšiuojami į du skirtingus to pačio tipo konteinerius, 2 strategija\+: Naudojamas tik vienas papildomas konteineris, o perkelti įrašai ištrinami iš pradinio konteinerio 3 strategija\+: Greitesnis iš 2-\/ų buvusių taip pat taikant ir bibliotekas\hypertarget{md__r_e_a_d_m_e_autotoc_md21}{}\doxysubsection{\texorpdfstring{vector}{vector}}\label{md__r_e_a_d_m_e_autotoc_md21}
 \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
 \hline
@@ -153,7 +343,7 @@ Testuojama buvo ne vien lyginant skirtingų konteinerių naudojimą, bet ir prit
 1,000,000 įrašų   &0.\+457   &\texorpdfstring{$>$}{>}1000   &0.\+235    \\\cline{1-4}
 10,000,000 įrašų   &4.\+868   &-\/   &5.\+268   \\\cline{1-4}
 \end{longtabu}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md16}{}\doxysubsection{\texorpdfstring{deque}{deque}}\label{md__r_e_a_d_m_e_autotoc_md16}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md22}{}\doxysubsection{\texorpdfstring{deque}{deque}}\label{md__r_e_a_d_m_e_autotoc_md22}
 \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
 \hline
@@ -170,7 +360,7 @@ Testuojama buvo ne vien lyginant skirtingų konteinerių naudojimą, bet ir prit
 1,000,000 įrašų   &0.\+427   &\texorpdfstring{$>$}{>}1000   &0.\+253    \\\cline{1-4}
 10,000,000 įrašų   &4.\+866   &-\/   &5.\+411   \\\cline{1-4}
 \end{longtabu}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md17}{}\doxysubsection{\texorpdfstring{list}{list}}\label{md__r_e_a_d_m_e_autotoc_md17}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md23}{}\doxysubsection{\texorpdfstring{list}{list}}\label{md__r_e_a_d_m_e_autotoc_md23}
 \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
 \hline
@@ -189,8 +379,8 @@ Testuojama buvo ne vien lyginant skirtingų konteinerių naudojimą, bet ir prit
 \end{longtabu}
 
 
-Išbandžius visas strategijas su visais konteineriais, galime pastebėti įdomų dalyką, kad 3 startegija yra greičiausia su visais konteineriais išskyrus list\textquotesingle{}ą. Norint naudoti list\textquotesingle{}ą būtų geriausia taikyti 2 strategiją. 2 strategijos neefktyvumą, atsižvelgiant į vektorių ir deque laikus, galima paaiškinti tuo, kad atliekant kiekvieną perkėlimo operaciją, visi elementai turi būti perkopijuoti į naują vietą, neskaitant išmesto elemento. List\textquotesingle{}as nepatiria tokių minusų, nes jam reikia tik pakeisti rodykles į kitus narius. Tai taip pat iš dalies paaiškina, kodėl 2 strategija yra greitesnė nei 3, kai kalba eina apie list\textquotesingle{}ą.\hypertarget{md__r_e_a_d_m_e_autotoc_md18}{}\doxysection{\texorpdfstring{Struktūros ir klasės testavimo rezultatai}{Struktūros ir klasės testavimo rezultatai}}\label{md__r_e_a_d_m_e_autotoc_md18}
-Šioje versijoje taip pat reikėjo palyginti realizacijos spartą naudojant struktūrą (v1.\+0) ir klasę (dabartinė, v1.\+1). Abi programos naudojo vektorių ir 3 strategiją\+:\hypertarget{md__r_e_a_d_m_e_autotoc_md19}{}\doxysubsection{\texorpdfstring{klasė}{klasė}}\label{md__r_e_a_d_m_e_autotoc_md19}
+Išbandžius visas strategijas su visais konteineriais, galime pastebėti įdomų dalyką, kad 3 startegija yra greičiausia su visais konteineriais išskyrus list\textquotesingle{}ą. Norint naudoti list\textquotesingle{}ą būtų geriausia taikyti 2 strategiją. 2 strategijos neefktyvumą, atsižvelgiant į vektorių ir deque laikus, galima paaiškinti tuo, kad atliekant kiekvieną perkėlimo operaciją, visi elementai turi būti perkopijuoti į naują vietą, neskaitant išmesto elemento. List\textquotesingle{}as nepatiria tokių minusų, nes jam reikia tik pakeisti rodykles į kitus narius. Tai taip pat iš dalies paaiškina, kodėl 2 strategija yra greitesnė nei 3, kai kalba eina apie list\textquotesingle{}ą.\hypertarget{md__r_e_a_d_m_e_autotoc_md24}{}\doxysection{\texorpdfstring{Struktūros ir klasės testavimo rezultatai}{Struktūros ir klasės testavimo rezultatai}}\label{md__r_e_a_d_m_e_autotoc_md24}
+Šioje versijoje taip pat reikėjo palyginti realizacijos spartą naudojant struktūrą (v1.\+0) ir klasę (dabartinė, v1.\+1). Abi programos naudojo vektorių ir 3 strategiją\+:\hypertarget{md__r_e_a_d_m_e_autotoc_md25}{}\doxysubsection{\texorpdfstring{klasė}{klasė}}\label{md__r_e_a_d_m_e_autotoc_md25}
 \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
 \hline
@@ -204,7 +394,7 @@ Išbandžius visas strategijas su visais konteineriais, galime pastebėti įdom�
 100,000 įrašų   &0.\+203   &0.\+103   &0.\+020   &0.\+266   &0.\+689    \\\cline{1-6}
 1,000,000 įrašų   &2.\+142   &1.\+196   &0.\+251   &2.\+165   &5.\+901   \\\cline{1-6}
 \end{longtabu}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md20}{}\doxysubsection{\texorpdfstring{struktūra}{struktūra}}\label{md__r_e_a_d_m_e_autotoc_md20}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md26}{}\doxysubsection{\texorpdfstring{struktūra}{struktūra}}\label{md__r_e_a_d_m_e_autotoc_md26}
 \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
 \hline
@@ -220,8 +410,8 @@ Išbandžius visas strategijas su visais konteineriais, galime pastebėti įdom�
 \end{longtabu}
 
 
-Iš rezultatų matome, kad, nors ir nežymiai, klasė veikia greičiau nei struktūra.\hypertarget{md__r_e_a_d_m_e_autotoc_md21}{}\doxysection{\texorpdfstring{Kompiliatoriaus flag\textquotesingle{}ų testavimo rezultatai}{Kompiliatoriaus flag\textquotesingle{}ų testavimo rezultatai}}\label{md__r_e_a_d_m_e_autotoc_md21}
-Programos greitis gali priklausyti ne vien nuo pačio kodo pateikimų, bet ir nuo paprasto flag\textquotesingle{}o (kompiliatoriaus optimizavimo lygio) pakeitimo kompiliuojant kodą. Testavimui naudotas 1,000,000 studentų failas bei vektorius ir 3 strategija\+:\hypertarget{md__r_e_a_d_m_e_autotoc_md22}{}\doxysubsection{\texorpdfstring{Klasė}{Klasė}}\label{md__r_e_a_d_m_e_autotoc_md22}
+Iš rezultatų matome, kad, nors ir nežymiai, klasė veikia greičiau nei struktūra.\hypertarget{md__r_e_a_d_m_e_autotoc_md27}{}\doxysection{\texorpdfstring{Kompiliatoriaus flag\textquotesingle{}ų testavimo rezultatai}{Kompiliatoriaus flag\textquotesingle{}ų testavimo rezultatai}}\label{md__r_e_a_d_m_e_autotoc_md27}
+Programos greitis gali priklausyti ne vien nuo pačio kodo pateikimų, bet ir nuo paprasto flag\textquotesingle{}o (kompiliatoriaus optimizavimo lygio) pakeitimo kompiliuojant kodą. Testavimui naudotas 1,000,000 studentų failas bei vektorius ir 3 strategija\+:\hypertarget{md__r_e_a_d_m_e_autotoc_md28}{}\doxysubsection{\texorpdfstring{Klasė}{Klasė}}\label{md__r_e_a_d_m_e_autotoc_md28}
 \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{7}{|X[-1]}|}
 \hline
@@ -237,7 +427,7 @@ O1   &1.\+124   &2.\+935   &0.\+237   &4.\+270   &8.\+570   &379    \\\cline{1-7
 O2   &1.\+086   &2.\+796   &0.\+229   &4.\+079   &8.\+195   &349    \\\cline{1-7}
 O3   &1.\+137   &3.\+108   &0.\+239   &4.\+194   &8.\+652   &358   \\\cline{1-7}
 \end{longtabu}
-\hypertarget{md__r_e_a_d_m_e_autotoc_md23}{}\doxysubsection{\texorpdfstring{Struktūra}{Struktūra}}\label{md__r_e_a_d_m_e_autotoc_md23}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md29}{}\doxysubsection{\texorpdfstring{Struktūra}{Struktūra}}\label{md__r_e_a_d_m_e_autotoc_md29}
 \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{7}{|X[-1]}|}
 \hline
@@ -255,7 +445,7 @@ O3   &1.\+112   &3.\+475   &0.\+276   &4.\+946   &10.\+043   &354   \\\cline{1-7
 \end{longtabu}
 
 
-Kaip galima pastebėti iš rezultatų, greičiausias (ir mažiausiai vietos užimantis) flag\textquotesingle{}as yra ne O3, bet O2. Taip gali atsitikti todėl, nes O3 taiko sudėtingesnius kompiliavimo metodus, kurie parodo savo naudą naudojant dar daugiau duomenų, nei buvo naudojama dabar.\hypertarget{md__r_e_a_d_m_e_autotoc_md24}{}\doxysection{\texorpdfstring{Nuotraukos}{Nuotraukos}}\label{md__r_e_a_d_m_e_autotoc_md24}
+Kaip galima pastebėti iš rezultatų, greičiausias (ir mažiausiai vietos užimantis) flag\textquotesingle{}as yra ne O3, bet O2. Taip gali atsitikti todėl, nes O3 taiko sudėtingesnius kompiliavimo metodus, kurie parodo savo naudą naudojant dar daugiau duomenų, nei buvo naudojama dabar.\hypertarget{md__r_e_a_d_m_e_autotoc_md30}{}\doxysection{\texorpdfstring{Nuotraukos}{Nuotraukos}}\label{md__r_e_a_d_m_e_autotoc_md30}
 Programos veikimo pavyzdys\+:
 
  

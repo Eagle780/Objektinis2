@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "Galutinis balas", "index.html", [
+  [ "Galutinis Balas", "index.html", [
     [ "2.0 versija", "md__r_e_a_d_m_e.html", [
       [ "Praeitų versijų aprašymai", "md__r_e_a_d_m_e.html#autotoc_md1", null ],
       [ "Platesnis programos aprašymas", "md__r_e_a_d_m_e.html#autotoc_md2", [
@@ -36,26 +36,33 @@ var NAVTREE =
       [ "Naudojimosi instrukcija", "md__r_e_a_d_m_e.html#autotoc_md7", [
         [ "Duomenų išvedimas/įvedimas", "md__r_e_a_d_m_e.html#autotoc_md8", null ]
       ] ],
-      [ "Testavimo sistemos parametrai", "md__r_e_a_d_m_e.html#autotoc_md9", null ],
-      [ "Spartos Testavimo Rezultatai", "md__r_e_a_d_m_e.html#autotoc_md10", [
-        [ "vector", "md__r_e_a_d_m_e.html#autotoc_md11", null ],
-        [ "deque", "md__r_e_a_d_m_e.html#autotoc_md12", null ],
-        [ "list", "md__r_e_a_d_m_e.html#autotoc_md13", null ]
+      [ "Vector klasės funkcijos", "md__r_e_a_d_m_e.html#autotoc_md9", null ],
+      [ "spartumo testavimai", "md__r_e_a_d_m_e.html#autotoc_md10", null ],
+      [ "Dokumentacija", "md__r_e_a_d_m_e.html#autotoc_md11", null ],
+      [ "Testavimo sistemos parametrai", "md__r_e_a_d_m_e.html#autotoc_md12", null ],
+      [ "Spartos Testavimo Rezultatai", "md__r_e_a_d_m_e.html#autotoc_md13", [
+        [ "vector", "md__r_e_a_d_m_e.html#autotoc_md14", null ],
+        [ "deque", "md__r_e_a_d_m_e.html#autotoc_md15", null ],
+        [ "list", "md__r_e_a_d_m_e.html#autotoc_md16", null ]
       ] ],
-      [ "Strategijos testavimo rezultatai", "md__r_e_a_d_m_e.html#autotoc_md14", [
-        [ "vector", "md__r_e_a_d_m_e.html#autotoc_md15", null ],
-        [ "deque", "md__r_e_a_d_m_e.html#autotoc_md16", null ],
-        [ "list", "md__r_e_a_d_m_e.html#autotoc_md17", null ]
+      [ "Vektorių spartos palyginimas", "md__r_e_a_d_m_e.html#autotoc_md17", [
+        [ "įprastas vector", "md__r_e_a_d_m_e.html#autotoc_md18", null ],
+        [ "mano vector klasė", "md__r_e_a_d_m_e.html#autotoc_md19", null ]
       ] ],
-      [ "Struktūros ir klasės testavimo rezultatai", "md__r_e_a_d_m_e.html#autotoc_md18", [
-        [ "klasė", "md__r_e_a_d_m_e.html#autotoc_md19", null ],
-        [ "struktūra", "md__r_e_a_d_m_e.html#autotoc_md20", null ]
+      [ "Strategijos testavimo rezultatai", "md__r_e_a_d_m_e.html#autotoc_md20", [
+        [ "vector", "md__r_e_a_d_m_e.html#autotoc_md21", null ],
+        [ "deque", "md__r_e_a_d_m_e.html#autotoc_md22", null ],
+        [ "list", "md__r_e_a_d_m_e.html#autotoc_md23", null ]
       ] ],
-      [ "Kompiliatoriaus flag'ų testavimo rezultatai", "md__r_e_a_d_m_e.html#autotoc_md21", [
-        [ "Klasė", "md__r_e_a_d_m_e.html#autotoc_md22", null ],
-        [ "Struktūra", "md__r_e_a_d_m_e.html#autotoc_md23", null ]
+      [ "Struktūros ir klasės testavimo rezultatai", "md__r_e_a_d_m_e.html#autotoc_md24", [
+        [ "klasė", "md__r_e_a_d_m_e.html#autotoc_md25", null ],
+        [ "struktūra", "md__r_e_a_d_m_e.html#autotoc_md26", null ]
       ] ],
-      [ "Nuotraukos", "md__r_e_a_d_m_e.html#autotoc_md24", null ]
+      [ "Kompiliatoriaus flag'ų testavimo rezultatai", "md__r_e_a_d_m_e.html#autotoc_md27", [
+        [ "Klasė", "md__r_e_a_d_m_e.html#autotoc_md28", null ],
+        [ "Struktūra", "md__r_e_a_d_m_e.html#autotoc_md29", null ]
+      ] ],
+      [ "Nuotraukos", "md__r_e_a_d_m_e.html#autotoc_md30", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -65,6 +72,7 @@ var NAVTREE =
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ],
+        [ "Typedefs", "functions_type.html", null ],
         [ "Related Symbols", "functions_rela.html", null ]
       ] ]
     ] ],
