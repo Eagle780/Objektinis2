@@ -14,7 +14,6 @@
 #include "Studentas.h"
 #include <iostream>
 #include <iomanip>
-#include <vector>
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>
@@ -54,7 +53,6 @@ using std::streamsize;
 using std::string;
 using std::time;
 using std::to_string;
-using std::vector;
 
 void cinEx();
 Studentas generuotiPazymius(Studentas temp);

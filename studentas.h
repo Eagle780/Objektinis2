@@ -12,9 +12,8 @@
 #define STUDENT_H
 
 #include "zmogus.h"
-#include "vector.h"
+#include "vector/vector.h"
 #include <string>
-#include <vector>
 #include <algorithm>
 #include <iostream>
 #include <sstream>
@@ -27,7 +26,6 @@ using std::move;
 using std::ostream;
 using std::sort;
 using std::string;
-using std::vector;
 
 inline bool TEST_MODE = false;
 

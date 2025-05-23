@@ -265,6 +265,28 @@ Programa buvo testuojama Release režimu, siekiant gauti tikslius laiko matavimu
 
 Kaip matome, laikai, naudojant vien tik skirtingus konteinerius, skiriasi, nors ir nežymiai. Vektorius vidutiniškai veikia greičiausiai, o list'as - lėčiausiai.
 
+## Vektorių spartos palyginimas
+
+Žemiau pateiktose lentelėse pateikti vektorių laikai:
+
+### įprastas vector
+
+| Failo dydis      | Duomenų skaitymas | Duomenų rūšiavimas | Studentų rūšiavimas | Išvedimas į failus | Bendras laikas |
+| ---------------- | ----------------- | ------------------ | ------------------- | ------------------ | -------------- |
+| 100,000 įrašų    | 0.451             | 0.0130             | 0.024               | 0.138              | 0.707          |
+| 1,000,000 įrašų  | 4.934             | 0.101              | 0.234               | 1.103              | 6.478          |
+| 10,000,000 įrašų | 41.759            | 0.718              | 2.920               | 11.211             | 56.613         |
+
+### mano vector klasė
+
+| Failo dydis      | Duomenų skaitymas | Duomenų rūšiavimas | Studentų rūšiavimas | Išvedimas į failus | Bendras laikas |
+| ---------------- | ----------------- | ------------------ | ------------------- | ------------------ | -------------- |
+| 100,000 įrašų    | 0.489             | 0.0121             | 0.025               | 0.177              | 1.585          |
+| 1,000,000 įrašų  | 5.443             | 0.196              | 0.325               | 1.683              | 7.653          |
+| 10,000,000 įrašų | 37.09             | 1.188              | 2.603               | 9.946              | 50.837         |
+
+Skirtumai nežymūs, mano vektorius yra greitesnis naudojant 10,000,000 studentų, tačiau lėtesnis kitais atvejais.
+
 ## Strategijos testavimo rezultatai
 
 Testuojama buvo ne vien lyginant skirtingų konteinerių naudojimą, bet ir pritaikant skirtingas studentų rūšiavimo strategijas
