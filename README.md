@@ -59,6 +59,8 @@ Aplanke atsidarykite terminalą ir įrašykite:
 Paleidžiamasis failas (GalutinisBalas.exe) atsiras build/Release aplanke.
 Pirmą kartą paleidus programą bus sugeneruojami visi 5 testavimo failai. Visi sekantys paleidimai naudos tuos pačius 5 failus. Naujas failas bus sukurtas tik tada, jei senasis bus ištrintas.
 
+Jūsų patogumui buvo sukurtas mysetup.exe failas, kurį paleidus bus instaliuojama programa. Ji bus sukurta VU/Egle-Gurklyte/ aplanke, taip pat galite pasirinkti ją išsaugoti ir darbalaukyje. Šią programą galėsite pašalinti iš visų programų sąrašo.
+
 ## Naudojimosi instrukcija
 
 Pradžioje Jūsų bus klausiama, ar norite atlikti metodų testą, po to bus prašoma pasirinkti norimą konteinerį, po to pateiktas meniu leis išsirinkti naujų studentų įrašymų būdą. Baigus įrašymą (arba norint iškart skaityti studentus iš failo) pasirenkamas 4-tas meniu variantas. Tada galėsite pasirinkti, pagal ką norite rūšiuoti pagrindinį konteinerį. Po rūšiavimo liks pasirinkti būdą, kuriuo norite suskirstyti "vargšiukus" ir "galvočius" į skirtingus konteinerius.
