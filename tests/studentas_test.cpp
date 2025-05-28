@@ -57,7 +57,7 @@ TEST(StudentasTest, DestruktoriausTest)
 TEST(StudentasTest, IvedimoTest)
 {
     std::stringstream ss("vardas pavarde 10 8 10 10");
-    vector<int> nd = {8, 10, 10};
+    Vector<int> nd = {8, 10, 10};
     Studentas temp;
     ss >> temp;
 
